@@ -32,9 +32,8 @@ namespace DLLJeuPendu
         private string _nomJoueur;
         private int limit = 10 ;
 
-
-
         
+
         public Score() { }
 
         public Score(int score , string nomJoueur)
@@ -47,7 +46,7 @@ namespace DLLJeuPendu
         }
 
 
-        Score test = new Score(1,"er");
+      
         public double ScoreJoueur
         {
             get
@@ -76,7 +75,7 @@ namespace DLLJeuPendu
 
 
         //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
-        public void enregistrerJoueur(test)
+        public void enregistrerJoueur(object test)
         {
 
 
@@ -104,6 +103,10 @@ namespace DLLJeuPendu
         {
 
             FileStream fs = new FileStream("scores.Xml", FileMode.Open, FileAccess.Read);
+
+
+
+
 
 
         }

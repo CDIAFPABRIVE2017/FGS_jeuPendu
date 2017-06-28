@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace JeuPendu_windowsforms
 {
     public partial class FrmJeu : Form
@@ -15,6 +16,11 @@ namespace JeuPendu_windowsforms
         public FrmJeu()
         {
             InitializeComponent();
+        }
+
+        private void FrmJeu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

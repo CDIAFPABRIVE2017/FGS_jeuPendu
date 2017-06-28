@@ -34,7 +34,7 @@ namespace DLLJeuPendu
 
 
 
-
+        
         public Score() { }
 
         public Score(int score , string nomJoueur)
@@ -47,7 +47,7 @@ namespace DLLJeuPendu
         }
 
 
-        Score test = new Score();
+        Score test = new Score(1,"er");
         public double ScoreJoueur
         {
             get
@@ -76,7 +76,7 @@ namespace DLLJeuPendu
 
 
         //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
-        public void enregistrerJoueur()
+        public void enregistrerJoueur(test)
         {
 
 
@@ -88,7 +88,7 @@ namespace DLLJeuPendu
                 }
             }
             XmlSerializer xs = new XmlSerializer(typeof(Score));
-            FileStream fs = new FileStream("scores.txt", FileMode.Open, FileAccess.Write);
+            FileStream fs = new FileStream("scores.Xml", FileMode.Open, FileAccess.Write);
             xs.Serialize(fs, test);
 
 
@@ -103,8 +103,7 @@ namespace DLLJeuPendu
         public void classement()
         {
 
-            
-
+            FileStream fs = new FileStream("scores.Xml", FileMode.Open, FileAccess.Read);
 
 
         }

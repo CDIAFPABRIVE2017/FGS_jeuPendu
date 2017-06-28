@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace JeuPendu_windowsforms
 {
     static class Program
@@ -17,6 +18,9 @@ namespace JeuPendu_windowsforms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmJeu());
+
+           
+
         }
     }
 }

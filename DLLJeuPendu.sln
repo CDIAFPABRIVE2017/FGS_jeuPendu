@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLJeuPendu", "DLLJeuPendu\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuPendu_windowsforms", "JeuPendu_windowsforms\JeuPendu_windowsforms.csproj", "{7E41C320-043A-4D03-BFDB-342AC234E815}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testJeuPendu", "testJeuPendu\testJeuPendu.csproj", "{A2B29C69-5763-4A52-BC62-AEC9043DE461}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E41C320-043A-4D03-BFDB-342AC234E815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E41C320-043A-4D03-BFDB-342AC234E815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E41C320-043A-4D03-BFDB-342AC234E815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B29C69-5763-4A52-BC62-AEC9043DE461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B29C69-5763-4A52-BC62-AEC9043DE461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B29C69-5763-4A52-BC62-AEC9043DE461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B29C69-5763-4A52-BC62-AEC9043DE461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

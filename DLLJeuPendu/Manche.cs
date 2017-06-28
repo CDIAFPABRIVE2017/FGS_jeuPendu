@@ -11,9 +11,12 @@ namespace DLLJeuPendu
         #region Champs
         int _nbErreursMaxOk;
         int _nbErreurs;
-        TimeSpan _temps;
+        TimeSpan _temps=new TimeSpan();
         string _motATrouver;
         int _nbEssaisRestants;
+        char[] motEnCours;
+        char[] motTampon;
+        int _nbManche;
 
         #endregion
 
@@ -50,12 +53,32 @@ namespace DLLJeuPendu
         {
             get
             {
+                
+                motEnCours = new char[_motATrouver.Length];
+                for (int i = 0; i < _motATrouver.Length; i++)
+                {
+                    motEnCours[i] = '_';
+                }
+                motTampon = new char[_motATrouver.Length];
                 return _motATrouver;
             }
 
             set
             {
                 _motATrouver = value;
+            }
+        }
+
+        public int NbManche
+        {
+            get
+            {
+                return _nbManche;
+            }
+
+            set
+            {
+                _nbManche = value;
             }
         }
 
@@ -81,26 +104,60 @@ namespace DLLJeuPendu
         /// </summary>
         /// <param name="Lettre"></param>
         /// <returns></returns>
-        private bool IsLettreDansMot(char Lettre)
+        public bool IsLettreDansMot(char lettre)
         {
 
             for (int i = 0; i < MotATrouver.Length; i++)
             {
-                if (MotATrouver[i] == Lettre)
+                if (MotATrouver[i] == lettre)
                 {
                     return true;
                 }
             }
             return false;
         }
-        private string Decouverte()
+       /// <summary>
+       /// Remplace le '_' par la lettre si celle-ci est présente dans le mot.
+       /// </summary>
+       /// <param name="lettre"></param>
+       /// <returns></returns>
+      public string DecouverteLettre(char lettre)
         {
-            char[] motEnCours = new char[MotATrouver.Length];
-            char[] motTampon = new char[MotATrouver.Length];
+            
+            motTampon = motEnCours;
+            int NbOccurenceLettre=0;
 
-            return motEnCours.ToString();
+            for (int i = 0; i < MotATrouver.Length; i++)
+            {
+                
+                //recopie les lettres trouvées précédemment
+                if (motEnCours[i] != '_')
+                {
+                    motTampon[i] = motEnCours[i];
+                }
+                //affiche la lettre si celle-ci est présente dans le mot
+                if (_motATrouver[i] == lettre)
+                {
+                    motTampon[i] = lettre;
+                    NbOccurenceLettre++;
+                }
+                else
+                    motTampon[i] = '_';               
+            }
+            return motTampon.ToString();
 
             #endregion
         }
+       public bool IsMancheWin()
+        {
+            if (motEnCours.ToString() == MotATrouver)
+            {
+                NbManche++;
+                return true;
+            }
+            else
+                return false;
+        }
+        
     }
 }

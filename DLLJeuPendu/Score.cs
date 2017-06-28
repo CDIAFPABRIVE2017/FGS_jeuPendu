@@ -16,6 +16,9 @@ using System.Xml.Serialization;
 using System.Data;
 using System.Runtime.Serialization;
 using System.Xml;
+using System;
+using System.Xml;
+using System.Xml.XPath;
 
 namespace DLLJeuPendu
 {
@@ -23,31 +26,33 @@ namespace DLLJeuPendu
 
     //si le score de la manche entre dans le classement , enrregistrer le score et le nom du joueur 
     //dans le fichier.
-    //ressortir le nom et scores classes
+    //ressortir les 10 meilleurs scores
+    //definir le score max et le score min 
     class Score
     {
 
         //
         private double _scoreJoueur;
+        private DateTime date;
         private string _nomJoueur;
-        private int limit = 10 ;
+        private int limit = 10;
 
 
 
-        
         public Score() { }
 
-        public Score(int score , string nomJoueur)
+        public Score(int score, DateTime date, string nomJoueur)
         {
 
             this.ScoreJoueur = score;
-            this.NomJoueur = nomJoueur ;
-           
+            this.Date = date;
+            this.NomJoueur = nomJoueur;
+
 
         }
 
 
-        Score test = new Score(1,"er");
+
         public double ScoreJoueur
         {
             get
@@ -74,36 +79,87 @@ namespace DLLJeuPendu
             }
         }
 
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+
+            set
+            {
+                date = value;
+            }
+        }
+
 
         //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
+<<<<<<< HEAD
         public void enregistrerJoueur(Score test)
+=======
+        public void enregistrerJoueur(object test)
+>>>>>>> 4d3c507175491cc015706410f61061c9225030fb
         {
 
 
-            if (!File.Exists("scores.Xml"))
+            if (!File.Exists("scores.xml"))
             {
-                using (FileStream fsCreate = new FileStream("scrores.Xml", FileMode.Create))
+                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
                 {
                     fsCreate.Close();
                 }
             }
+
             XmlSerializer xs = new XmlSerializer(typeof(Score));
-            FileStream fs = new FileStream("scores.Xml", FileMode.Open, FileAccess.Write);
-            xs.Serialize(fs, test);
+            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
+            //XmlSerializer serial = new XmlSerializer(typeof(Score));
+            //serial.Deserialize(fs);
 
+            XPathDocument document = new XPathDocument("scores.xml");
+            XPathNavigator navigator = document.CreateNavigator();
 
-            StreamWriter sr = new StreamWriter(fs);
-            /*xs.Serialize(fs, test);*/
-            sr.WriteLine(xs);
+            // Save the entire input.xml document to a string.
+            string xml = navigator.OuterXml;
+
+            if (xml.IndexOf("score") > 20 )
+            {
+
+                xs.Serialize(fs, test);
+                StreamWriter sr = new StreamWriter(fs);
+                /*xs.Serialize(fs, test);*/
+                sr.WriteLine(xs);
+                fs.Close();
+            }
+          
             fs.Close();
-
         }
-
-        //fonction pour classer les scores des joueurs recuperees dans le fichier Xml 
-        public void classement()
+        /*else
         {
 
-            FileStream fs = new FileStream("scores.Xml", FileMode.Open, FileAccess.Read);
+            Console.Write("erreur bool score min max");
+        }*/
+
+    
+
+
+        //fonction qui sort les 10 meilleurs scores du fichier xml
+        public void afficherScoresJoueurs()
+        {
+
+            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+
+
+
+
+            serial.Deserialize(fs);
+
+
+
+
+
+
+
 
 
         }

@@ -35,12 +35,18 @@ namespace JeuPendu_windowsforms
 
         private void piocheToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			FrmPioche pioche = new FrmPioche();
+			pioche.MdiParent = this;
+			pioche.Show();
+			this.LayoutMdi(MdiLayout.TileHorizontal);
+		}
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			FrmOption option = new FrmOption();
+			option.MdiParent = this;
+			option.Show();
+			this.LayoutMdi(MdiLayout.TileHorizontal);
+		}
     }
 }

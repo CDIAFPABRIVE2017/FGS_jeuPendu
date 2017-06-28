@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOption.Designer.cs">
+      <DependentUpon>FrmOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPioche.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPioche.Designer.cs">
+      <DependentUpon>FrmPioche.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmScore.cs">
       <SubType>Form</SubType>
     </Compile>

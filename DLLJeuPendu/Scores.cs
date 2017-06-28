@@ -8,5 +8,7 @@ namespace DLLJeuPendu
 {
     class Scores
     {
+
+        int a;
     }
 }

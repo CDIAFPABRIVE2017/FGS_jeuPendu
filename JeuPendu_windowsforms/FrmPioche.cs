@@ -1,19 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Text;
 
 namespace JeuPendu_windowsforms
 {
-	public partial class Pioche : Form
+    public partial class FrmPioche : Form
 	{
-		public Pioche()
+        #region champs
+        private string _mots;
+        #endregion
+        public FrmPioche()
 		{
 			InitializeComponent();
 		}
@@ -23,12 +21,24 @@ namespace JeuPendu_windowsforms
             get;
             set;
         }
-        public bool isMotValide
+        public bool isMotValide(string _mt)
         {
-            get;
-            set;
+            // valeur null ou min ou max
+            if (_mt == null || _mt.Trim().Length < 5 || _mt.Length > 25)
+            { return false;
+            }
+
+            // verification des caracteres
+            foreach (char c in _mt)
+            {
+                if (!char.IsLetter(c) & !char.IsWhiteSpace(c) & c != '-')
+                    return false;
+            }
+
+            return true;
+
         }
-        public int RetraiterMot
+public int RetraiterMot
         {
             get;
             set;
@@ -58,15 +68,77 @@ namespace JeuPendu_windowsforms
         }
         #endregion
 
-        public Pioche()
+        public class Mot
         {
-            
-
+            public string Debut { get; set; }
+            public string Description { get; set; }
+           
         }
-            
+        /// <summary>
+        /// créer une collection Dictionary
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, Mot> BuildDictionary()
+        {
+            return new Dictionary<string, Mot>
+    {
+        {"A",
+            new Mot() { Debut = "A", Description="Assiduite"}},
+        {"C",
+            new Mot() { Debut="C", Description="Catastrophe"}},
+        {"S",
+            new Mot() { Debut="S", Description ="Scotland"}},
+        {"T",
+            new Mot() { Debut="T", Description="Tirailler"}}
+    };
+        }
+        /// <summary>
+        /// Rechercher un mot dans le dictionnaire par son debut
+        /// </summary>
+        /// <param name="Dbt"></param>
+        private bool isFindInDictionary(string Dbt)
+        {
+            Dictionary<string, Mot> mots = BuildDictionary();
 
+            if (mots.ContainsKey(Dbt) == false)
+            {
+                return false;
+            }
+            else
+            {
+                Mot ceMot = mots[Dbt];
+                return true;
+            }
         }
 
+
+        //private void ChargerMots()
+        //{
+        //    mots = new Mots();
+        //    ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
+        //    utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
+        //    foreach (Utilisateur item in utilisateurs)
+        //    {
+        //        cbUtilisateurs.Items.Add(item.Identifiant);
+        //    }
+        //}
+        private static string TraiterChaineMajSansAccent(string chaineOrigine)
+        {
+
+            chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
+            StringBuilder motCanonique = new StringBuilder();
+            foreach (char caractere in chaineOrigine)
+            {
+                if (char.IsLetter(caractere))
+                {
+                    motCanonique.Append(caractere);
+                }
+            }
+            return motCanonique.ToString().ToUpper();
+        }
 
     }
+
+
+}
 

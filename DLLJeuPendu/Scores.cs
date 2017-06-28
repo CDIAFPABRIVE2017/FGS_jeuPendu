@@ -10,5 +10,6 @@ namespace DLLJeuPendu
     {
 
         int a;
+        int b;
     }
 }

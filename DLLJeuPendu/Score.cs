@@ -76,7 +76,7 @@ namespace DLLJeuPendu
 
 
         //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
-        public void enregistrerJoueur(test)
+        public void enregistrerJoueur(Score test)
         {
 
 

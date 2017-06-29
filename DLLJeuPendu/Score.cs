@@ -29,17 +29,17 @@ namespace DLLJeuPendu
     //ressortir les 10 meilleurs scores
     //definir le score max et le score min 
     [Serializable()]
-  
-   public class Score
-    { 
+
+    public class Score
+    {
         //
         private double _scoreJoueur;
         private DateTime date;
         private string _nomJoueur;
-       
+
         private int limit = 10;
 
-       
+
 
         public Score() { }
 
@@ -94,9 +94,9 @@ namespace DLLJeuPendu
             }
         }
 
-       
 
-       
+
+
 
 
         /* fonction qui cree le fichier xml pour enregistrer la liste
@@ -105,7 +105,7 @@ namespace DLLJeuPendu
          * tant que le liste n'est pas a 10
          * et qui supprime le score le plus petit pour enregistrer le joueur joueur*/
 
-        public void enregistrerJoueur(Score test)
+        /*public void enregistrerJoueur(Score test)
         {
 
 
@@ -154,43 +154,25 @@ namespace DLLJeuPendu
             /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
             XmlSerializer serial = new XmlSerializer(typeof(Score));
             serial.Deserialize(replace);*/
-            //selectionner le premier score inferieur a int score et le supprimer
-        }
-
-
-        
-
-        
-
-        
-        public void trierDixScores()
-        {
-
-        }
-
-        
-
-
-
-        //fonction qui sort les 10 meilleurs scores du fichier xml
-        public void afficherScoresJoueurs()
-        {
-
-            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
+        //selectionner le premier score inferieur a int score et le supprimer
+    }
 
 
 
 
-            serial.Deserialize(fs);
 
 
-        }
 
 
-        //fonction qui va verrifier si le score d'un joueur entre dans le classement (10)
-        // dans manche ?? pour simplifier if true new score ...
 
+
+
+    //fonction qui sort les 10 meilleurs scores du fichier xml
+
+
+    //fonction qui va verrifier si le score d'un joueur entre dans le classement (10)
+    // dans manche ?? pour simplifier if true new score ...
+}
         public static bool scoreValide(int score)
         {
             if (score < 10 )

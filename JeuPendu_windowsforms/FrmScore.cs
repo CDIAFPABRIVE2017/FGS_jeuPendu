@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DLLJeuPendu;
+
+
+
 
 namespace JeuPendu_windowsforms
 {
@@ -17,6 +21,8 @@ namespace JeuPendu_windowsforms
             InitializeComponent();
         }
 
+        Score scr = new Score();
+        Scores scrs = new Scores();
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -25,6 +31,11 @@ namespace JeuPendu_windowsforms
         private void dataGridView1_ColumnDataPropertyNameChanged(object sender, DataGridViewColumnEventArgs e)
         {
             
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     }

@@ -32,16 +32,15 @@
             this.mancheBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mancheBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mancheBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mancheBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.nbErreursDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tempsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.motATrouverDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mancheBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // mancheBindingSource
@@ -56,41 +55,22 @@
             // 
             this.mancheBindingSource2.DataSource = typeof(DLLJeuPendu.Manche);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nbErreursDataGridViewTextBoxColumn,
-            this.tempsDataGridViewTextBoxColumn,
-            this.motATrouverDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.mancheBindingSource3;
-            this.dataGridView1.Location = new System.Drawing.Point(192, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // mancheBindingSource3
             // 
             this.mancheBindingSource3.DataSource = typeof(DLLJeuPendu.Manche);
             // 
-            // nbErreursDataGridViewTextBoxColumn
+            // mancheBindingSource4
             // 
-            this.nbErreursDataGridViewTextBoxColumn.DataPropertyName = "NbErreurs";
-            this.nbErreursDataGridViewTextBoxColumn.HeaderText = "NbErreurs";
-            this.nbErreursDataGridViewTextBoxColumn.Name = "nbErreursDataGridViewTextBoxColumn";
+            this.mancheBindingSource4.DataSource = typeof(DLLJeuPendu.Manche);
             // 
-            // tempsDataGridViewTextBoxColumn
+            // dataGridView1
             // 
-            this.tempsDataGridViewTextBoxColumn.DataPropertyName = "Temps";
-            this.tempsDataGridViewTextBoxColumn.HeaderText = "Temps";
-            this.tempsDataGridViewTextBoxColumn.Name = "tempsDataGridViewTextBoxColumn";
-            // 
-            // motATrouverDataGridViewTextBoxColumn
-            // 
-            this.motATrouverDataGridViewTextBoxColumn.DataPropertyName = "MotATrouver";
-            this.motATrouverDataGridViewTextBoxColumn.HeaderText = "MotATrouver";
-            this.motATrouverDataGridViewTextBoxColumn.Name = "motATrouverDataGridViewTextBoxColumn";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(693, 382);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FrmScore
             // 
@@ -103,8 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mancheBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -114,10 +95,8 @@
         private System.Windows.Forms.BindingSource mancheBindingSource;
         private System.Windows.Forms.BindingSource mancheBindingSource1;
         private System.Windows.Forms.BindingSource mancheBindingSource2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nbErreursDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tempsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn motATrouverDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource mancheBindingSource3;
+        private System.Windows.Forms.BindingSource mancheBindingSource4;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

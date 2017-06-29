@@ -161,7 +161,7 @@ namespace DLLJeuPendu
             }
         }
             
-          public void afficherListe()
+        public void afficherListe()
         {
 
             FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);

@@ -19,6 +19,9 @@ namespace DLLJeuPendu
         int _nbEssaisRestants;
         char[] motEnCours;
         int _numManche;
+        double _scoreManche;
+        double _scoresCumulés;
+        double _moyenneScores;
 
         #endregion
 
@@ -89,12 +92,12 @@ namespace DLLJeuPendu
         {
             get
             {
-                return _nbManche;
+                return NbManche1;
             }
 
             set
             {
-                _nbManche = value;
+                NbManche1 = value;
             }
         }
 
@@ -147,6 +150,58 @@ namespace DLLJeuPendu
             set
             {
                 _nbErreursMaxOk = value;
+            }
+        }
+
+        public double ScoreManche
+        {
+            get
+            {
+                return _scoreManche;
+            }
+
+            set
+            {
+                _scoreManche = value;
+            }
+        }
+
+        public double ScoresCumulés
+        {
+            get
+            {
+                return _scoresCumulés;
+            }
+
+            set
+            {
+                _scoresCumulés = value;
+            }
+        }
+
+        public double MoyenneScores
+        {
+            get
+            {
+                return _moyenneScores;
+            }
+
+            set
+            {
+                _moyenneScores = value;
+            }
+        }
+
+        public int NbManche1
+        {
+            get
+            {
+                return _nbManche;
+            }
+
+            set
+            {
+                _nbManche = value;
             }
         }
 
@@ -210,7 +265,16 @@ namespace DLLJeuPendu
             #endregion
         }
 
-
+        public static string ChartoString(char [] mot)
+        {
+            string retour = string.Empty;
+            foreach (char item in mot)
+            {
+                retour += item;
+            }
+            return retour;
+        
+        }
 
 
         public bool IsMancheWin()
@@ -231,6 +295,31 @@ namespace DLLJeuPendu
             }
             return false;
         }
+
+        #region Méthodes de calculs du score
+        public double CalculScoreManche(TimeSpan temps, int nbErreurs)
+        {
+            if (IsMancheWin())
+            {
+                ScoreManche = 1 * (Convert.ToDouble(temps)) + 7 * nbErreurs;
+                ScoresCumulés += ScoreManche;
+            }
+            else
+                ScoreManche = 0;
+                return ScoreManche;
+            
+        }
+        public double CalculScorePartie(double scoresCumul, int numManches)
+        {
+            if (IsPartieOver())
+            {
+                _moyenneScores = scoresCumul / numManches;
+            }
+            else
+                MoyenneScores = 0;
+            return _moyenneScores;
+        }
+        #endregion
 
     }
 }

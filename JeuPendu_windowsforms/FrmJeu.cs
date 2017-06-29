@@ -40,30 +40,36 @@ namespace JeuPendu_windowsforms
             {
                 case EtatManche.Debut:
                     manche.NbErreurs = 0;
-                    manche.NumManche++;
-                    txtb_MotenCours.Text = manche.MotEnCours.ToString();
+                    manche.NbManche1++;
+                    txtb_numManche.Text = (++manche.NumManche).ToString();
+                    txtb_MotenCours.Text = Manche.ChartoString(manche.MotEnCours);
+                    txtB_nbEssaisRestants.Text = manche.CalculEssaisRestants().ToString();
                     btn_Start.Enabled = true;
 
                     break;
 
                 case EtatManche.Fin:
+                    timer1.Stop();
                     if (manche.IsMancheWin())
                     {
                         btn_Start.Enabled = false;
 
-                        
+                        //dialogue modal informe du score de la manche
+
                     }
-                    else
-                        MessageBox.Show("La Manche est perdue :'(", "Fin de Manche", MessageBoxButtons.OK);
+                    //else
+                    //   dialogue modal informe le joueur qu'il a partie.
+
                     break;
 
             }
         }
+
         #endregion
-        #region Evenements
+            #region Evenements
         private void button20_Click(object sender, EventArgs e)
         {
-            GestionnaireManche(EtatManche.Debut);
+
             char lettre = Convert.ToChar((sender as Button).Text);
             if (manche.IsLettreDansMot(lettre))
             {
@@ -77,7 +83,7 @@ namespace JeuPendu_windowsforms
             {
                 manche.NbErreurs++;
                 txtB_nbEssaisRestants.Text = manche.CalculEssaisRestants().ToString();
-                if(manche.NbErreurs==manche.NbErreursMaxOk)
+                if (manche.NbErreurs == manche.NbErreursMaxOk)
                 { pn_clavier.Enabled = true; }
 
             }
@@ -87,7 +93,8 @@ namespace JeuPendu_windowsforms
             pn_clavier.Visible = true;
             manche.DateDebut1 = DateTime.Now;
             manche.NbErreursMaxOk = 9;
-            txtB_nbEssaisRestants.Text = manche.CalculEssaisRestants().ToString();
+
+            GestionnaireManche(EtatManche.Debut);
 
 
 
@@ -96,42 +103,67 @@ namespace JeuPendu_windowsforms
 
 
         }
-        
+
+
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    DateTime s_myCounter = new DateTime();
+        //    s_myCounter.ToShortTimeString()=
+        //    txtB_temps =manche.DateDebut1
+
+        private void FrmJeu_Load(object sender, EventArgs e)
+        {
+            GestionnairePartie(EtatPartie.Debut);
+
+        }
+
+
         #endregion
+
+        #endregion
+
+        #region Partie
+        enum EtatPartie
+        {
+            Debut = 0,
+            Fin = 1
+        }
+        #endregion
+        void GestionnairePartie(EtatPartie etatPartie)
+        {
+            //j'efface les erreurs précédente
+            ep_jeu.SetError(txtb_MotenCours, string.Empty);
+
+            switch (etatPartie)
+            {
+                case EtatPartie.Debut:
+
+                    manche.NumManche = 0;
+                    manche.NbManche1 = 0;
+                    break;
+
+                case EtatPartie.Fin:
+                    
+                    if (manche.IsPartieOver())
+                    {
+                        btn_Start.Enabled = false;
+
+                        //dialogue modal informe du score de la manche
+
+                    }
+                    //else
+                    //   dialogue modal informe le joueur qu'il a partie.
+
+                    break;
+
+                    
+
+
+            }
+        }
+
+        
     }
-    #endregion
-
-    #region Partie
-    enum EtatPartie
-    {
-        Debut = 0,
-        Fin = 1
-    }
-    #endregion
-
-
-
-    #region Evenements
-
-
-
-    #endregion
-
-
-
-
-
-
-
-
-    //private void timer1_Tick(object sender, EventArgs e)
-    //{
-    //    DateTime s_myCounter = new DateTime();
-    //    s_myCounter.ToShortTimeString()=
-    //    txtB_temps =manche.DateDebut1
-
-
-
 }
 
 

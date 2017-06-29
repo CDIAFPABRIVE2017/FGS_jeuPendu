@@ -68,7 +68,7 @@
             this.btn_Start = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtb_numManche = new System.Windows.Forms.TextBox();
             this.pn_clavier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep_jeu)).BeginInit();
             this.SuspendLayout();
@@ -496,21 +496,21 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Manche numéro :";
             // 
-            // textBox1
+            // txtb_numManche
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(139, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(68, 13);
-            this.textBox1.TabIndex = 11;
+            this.txtb_numManche.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtb_numManche.Location = new System.Drawing.Point(139, 27);
+            this.txtb_numManche.Name = "txtb_numManche";
+            this.txtb_numManche.ReadOnly = true;
+            this.txtb_numManche.Size = new System.Drawing.Size(68, 13);
+            this.txtb_numManche.TabIndex = 11;
             // 
             // FrmJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 508);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtb_numManche);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.txtB_temps);
@@ -523,6 +523,7 @@
             this.Controls.Add(this.txtb_MotenCours);
             this.Name = "FrmJeu";
             this.Text = "Jeu du Pendu";
+            this.Shown += new System.EventHandler(this.FrmJeu_Load);
             this.pn_clavier.ResumeLayout(false);
             this.pn_clavier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep_jeu)).EndInit();
@@ -571,7 +572,7 @@
         private System.Windows.Forms.ErrorProvider ep_jeu;
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtb_numManche;
         private System.Windows.Forms.Label label1;
     }
 }

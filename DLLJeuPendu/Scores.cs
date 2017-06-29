@@ -23,7 +23,14 @@ namespace DLLJeuPendu
 
         public void verifierNombreScores()
         {
+            for (int i = 0; i < dixMeilleursScores.Count; i++)
+            {
+                if ((dixMeilleursScores[i].ScoreJoueur < dixMeilleursScores[i+1].ScoreJoueur)
+                     && (dixMeilleursScores[i + 1] <= dixMeilleursScores.Count))
+                {
 
+                }
+            }
         }
 
         public void ajouterJoueur(Score joueur)
@@ -40,7 +47,7 @@ namespace DLLJeuPendu
         /// </summary>
         public void trierListe()
         {
-            object[] tmp; 
+            //object[] tmp; 
             for (int i = 0; i < dixMeilleursScores.Count; i++)
             {
                 for (int j = 0; j < dixMeilleursScores.Count - 1; j++)

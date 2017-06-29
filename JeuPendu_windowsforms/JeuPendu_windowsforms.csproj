@@ -87,6 +87,9 @@
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmScore.resx">
+      <DependentUpon>FrmScore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +105,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\DLLJeuPendu.Manche.datasource" />
+    <None Include="Properties\DataSources\FrmJeu.datasource" />
+    <None Include="Properties\DataSources\FrmOption.datasource" />
+    <None Include="Properties\DataSources\FrmPioche.datasource" />
+    <None Include="Properties\DataSources\FrmScore.datasource" />
+    <None Include="Properties\DataSources\InterfaceMere.datasource" />
+    <None Include="Properties\DataSources\JeuPendu_windowsforms.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\JeuPendu_windowsforms.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

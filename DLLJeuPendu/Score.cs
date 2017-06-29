@@ -29,18 +29,17 @@ namespace DLLJeuPendu
     //ressortir les 10 meilleurs scores
     //definir le score max et le score min 
     [Serializable()]
-    class Score: List<Score>
-    {
-
+  
+   public class Score
+    { 
         //
         private double _scoreJoueur;
         private DateTime date;
         private string _nomJoueur;
-        private double _scoreMin;
-        private double _scoreMax;
+       
         private int limit = 10;
 
-        List<Score> listJoueurs = new List<Score>();
+       
 
         public Score() { }
 
@@ -95,51 +94,16 @@ namespace DLLJeuPendu
             }
         }
 
-        public double ScoreMin
-        {
-            get
-            {
-                double _scoreMin = 1000;
-                for (int i = 0; i < listJoueurs.Count; i++)
-                {
-                    if (listJoueurs[i].ScoreJoueur < _scoreMin)
-                    {
-                        _scoreMin = listJoueurs[i].ScoreJoueur;
-                    }
+       
 
-                }
-                return _scoreMin;
-            }
-
-            set
-            {
-                _scoreMin = value;
-            }
-        }
-
-        public double ScoreMax
-        {
-            get
-            {
-                double _scoreMax = 0;
-                for (int i = 0; i < listJoueurs.Count; i++)
-                {
-                    if (listJoueurs[i].ScoreJoueur > _scoreMax)
-                    {
-                        _scoreMax = listJoueurs[i].ScoreJoueur;
-                    }
-                }
-                return _scoreMax;
-            }
-
-            set
-            {
-                _scoreMax = value;
-            }
-        }
+       
 
 
-        //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 1
+        /* fonction qui cree le fichier xml pour enregistrer la liste
+         * d'objets (joueur,score...) si la liste est inferieur a 10 et
+         * que le score du joueur est superieur au plus petit des 10
+         * tant que le liste n'est pas a 10
+         * et qui supprime le score le plus petit pour enregistrer le joueur joueur*/
 
         public void enregistrerJoueur(Score test)
         {
@@ -158,45 +122,53 @@ namespace DLLJeuPendu
             // Save the entire input.xml document to a string.
             string xml = navigator.OuterXml;
 
-            if ((xml.IndexOf("score") < 20) && ( test.ScoreJoueur > this.ScoreMin))
+            if ((xml.IndexOf("score") < 20))
             {
                 listJoueurs.Add(test);
                 XmlSerializer xs = new XmlSerializer(typeof(Score));
                 FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
 
-                xs.Serialize(fs, listJoueurs);
+                xs.Serialize(fs, test);
                 StreamWriter sr = new StreamWriter(fs);
                 xs.Serialize(fs, listJoueurs);
                 sr.WriteLine(xs);
                 fs.Close();
             }
+            else if(xml.IndexOf("score") >= 20 && (test.ScoreJoueur > this.ScoreMin))
+            {
+                //trouver le premier score inferieur au score du joueur le supprimer de la liste et insserrer 
+                //le nouveau score (le liste sera triee apres)
+                FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+                XmlSerializer serial = new XmlSerializer(typeof(Score));
+                serial.Deserialize(replace);
+
+
+
+               
+
+            }
             
 
          
 
-            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
             XmlSerializer serial = new XmlSerializer(typeof(Score));
-            serial.Deserialize(replace);
+            serial.Deserialize(replace);*/
             //selectionner le premier score inferieur a int score et le supprimer
         }
 
 
-        List<Score> dixMeilleursScores = new List<Score>() ;
-
-
         
 
         
-        public void verifierNombreScores()
+
+        
+        public void trierDixScores()
         {
 
         }
 
-        public void ajouterJoueur(Score joueur)
-        {
-            dixMeilleursScores.Add(joueur);
-        }
-
+        
 
 
 
@@ -211,13 +183,6 @@ namespace DLLJeuPendu
 
 
             serial.Deserialize(fs);
-
-
-
-
-
-
-
 
 
         }

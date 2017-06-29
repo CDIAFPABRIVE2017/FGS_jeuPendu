@@ -1,67 +1,185 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text;
+using System.Threading.Tasks;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters;
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+using System.Data;
+using System.Runtime.Serialization;
+using System.Xml;
+using System;
+using System.Xml;
+using System.Xml.XPath;
 
 namespace DLLJeuPendu
 {
     class Scores :List<Score>
     {
+        private double _scoreMin;
+        private double _scoreMax;
 
-
-
-
-
-        List<Score> dixMeilleursScores = new List<Score>();
-
-
-       
-
-       
-
-        public void verifierNombreScores()
+        List<Score> listJoueurs = new List<Score>();
+        public double ScoreMin
         {
-            for (int i = 0; i < dixMeilleursScores.Count; i++)
+            get
             {
-                if ((dixMeilleursScores[i].ScoreJoueur < dixMeilleursScores[i+1].ScoreJoueur)
-                     && (dixMeilleursScores[i + 1] <= dixMeilleursScores.Count))
+                double _scoreMin = 1000;
+                for (int i = 0; i < this.Count; i++)
                 {
+                    if (this[i].ScoreJoueur < _scoreMin)
+                    {
+                        _scoreMin = this[i].ScoreJoueur;
+                    }
 
                 }
+                return _scoreMin;
+            }
+
+            set
+            {
+                _scoreMin = value;
             }
         }
 
+        public double ScoreMax
+        {
+            get
+            {
+                double _scoreMax = 0;
+                for (int i = 0; i < this.Count; i++)
+                {
+                    if (this[i].ScoreJoueur > _scoreMax)
+                    {
+                        _scoreMax = this[i].ScoreJoueur;
+                    }
+                }
+                return _scoreMax;
+            }
+
+            set
+            {
+                _scoreMax = value;
+            }
+        }
+
+       
+
         public void ajouterJoueur(Score joueur)
         {
-            if (dixMeilleursScores.Count > 9)
+            if (this.Count > 9)
             {
                 Console.WriteLine("Vous ne faites pas partie des 10 meilleurs scores");
             }
-                dixMeilleursScores.Add(joueur);
+                this.Add(joueur);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void trierListe()
+        public void enregistrerJoueur(Score test)
         {
-            //object[] tmp; 
-            for (int i = 0; i < dixMeilleursScores.Count; i++)
+
+
+            if (!File.Exists("scores.xml"))
             {
-                for (int j = 0; j < dixMeilleursScores.Count - 1; j++)
+                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
                 {
-
-                    if (dixMeilleursScores[i].ScoreJoueur >  dixMeilleursScores[j+1].ScoreJoueur)
-                    {
-                        dixMeilleursScores[i] = dixMeilleursScores[i + 1];
-                        dixMeilleursScores[i+1] = dixMeilleursScores[i -2];
-                    }
-
+                    fsCreate.Close();
                 }
             }
+            XPathDocument document = new XPathDocument("scores.xml");
+            XPathNavigator navigator = document.CreateNavigator();
 
+            // Save the entire input.xml document to a string.
+            string xml = navigator.OuterXml;
+
+            if ((xml.IndexOf("score") < 20))
+            {
+                listJoueurs.Add(test);
+                XmlSerializer xs = new XmlSerializer(typeof(Score));
+                FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
+
+                xs.Serialize(fs, test);
+                StreamWriter sr = new StreamWriter(fs);
+                xs.Serialize(fs, listJoueurs);
+                sr.WriteLine(xs);
+                fs.Close();
+            }
+            else if (xml.IndexOf("score") >= 20 && (test.ScoreJoueur > this.ScoreMin))
+            {
+                //trouver le premier score inferieur au score du joueur le supprimer de la liste et insserrer 
+                //le nouveau score (le liste sera triee apres)
+                FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+                XmlSerializer serial = new XmlSerializer(typeof(Score));
+                serial.Deserialize(replace);
+
+
+
+
+
+            }
+
+
+
+
+            /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+            serial.Deserialize(replace);*/
+            //selectionner le premier score inferieur a int score et le supprimer
+        }
+
+        public void ajouter(Score score)
+        {
+            if (listJoueurs.Count < 9)
+            {
+                listJoueurs.Add(score);
+            }
+            else if(listJoueurs.Count >= 9)
+            {
+                for (int i = 0; i < listJoueurs.Count ; i++)
+                {
+                    if (listJoueurs[i].ScoreJoueur <= score.ScoreJoueur)
+                    {
+                        int count = 0;
+                        do
+                        {
+                            listJoueurs.Remove(listJoueurs[i]);
+                        } while (count < 1);
+                    }
+                }
+                    listJoueurs.Add(score);
+            }
+        }
+            
+          public void afficherListe()
+        {
+
+            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+            serial.Deserialize(replace);
+
+
+
+        }
+
+        public  bool verifScore(double score)
+        {
+            if (score >= this.ScoreMin)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

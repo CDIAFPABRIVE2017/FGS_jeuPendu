@@ -73,12 +73,6 @@
     <Compile Include="InterfaceMere.Designer.cs">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmJeu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmJeu.Designer.cs">
-      <DependentUpon>FrmJeu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmOption.resx">
@@ -92,9 +86,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmJeu.resx">
-      <DependentUpon>FrmJeu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

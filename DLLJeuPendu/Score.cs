@@ -28,6 +28,7 @@ namespace DLLJeuPendu
     //dans le fichier.
     //ressortir les 10 meilleurs scores
     //definir le score max et le score min 
+    [Serializable()]
     class Score
     {
 
@@ -93,13 +94,10 @@ namespace DLLJeuPendu
         }
 
 
-        //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
-<<<<<<< HEAD
-        public void enregistrerJoueur(Score test)
-=======
-        public void enregistrerJoueur(object test)
->>>>>>> 4d3c507175491cc015706410f61061c9225030fb
-        {
+        //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 1
+        
+        /*public void enregistrerJoueur(object test,int score)
+        { 
 
 
             if (!File.Exists("scores.xml"))
@@ -109,12 +107,24 @@ namespace DLLJeuPendu
                     fsCreate.Close();
                 }
             }
+            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+            serial.Deserialize(replace);
+            //selectionner le premier score inferieur a int score et le supprimer
+
+            foreach(object element in replace)
+            {
+
+            }
+
+        
+
 
             XmlSerializer xs = new XmlSerializer(typeof(Score));
             FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
             //XmlSerializer serial = new XmlSerializer(typeof(Score));
             //serial.Deserialize(fs);
-
+            //insserrer le joueur qui a batu un score 
             XPathDocument document = new XPathDocument("scores.xml");
             XPathNavigator navigator = document.CreateNavigator();
 
@@ -127,19 +137,40 @@ namespace DLLJeuPendu
                 xs.Serialize(fs, test);
                 StreamWriter sr = new StreamWriter(fs);
                 /*xs.Serialize(fs, test);*/
-                sr.WriteLine(xs);
+                /*sr.WriteLine(xs);
                 fs.Close();
             }
           
             fs.Close();
-        }
+        }*/
         /*else
         {
 
             Console.Write("erreur bool score min max");
         }*/
 
-    
+       
+        List<Score> dixMeilleursScores = new List<Score>() ;
+
+
+        
+
+        public void verifierScore()
+        {
+
+        }
+
+        public void verifierNombreScores()
+        {
+
+        }
+
+        public void ajouterJoueur(object joueur)
+        {
+            dixMeilleursScores.Add(joueur);
+        }
+
+
 
 
         //fonction qui sort les 10 meilleurs scores du fichier xml

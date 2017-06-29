@@ -43,7 +43,7 @@ namespace DLLJeuPendu
 
         public Score() { }
 
-        public Score(int score, DateTime date, string nomJoueur)
+        public Score(double score, DateTime date, string nomJoueur)
         {
 
             this.ScoreJoueur = score;
@@ -177,7 +177,7 @@ namespace DLLJeuPendu
         /// </summary>
         /// <param name="score"></param>
         /// <returns></returns>
-        public static bool scoreValide(int score)
+        public  bool scoreValide(double score)
         {
             if (score < 10)
             {

@@ -81,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmOption.resx">
+      <DependentUpon>FrmOption.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>

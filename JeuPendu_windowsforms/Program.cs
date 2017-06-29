@@ -16,7 +16,7 @@ namespace JeuPendu_windowsforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pioche());
+            Application.Run(new FrmPioche());
         }
     }
 }

@@ -35,7 +35,7 @@ namespace JeuPendu_windowsforms
 
         private void piocheToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			Pioche pioche = new Pioche();
+			FrmPioche pioche = new FrmPioche();
 			pioche.MdiParent = this;
 			pioche.Show();
 			this.LayoutMdi(MdiLayout.TileHorizontal);

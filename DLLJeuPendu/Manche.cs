@@ -10,12 +10,15 @@ namespace DLLJeuPendu
     {
         #region Champs
         int _nbErreursMaxOk;
+        int _nbManche;
         int _nbErreurs;
-        TimeSpan _temps=new TimeSpan();
+        DateTime DateDebut = new DateTime();
+        DateTime DateFin = new DateTime();
+        TimeSpan _temps = new TimeSpan();
         string _motATrouver;
         int _nbEssaisRestants;
         char[] motEnCours;
-        int _nbManche;
+        int _numManche;
 
         #endregion
 
@@ -44,7 +47,8 @@ namespace DLLJeuPendu
 
             set
             {
-                _temps = value;
+
+                _temps = DateFin1 - DateDebut1;
             }
         }
 
@@ -52,18 +56,32 @@ namespace DLLJeuPendu
         {
             get
             {
-                
+
                 return _motATrouver;
             }
 
             set
             {
+                value = "ANNACONDA";
                 _motATrouver = value;
-                motEnCours = new char[_motATrouver.Length];
+                MotEnCours = new char[_motATrouver.Length];
                 for (int i = 0; i < _motATrouver.Length; i++)
                 {
-                    motEnCours[i] = '_';
+                    MotEnCours[i] = '_';
                 }
+            }
+        }
+
+        public int NumManche
+        {
+            get
+            {
+                return _numManche;
+            }
+
+            set
+            {
+                _numManche = value;
             }
         }
 
@@ -80,6 +98,58 @@ namespace DLLJeuPendu
             }
         }
 
+        public DateTime DateDebut1
+        {
+            get
+            {
+                return DateDebut;
+            }
+
+            set
+            {
+                DateDebut = value;
+            }
+        }
+
+        public DateTime DateFin1
+        {
+            get
+            {
+                return DateFin;
+            }
+
+            set
+            {
+                DateFin = value;
+            }
+        }
+
+        public char[] MotEnCours
+        {
+            get
+            {
+                return motEnCours;
+            }
+
+            set
+            {
+                motEnCours = value;
+            }
+        }
+
+        public int NbErreursMaxOk
+        {
+            get
+            {
+                return _nbErreursMaxOk;
+            }
+
+            set
+            {
+                _nbErreursMaxOk = value;
+            }
+        }
+
         #endregion
 
         #region Méthodes
@@ -87,14 +157,14 @@ namespace DLLJeuPendu
         /// Calcule le nombre d'essais restants au joueur. Renvoie 0, si le nb d'erreur max est atteint.
         /// </summary>
         /// <returns></returns>
-        private int? CalculEssaisRestants()
+        public int CalculEssaisRestants()
         {
-            if (NbErreurs < _nbErreursMaxOk)
+            if (NbErreurs < NbErreursMaxOk)
             {
-                _nbEssaisRestants = _nbErreursMaxOk - _nbErreurs;
+                _nbEssaisRestants = NbErreursMaxOk - _nbErreurs;
                 return _nbEssaisRestants;
             }
-            return null;
+            return 0;
         }
 
         /// <summary>
@@ -114,45 +184,53 @@ namespace DLLJeuPendu
             }
             return false;
         }
-       /// <summary>
-       /// Remplace le '_' par la lettre si celle-ci est présente dans le mot.
-       /// </summary>
-       /// <param name="lettre"></param>
-       /// <returns></returns>
-      public string DecouverteLettre(char lettre)
+        /// <summary>
+        /// Remplace le '_' par la lettre si celle-ci est présente dans le mot.
+        /// </summary>
+        /// <param name="lettre"></param>
+        /// <returns></returns>
+        public string DecouverteLettre(char lettre)
         {
-           
-         
-            int NbOccurenceLettre=0;
+
+
+            int NbOccurenceLettre = 0;
 
             for (int i = 0; i < MotATrouver.Length; i++)
             {
                 //affiche la lettre si celle-ci est présente dans le mot
                 if (_motATrouver[i] == lettre)
                 {
-                    motEnCours[i] = lettre;
+                    MotEnCours[i] = lettre;
                     NbOccurenceLettre++;
                 }
-               
+
             }
-            return new string(motEnCours);
+            return new string(MotEnCours);
 
             #endregion
         }
 
-       
 
-        
-       public bool IsMancheWin()
+
+
+        public bool IsMancheWin()
         {
-            if (motEnCours.ToString() == MotATrouver)
+            if (MotEnCours.ToString() == MotATrouver)
             {
-                NbManche++;
+                NumManche++;
                 return true;
             }
             else
                 return false;
         }
-        
+        public bool IsPartieOver()
+        {
+            if (NumManche == NbManche || NbErreurs == NbErreursMaxOk)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

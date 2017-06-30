@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using DLLJeuPendu;
 
+
 namespace JeuPendu_windowsforms
 {
     [Serializable]
@@ -27,13 +28,12 @@ namespace JeuPendu_windowsforms
             InitializeComponent();
             ChargerDictionnaire();
         }
-        Pioche pioche;
         private void ChargerDictionnaire()
         {
             _pioche = new Pioche();
             // appel de la méthode load 
             // en utilisant 
-          //  _pioche.load(serialiseur, Properties.Settings.Default.AppData);
+            _pioche.Load(Serialiseur, Properties.Settings.Default.AppData);
         }
         #region Proprietes 
         public int AjouterMot
@@ -93,37 +93,7 @@ namespace JeuPendu_windowsforms
         }
         #endregion
 
-        /// <summary>
-        /// Rechercher un mot dans le dictionnaire par son debut
-        /// </summary>
-        /// <param name="Dbt"></param>
-        //private void RechercherMot(string searchString) /////////////////////////////////////////////////////////////////////TODO
-        //{
-        //    // Ensure we have a proper string to search for.
-        //    if (searchString != string.Empty)
-        //    {
-        //        // Find the item in the list and store the index to the item.
-        //        int index = listBox1.FindString(searchString);
-        //        // Determine if a valid index is returned. Select the item if it is valid.
-        //        if (index != -1)
-        //            listBox1.SetSelected(index, true);
-        //        else
-        //            MessageBox.Show("The search string did not match any items in the ListBox");
-        //    }
-        //}
-
-
-        //private void ChargerMots() ///////////////////////////////////////////////////////////////////////////////////////////TODO
-        //{
-        //    mots = new Mots();
-        //    ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-        //    utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
-        //    foreach (Utilisateur item in utilisateurs)
-        //    {
-        //        cbUtilisateurs.Items.Add(item.Identifiant);
-        //    }
-        //}
-
+      
         ///// <summary>
         ///// Traiter les caractères accentués
         ///// traiter la casse et la longueur des mots
@@ -131,25 +101,7 @@ namespace JeuPendu_windowsforms
         ///// <param name="chaineOrigine"></param>
         ///// <returns></returns>
 
-        //private bool TraiterMot(string chaineOrigine)
-        //{
-        //    if (chaineOrigine == null || chaineOrigine.Trim().Length < 5 || chaineOrigine.Trim().Length > 25)
-        //        return false;
-
-
-        //    chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
-        //    StringBuilder motCanonique = new StringBuilder();
-        //    foreach (char caractere in chaineOrigine)
-        //    {
-        //        if (char.IsLetter(caractere))
-        //        {
-        //            motCanonique.Append(caractere);
-        //        }
-        //    }
-        //    _listeInitiale.Add(motCanonique.ToString().ToUpper());
-
-        //    return true;
-        //}
+        
         
         private void FrmPioche_Load(object sender, EventArgs e)
         {

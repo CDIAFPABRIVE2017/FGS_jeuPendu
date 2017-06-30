@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
+using System.IO;
+using DLLJeuPendu;
 
 namespace JeuPendu_windowsforms
 {
     public partial class FrmPioche : Form
 	{
+
+        
         #region champs
         private string _mots;
         #endregion
@@ -137,6 +141,11 @@ public int RetraiterMot
             return motCanonique.ToString().ToUpper();
         }
 
+        private void FrmPioche_Load(object sender, EventArgs e)
+        {
+            Score er = new Score();
+            
+        }
     }
 
 

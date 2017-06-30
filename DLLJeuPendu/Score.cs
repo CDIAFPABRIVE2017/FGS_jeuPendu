@@ -155,7 +155,7 @@ namespace DLLJeuPendu
             XmlSerializer serial = new XmlSerializer(typeof(Score));
             serial.Deserialize(replace);*/
         //selectionner le premier score inferieur a int score et le supprimer
-    }
+        //  }
 
 
 
@@ -167,24 +167,30 @@ namespace DLLJeuPendu
 
 
 
-    //fonction qui sort les 10 meilleurs scores du fichier xml
+        //fonction qui sort les 10 meilleurs scores du fichier xml
 
 
-    //fonction qui va verrifier si le score d'un joueur entre dans le classement (10)
-    // dans manche ?? pour simplifier if true new score ...
-}
+        //fonction qui va verrifier si le score d'un joueur entre dans le classement (10)
+        // dans manche ?? pour simplifier if true new score ...
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
         public static bool scoreValide(int score)
         {
-            if (score < 10 )
+            if (score < 10)
             {
                 return false;
             }
             return true;
         }
-
-
     }
-
+    
 
 }
+    
+
+
+
 

@@ -112,7 +112,7 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "label2";
             // 
-            // Pioche
+            // FrmPioche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,8 +125,9 @@
             this.Controls.Add(this.lstMotRetenu);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnEnregistrer);
-            this.Name = "Pioche";
+            this.Name = "FrmPioche";
             this.Text = "FrmPioche";
+            this.Load += new System.EventHandler(this.FrmPioche_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

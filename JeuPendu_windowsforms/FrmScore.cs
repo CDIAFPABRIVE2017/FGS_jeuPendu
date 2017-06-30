@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DLLJeuPendu;
+using System.IO;
+using System;
+using System.Data;
+using System.Windows.Forms;
+using System.Xml;
+using System.Data;
 
 
 
@@ -22,7 +28,7 @@ namespace JeuPendu_windowsforms
         }
 
         Score scr = new Score();
-        Scores scrs = new Scores();
+       
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -37,6 +43,27 @@ namespace JeuPendu_windowsforms
         {
 
         }
+
+        private void FrmScore_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                XmlReader  xmlFile;
+                //xmlFile = XmlReader.Create("Product.xml", new XmlReaderSettings());
+                DataSet ds = new DataSet();
+                ds.ReadXml("scores.xml");
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns.Insert(0, new DataGridViewColumn(dataGridView1.Columns[0].CellTemplate));
+                dataGridView1.Rows[1].Cells[1].Value = "azerty";
+                dataGridView1.Visible = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
-    }
+    
 }

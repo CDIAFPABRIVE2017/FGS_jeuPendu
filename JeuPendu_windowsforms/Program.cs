@@ -16,6 +16,7 @@ namespace JeuPendu_windowsforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            MonApplication.ScoresJeu.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
             Application.Run(new FrmPioche());
         }
     }

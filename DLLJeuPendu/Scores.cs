@@ -20,10 +20,12 @@ using System.Xml;
 using System;
 using System.Xml;
 using System.Xml.XPath;
+using Utilitaires;
+using SalariesDll;
 
 namespace DLLJeuPendu
 {
-    class Scores :List<Score>
+    public class Scores :List<Score>, ICollectionMetier
     {
         private double _scoreMin;
         private double _scoreMax;
@@ -140,9 +142,30 @@ namespace DLLJeuPendu
 
         public void ajouter(Score score)
         {
+            if (!File.Exists("scores.xml"))
+            {
+                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
+                {
+                    fsCreate.Close();
+                }
+            }
+
+            //this.Load("scrores.xml", Score score);
+
+
+
+
             if (listJoueurs.Count < 9)
             {
                 listJoueurs.Add(score);
+                XmlSerializer xs = new XmlSerializer(typeof(Score));
+                FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
+
+                xs.Serialize(fs, listJoueurs);
+                StreamWriter sr = new StreamWriter(fs);
+                xs.Serialize(fs, listJoueurs);
+                sr.WriteLine(xs);
+                fs.Close();
             }
             else if(listJoueurs.Count >= 9)
             {
@@ -158,6 +181,7 @@ namespace DLLJeuPendu
                     }
                 }
                     listJoueurs.Add(score);
+                    
             }
         }
             
@@ -181,5 +205,18 @@ namespace DLLJeuPendu
 
             return false;
         }
+
+        public void Save(ISauvegarde sauvegarde, string pathRepData)
+        {
+            sauvegarde.Save(pathRepData, this);
+        }
+
+        public void Load(ISauvegarde sauvegarde, string pathRepData)
+        {
+            this.AddRange((Scores)sauvegarde.Load(pathRepData, this.GetType()));
+        }
     }
-}
+  }
+
+
+

@@ -33,7 +33,7 @@ namespace JeuPendu_windowsforms
             _pioche = new Pioche();
             // appel de la méthode load 
             // en utilisant 
-            _pioche.Load(Serialiseur, Properties.Settings.Default.AppData);
+           // _pioche.Load(Serialiseur, Properties.Settings.Default.PathData);
         }
         #region Proprietes 
         public int AjouterMot

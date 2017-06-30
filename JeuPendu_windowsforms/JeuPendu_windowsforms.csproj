@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Entreprise">
-      <HintPath>D:\CDI\C#\Atelier1\Atelier1\Entreprise\bin\Debug\Entreprise.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,31 +58,26 @@
     <Compile Include="FrmPioche.Designer.cs">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmScore.Designer.cs">
+      <DependentUpon>FrmScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceMere.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InterfaceMere.Designer.cs">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmJeu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmJeu.Designer.cs">
-      <DependentUpon>FrmJeu.cs</DependentUpon>
-    </Compile>
+    <Compile Include="MonApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmOption.resx">
-      <DependentUpon>FrmOption.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmJeu.resx">
-      <DependentUpon>FrmJeu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +88,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\FrmPioche.Mot.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,6 +106,10 @@
     <ProjectReference Include="..\DLLJeuPendu\DLLJeuPendu.csproj">
       <Project>{2bad0887-7aa3-41af-b8de-391367dad6d8}</Project>
       <Name>DLLJeuPendu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitaires\Utilitaires.csproj">
+      <Project>{596ad11b-f3bf-43c3-83a0-fc50ca1ab49b}</Project>
+      <Name>Utilitaires</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

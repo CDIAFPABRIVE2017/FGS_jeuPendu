@@ -19,19 +19,19 @@ namespace JeuPendu_windowsforms
 
         private void jeuDuPenduToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmJeu jeux = new FrmJeu();
-            jeux.MdiParent = this;
-            jeux.Show();
-            this.LayoutMdi(MdiLayout.TileHorizontal);
+            //FrmJeu jeux = new FrmJeu();
+            //jeux.MdiParent = this;
+            //jeux.Show();
+            //this.LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        //private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FrmScore score = new FrmScore();
-        //    score.MdiParent = this;
-        //    score.Show();
-        //    this.LayoutMdi(MdiLayout.TileHorizontal);
-        //}
+        private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmScore score = new FrmScore();
+            score.MdiParent = this;
+            score.Show();
+            this.LayoutMdi(MdiLayout.TileHorizontal);
+        }
 
         private void piocheToolStripMenuItem_Click(object sender, EventArgs e)
         {

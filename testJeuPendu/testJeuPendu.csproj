@@ -54,10 +54,6 @@
       <Project>{2bad0887-7aa3-41af-b8de-391367dad6d8}</Project>
       <Name>DLLJeuPendu</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JeuPendu_windowsforms\JeuPendu_windowsforms.csproj">
-      <Project>{7e41c320-043a-4d03-bfdb-342ac234e815}</Project>
-      <Name>JeuPendu_windowsforms</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

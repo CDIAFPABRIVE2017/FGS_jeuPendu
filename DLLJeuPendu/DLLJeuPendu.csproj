@@ -49,7 +49,7 @@
     <Compile Include="Scores.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projects\TEXTES\Utilitaires\Utilitaires.csproj">
+    <ProjectReference Include="..\Utilitaires\Utilitaires.csproj">
       <Project>{596ad11b-f3bf-43c3-83a0-fc50ca1ab49b}</Project>
       <Name>Utilitaires</Name>
     </ProjectReference>

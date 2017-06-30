@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuPendu_windowsforms", "Je
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testJeuPendu", "testJeuPendu\testJeuPendu.csproj", "{A2B29C69-5763-4A52-BC62-AEC9043DE461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilitaires", "..\Projects\TEXTES\Utilitaires\Utilitaires.csproj", "{596AD11B-F3BF-43C3-83A0-FC50CA1AB49B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilitaires", "Utilitaires\Utilitaires.csproj", "{596AD11B-F3BF-43C3-83A0-FC50CA1AB49B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

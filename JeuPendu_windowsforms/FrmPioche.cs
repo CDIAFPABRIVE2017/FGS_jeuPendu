@@ -150,13 +150,13 @@ namespace JeuPendu_windowsforms
                         }
                         else
                         {
-                            Pioche.TraiterMot(tampon);
+                        //    Pioche.TraiterMot(tampon);
                             tampon = string.Empty;
                         }
                     }
                     if (tampon.Length > 0)
                     {
-                        Pioche.TraiterMot(tampon);
+                     //   Pioche.TraiterMot(tampon);
                         tampon = string.Empty;
 
                     }

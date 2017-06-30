@@ -15,6 +15,7 @@ namespace DLLJeuPendu
         string _motATrouver;
         int _nbEssaisRestants;
         char[] motEnCours;
+        char[] motTampon;
         int _nbManche;
 
         #endregion
@@ -53,17 +54,18 @@ namespace DLLJeuPendu
             get
             {
                 
+                motEnCours = new char[_motATrouver.Length];
+                for (int i = 0; i < _motATrouver.Length; i++)
+                {
+                    motEnCours[i] = '_';
+                }
+                motTampon = new char[_motATrouver.Length];
                 return _motATrouver;
             }
 
             set
             {
                 _motATrouver = value;
-                motEnCours = new char[_motATrouver.Length];
-                for (int i = 0; i < _motATrouver.Length; i++)
-                {
-                    motEnCours[i] = '_';
-                }
             }
         }
 
@@ -121,28 +123,31 @@ namespace DLLJeuPendu
        /// <returns></returns>
       public string DecouverteLettre(char lettre)
         {
-           
-         
+            
+            motTampon = motEnCours;
             int NbOccurenceLettre=0;
 
             for (int i = 0; i < MotATrouver.Length; i++)
             {
+                
+                //recopie les lettres trouvées précédemment
+                if (motEnCours[i] != '_')
+                {
+                    motTampon[i] = motEnCours[i];
+                }
                 //affiche la lettre si celle-ci est présente dans le mot
                 if (_motATrouver[i] == lettre)
                 {
-                    motEnCours[i] = lettre;
+                    motTampon[i] = lettre;
                     NbOccurenceLettre++;
                 }
-               
+                else
+                    motTampon[i] = '_';               
             }
-            return new string(motEnCours);
+            return motTampon.ToString();
 
             #endregion
         }
-
-       
-
-        
        public bool IsMancheWin()
         {
             if (motEnCours.ToString() == MotATrouver)

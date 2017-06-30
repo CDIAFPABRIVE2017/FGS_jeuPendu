@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
@@ -8,17 +7,34 @@ using DLLJeuPendu;
 
 namespace JeuPendu_windowsforms
 {
+    [Serializable]
     public partial class FrmPioche : Form
-	{
-
-        
+    {
         #region champs
+        private Pioche _pioche;
         private string _mots;
+        private string _debut;
+        private Stream fsSrc;
+        private bool encodSrc;
+        private object srSrc;
+        private Encoding encodCbl;
+        private Stream writer;
+
+        private HashSet<String> _listeInitiale = new HashSet<string>();
         #endregion
         public FrmPioche()
-		{
-			InitializeComponent();
-		}
+        {
+            InitializeComponent();
+            ChargerDictionnaire();
+        }
+        Pioche pioche;
+        private void ChargerDictionnaire()
+        {
+            _pioche = new Pioche();
+            // appel de la méthode load 
+            // en utilisant 
+            _pioche.load(serialiseur, Properties.Settings.Default.AppData);
+        }
         #region Proprietes 
         public int AjouterMot
         {
@@ -29,7 +45,8 @@ namespace JeuPendu_windowsforms
         {
             // valeur null ou min ou max
             if (_mt == null || _mt.Trim().Length < 5 || _mt.Length > 25)
-            { return false;
+            {
+                return false;
             }
 
             // verification des caracteres
@@ -42,7 +59,7 @@ namespace JeuPendu_windowsforms
             return true;
 
         }
-public int RetraiterMot
+        public int RetraiterMot
         {
             get;
             set;
@@ -60,63 +77,43 @@ public int RetraiterMot
         /// <param name="e"></param>
         private void btnOuvrir_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamReader sr = new
-                   System.IO.StreamReader(openFileDialog1.FileName);
+                StreamReader sr = new
+                StreamReader(openFileDialog1.FileName);
                 MessageBox.Show(sr.ReadToEnd());
                 sr.Close();
-            }
 
+            }
+            foreach (var item in _listeInitiale)
+            {
+                listeInitiale.Items.Add(item);
+            }
 
         }
         #endregion
 
-        public class Mot
-        {
-            public string Debut { get; set; }
-            public string Description { get; set; }
-           
-        }
-        /// <summary>
-        /// créer une collection Dictionary
-        /// </summary>
-        /// <returns></returns>
-        private Dictionary<string, Mot> BuildDictionary()
-        {
-            return new Dictionary<string, Mot>
-    {
-        {"A",
-            new Mot() { Debut = "A", Description="Assiduite"}},
-        {"C",
-            new Mot() { Debut="C", Description="Catastrophe"}},
-        {"S",
-            new Mot() { Debut="S", Description ="Scotland"}},
-        {"T",
-            new Mot() { Debut="T", Description="Tirailler"}}
-    };
-        }
         /// <summary>
         /// Rechercher un mot dans le dictionnaire par son debut
         /// </summary>
         /// <param name="Dbt"></param>
-        private bool isFindInDictionary(string Dbt)
-        {
-            Dictionary<string, Mot> mots = BuildDictionary();
+        //private void RechercherMot(string searchString) /////////////////////////////////////////////////////////////////////TODO
+        //{
+        //    // Ensure we have a proper string to search for.
+        //    if (searchString != string.Empty)
+        //    {
+        //        // Find the item in the list and store the index to the item.
+        //        int index = listBox1.FindString(searchString);
+        //        // Determine if a valid index is returned. Select the item if it is valid.
+        //        if (index != -1)
+        //            listBox1.SetSelected(index, true);
+        //        else
+        //            MessageBox.Show("The search string did not match any items in the ListBox");
+        //    }
+        //}
 
-            if (mots.ContainsKey(Dbt) == false)
-            {
-                return false;
-            }
-            else
-            {
-                Mot ceMot = mots[Dbt];
-                return true;
-            }
-        }
 
-
-        //private void ChargerMots()
+        //private void ChargerMots() ///////////////////////////////////////////////////////////////////////////////////////////TODO
         //{
         //    mots = new Mots();
         //    ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
@@ -126,28 +123,149 @@ public int RetraiterMot
         //        cbUtilisateurs.Items.Add(item.Identifiant);
         //    }
         //}
-        private static string TraiterChaineMajSansAccent(string chaineOrigine)
-        {
 
-            chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
-            StringBuilder motCanonique = new StringBuilder();
-            foreach (char caractere in chaineOrigine)
-            {
-                if (char.IsLetter(caractere))
-                {
-                    motCanonique.Append(caractere);
-                }
-            }
-            return motCanonique.ToString().ToUpper();
-        }
+        ///// <summary>
+        ///// Traiter les caractères accentués
+        ///// traiter la casse et la longueur des mots
+        ///// </summary>
+        ///// <param name="chaineOrigine"></param>
+        ///// <returns></returns>
 
+        //private bool TraiterMot(string chaineOrigine)
+        //{
+        //    if (chaineOrigine == null || chaineOrigine.Trim().Length < 5 || chaineOrigine.Trim().Length > 25)
+        //        return false;
+
+
+        //    chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
+        //    StringBuilder motCanonique = new StringBuilder();
+        //    foreach (char caractere in chaineOrigine)
+        //    {
+        //        if (char.IsLetter(caractere))
+        //        {
+        //            motCanonique.Append(caractere);
+        //        }
+        //    }
+        //    _listeInitiale.Add(motCanonique.ToString().ToUpper());
+
+        //    return true;
+        //}
+        
         private void FrmPioche_Load(object sender, EventArgs e)
         {
-            Score er = new Score();
-            
+            btnExclure.Visible = false;
+            btnEnregistrer.Visible = false;
+            btnPiocher.Visible = false;
+            btnQuiter.Visible = false;
+            lblDictionnaire.Visible = false;
+            lblMotsImpropres.Visible = false;
+            listeInitiale.Visible = false;
+            Corbeille.Visible = false;
+            txtSaisie.Visible = false;
+        }
+
+       
+        
+        
+        private void ouvrirFichierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnPiocher.Visible = true;
+            listeInitiale.Visible = true;
+            lblDictionnaire.Visible = true;
+            btnEnregistrer.Visible = true;
+            btnQuiter.Visible = true;
+        }
+        /// <summary>
+        /// Chargement du dictionnaire pour traitement
+        /// trier, supprimer les mots non conformes aux normes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPiocher_Click_1(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader reader = new StreamReader(openFileDialog1.FileName);
+                string line;
+                string tampon = string.Empty;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        if (char.IsLetter(line[i]))
+                        {
+                            tampon += line[i].ToString();
+                        }
+                        else
+                        {
+                            Pioche.TraiterMot(tampon);
+                            tampon = string.Empty;
+                        }
+                    }
+                    if (tampon.Length > 0)
+                    {
+                        Pioche.TraiterMot(tampon);
+                        tampon = string.Empty;
+
+                    }
+
+                }
+
+                reader.Close();
+                foreach (var item in _listeInitiale)
+                {
+                    listeInitiale.Items.Add(item);
+                }
+
+            }
+        }
+
+        private void btnQuiter_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExclure_Click(object sender, EventArgs e)
+        {
+            string selectionner = listeInitiale.SelectedItem.ToString();
+            Corbeille.Items.Add(selectionner);
+        }
+
+        private void supprimerMotsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnExclure.Visible = true;
+            Corbeille.Visible = true;
+            btnPiocher.Visible = true;
+            listeInitiale.Visible = true;
+            lblDictionnaire.Visible = true;
+            btnEnregistrer.Visible = true;
+            btnQuiter.Visible = true;
+            lblMotsImpropres.Visible = true;
+        }
+
+        private void ajouterMotsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtSaisie.Visible = true;
+            btnExclure.Visible = true;
+            Corbeille.Visible = true;
+            btnPiocher.Visible = true;
+            listeInitiale.Visible = true;
+            lblDictionnaire.Visible = true;
+            btnEnregistrer.Visible = true;
+            btnQuiter.Visible = true;
+            lblMotsImpropres.Visible = true;
         }
     }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
 

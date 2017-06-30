@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IcollectionMetier.cs" />
     <Compile Include="Manche.cs" />
     <Compile Include="Pioche.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

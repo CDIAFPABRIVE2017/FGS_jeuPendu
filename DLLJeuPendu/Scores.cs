@@ -21,7 +21,6 @@ using System;
 using System.Xml;
 using System.Xml.XPath;
 using Utilitaires;
-using SalariesDll;
 
 namespace DLLJeuPendu
 {

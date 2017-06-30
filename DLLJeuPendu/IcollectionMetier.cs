@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utilitaires;
 
-namespace SalariesDll
+namespace DLLJeuPendu
 {
     interface ICollectionMetier
     {

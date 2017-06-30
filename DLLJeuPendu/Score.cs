@@ -28,13 +28,15 @@ namespace DLLJeuPendu
     //dans le fichier.
     //ressortir les 10 meilleurs scores
     //definir le score max et le score min 
-    class Score
-    {
+    [Serializable()]
 
+    public class Score
+    {
         //
         private double _scoreJoueur;
         private DateTime date;
         private string _nomJoueur;
+
         private int limit = 10;
 
 
@@ -93,11 +95,19 @@ namespace DLLJeuPendu
         }
 
 
-        //fonction pour enregistrer un score et nom d'un joueur si le score est sup au min des 10 
 
-        public void enregistrerJoueur(object test)
 
-        { 
+
+
+        /* fonction qui cree le fichier xml pour enregistrer la liste
+         * d'objets (joueur,score...) si la liste est inferieur a 10 et
+         * que le score du joueur est superieur au plus petit des 10
+         * tant que le liste n'est pas a 10
+         * et qui supprime le score le plus petit pour enregistrer le joueur joueur*/
+
+        /*public void enregistrerJoueur(Score test)
+        {
+
 
             if (!File.Exists("scores.xml"))
             {
@@ -106,77 +116,81 @@ namespace DLLJeuPendu
                     fsCreate.Close();
                 }
             }
-
-            XmlSerializer xs = new XmlSerializer(typeof(Score));
-            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
-            //XmlSerializer serial = new XmlSerializer(typeof(Score));
-            //serial.Deserialize(fs);
-
             XPathDocument document = new XPathDocument("scores.xml");
             XPathNavigator navigator = document.CreateNavigator();
 
             // Save the entire input.xml document to a string.
             string xml = navigator.OuterXml;
 
-            if (xml.IndexOf("score") > 20 )
+            if ((xml.IndexOf("score") < 20))
             {
+                listJoueurs.Add(test);
+                XmlSerializer xs = new XmlSerializer(typeof(Score));
+                FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
 
                 xs.Serialize(fs, test);
                 StreamWriter sr = new StreamWriter(fs);
-                /*xs.Serialize(fs, test);*/
+                xs.Serialize(fs, listJoueurs);
                 sr.WriteLine(xs);
                 fs.Close();
             }
-          
-            fs.Close();
-        }
-        /*else
-        {
+            else if(xml.IndexOf("score") >= 20 && (test.ScoreJoueur > this.ScoreMin))
+            {
+                //trouver le premier score inferieur au score du joueur le supprimer de la liste et insserrer 
+                //le nouveau score (le liste sera triee apres)
+                FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+                XmlSerializer serial = new XmlSerializer(typeof(Score));
+                serial.Deserialize(replace);
 
-            Console.Write("erreur bool score min max");
-        }*/
 
-    
+
+               
+
+            }
+            
+
+         
+
+            /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+            serial.Deserialize(replace);*/
+        //selectionner le premier score inferieur a int score et le supprimer
+        //  }
+
+
+
+
+
+
+
+
+
 
 
         //fonction qui sort les 10 meilleurs scores du fichier xml
-        public void afficherScoresJoueurs()
-        {
-
-            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
-
-
-
-
-            serial.Deserialize(fs);
-
-
-
-
-
-
-
-
-
-        }
 
 
         //fonction qui va verrifier si le score d'un joueur entre dans le classement (10)
         // dans manche ?? pour simplifier if true new score ...
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
         public static bool scoreValide(int score)
         {
-            if (score < 10 )
+            if (score < 10)
             {
                 return false;
             }
             return true;
         }
-
-
     }
-
+    
 
 }
+    
+
+
+
 

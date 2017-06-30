@@ -212,7 +212,9 @@ namespace DLLJeuPendu
 
         public void Load(ISauvegarde sauvegarde, string pathRepData)
         {
-            this.AddRange((Scores)sauvegarde.Load(pathRepData, this.GetType()));
+            Scores scores = sauvegarde.Load(pathRepData, this.GetType()) as Scores;
+            if (scores != null)
+            { this.AddRange(scores); };
         }
     }
   }

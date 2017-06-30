@@ -25,7 +25,7 @@ namespace JeuPendu_windowsforms.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDI\\Source\\Repos\\FGS_jeuPendu")]
         public string PathData {
             get {
                 return ((string)(this["PathData"]));

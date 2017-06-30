@@ -58,7 +58,7 @@
             this.btnEnregistrer.TabIndex = 0;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
-            this.btnEnregistrer.Click += new System.EventHandler(this.btnOuvrir_Click);
+            this.btnEnregistrer.Click += new System.EventHandler(this.Enregister_Click);
             // 
             // btnQuiter
             // 

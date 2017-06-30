@@ -41,7 +41,7 @@ namespace DLLJeuPendu
                     motCanonique.Append(caractere);
                 }
             }
-            _listeInitiale.Add(motCanonique.ToString().ToUpper());
+           // _listeInitiale.Add(motCanonique.ToString().ToUpper());
 
             return true;
         }
@@ -85,14 +85,14 @@ namespace DLLJeuPendu
         /// <param name="pathCbl"></param>
         /// <param name="encodSrc"></param>
         /// <param name="encodCbl"></param>
-        public static string EcrireFichier(string lst)
+        public static void EcrireFichier(string lst)
         {
             foreach (var item in lst)
             {
-                _pioche.Add((item.ToString()).ToString());
+         //       _pioche.Add((item.ToString()).ToString());
             }
             // Appeler la méthode Save //TODO
-            ISauvegarde serialiseur = Pioche.DispositifSauvegarde;
+        //    ISauvegarde serialiseur = Pioche.DispositifSauvegarde;
         }
     }
     }

@@ -38,6 +38,7 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
+            this.lb_consignesClavier = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@
             this.btn_clavier_e_frFR = new System.Windows.Forms.Button();
             this.btn_clavier_z_frFR = new System.Windows.Forms.Button();
             this.btn_clavier_A_fr_FR = new System.Windows.Forms.Button();
-            this.lb_consignesClavier = new System.Windows.Forms.Label();
             this.lb_consignesErreurs = new System.Windows.Forms.Label();
             this.txtB_nbEssaisRestants = new System.Windows.Forms.TextBox();
             this.lb_essais = new System.Windows.Forms.Label();
@@ -128,7 +128,7 @@
             // button20
             // 
             this.button20.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button20.Location = new System.Drawing.Point(289, 136);
+            this.button20.Location = new System.Drawing.Point(348, 133);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(40, 40);
             this.button20.TabIndex = 21;
@@ -139,7 +139,7 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button10.Location = new System.Drawing.Point(455, 90);
+            this.button10.Location = new System.Drawing.Point(440, 87);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(40, 40);
             this.button10.TabIndex = 19;
@@ -150,7 +150,7 @@
             // button21
             // 
             this.button21.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button21.Location = new System.Drawing.Point(243, 136);
+            this.button21.Location = new System.Drawing.Point(302, 133);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(40, 40);
             this.button21.TabIndex = 20;
@@ -161,7 +161,7 @@
             // button11
             // 
             this.button11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button11.Location = new System.Drawing.Point(409, 90);
+            this.button11.Location = new System.Drawing.Point(394, 87);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(40, 40);
             this.button11.TabIndex = 18;
@@ -172,7 +172,7 @@
             // button22
             // 
             this.button22.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button22.Location = new System.Drawing.Point(197, 136);
+            this.button22.Location = new System.Drawing.Point(256, 133);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(40, 40);
             this.button22.TabIndex = 19;
@@ -183,7 +183,7 @@
             // button23
             // 
             this.button23.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button23.Location = new System.Drawing.Point(151, 136);
+            this.button23.Location = new System.Drawing.Point(210, 133);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(40, 40);
             this.button23.TabIndex = 18;
@@ -191,10 +191,19 @@
             this.button23.UseVisualStyleBackColor = false;
             this.button23.Click += new System.EventHandler(this.button20_Click);
             // 
+            // lb_consignesClavier
+            // 
+            this.lb_consignesClavier.AutoSize = true;
+            this.lb_consignesClavier.Location = new System.Drawing.Point(23, 11);
+            this.lb_consignesClavier.Name = "lb_consignesClavier";
+            this.lb_consignesClavier.Size = new System.Drawing.Size(339, 13);
+            this.lb_consignesClavier.TabIndex = 3;
+            this.lb_consignesClavier.Text = "Cliquez sur une touche pour tester si la lettre est présente dans le mot :";
+            // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button12.Location = new System.Drawing.Point(363, 90);
+            this.button12.Location = new System.Drawing.Point(348, 87);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(40, 40);
             this.button12.TabIndex = 17;
@@ -205,7 +214,7 @@
             // button24
             // 
             this.button24.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button24.Location = new System.Drawing.Point(105, 136);
+            this.button24.Location = new System.Drawing.Point(164, 133);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(40, 40);
             this.button24.TabIndex = 17;
@@ -216,7 +225,7 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button13.Location = new System.Drawing.Point(317, 90);
+            this.button13.Location = new System.Drawing.Point(302, 87);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(40, 40);
             this.button13.TabIndex = 16;
@@ -227,7 +236,7 @@
             // button25
             // 
             this.button25.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button25.Location = new System.Drawing.Point(59, 136);
+            this.button25.Location = new System.Drawing.Point(118, 133);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(40, 40);
             this.button25.TabIndex = 16;
@@ -238,7 +247,7 @@
             // button14
             // 
             this.button14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button14.Location = new System.Drawing.Point(271, 90);
+            this.button14.Location = new System.Drawing.Point(256, 87);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(40, 40);
             this.button14.TabIndex = 15;
@@ -249,7 +258,7 @@
             // button15
             // 
             this.button15.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button15.Location = new System.Drawing.Point(225, 90);
+            this.button15.Location = new System.Drawing.Point(210, 87);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(40, 40);
             this.button15.TabIndex = 14;
@@ -260,7 +269,7 @@
             // button16
             // 
             this.button16.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button16.Location = new System.Drawing.Point(179, 90);
+            this.button16.Location = new System.Drawing.Point(164, 87);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(40, 40);
             this.button16.TabIndex = 13;
@@ -271,7 +280,7 @@
             // button17
             // 
             this.button17.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button17.Location = new System.Drawing.Point(133, 90);
+            this.button17.Location = new System.Drawing.Point(118, 87);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(40, 40);
             this.button17.TabIndex = 12;
@@ -282,7 +291,7 @@
             // button18
             // 
             this.button18.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button18.Location = new System.Drawing.Point(87, 90);
+            this.button18.Location = new System.Drawing.Point(72, 87);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(40, 40);
             this.button18.TabIndex = 11;
@@ -293,7 +302,7 @@
             // button19
             // 
             this.button19.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button19.Location = new System.Drawing.Point(41, 90);
+            this.button19.Location = new System.Drawing.Point(26, 87);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(40, 40);
             this.button19.TabIndex = 10;
@@ -411,15 +420,6 @@
             this.btn_clavier_A_fr_FR.UseVisualStyleBackColor = false;
             this.btn_clavier_A_fr_FR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // lb_consignesClavier
-            // 
-            this.lb_consignesClavier.AutoSize = true;
-            this.lb_consignesClavier.Location = new System.Drawing.Point(23, 11);
-            this.lb_consignesClavier.Name = "lb_consignesClavier";
-            this.lb_consignesClavier.Size = new System.Drawing.Size(339, 13);
-            this.lb_consignesClavier.TabIndex = 3;
-            this.lb_consignesClavier.Text = "Cliquez sur une touche pour tester si la lettre est présente dans le mot :";
-            // 
             // lb_consignesErreurs
             // 
             this.lb_consignesErreurs.AutoSize = true;
@@ -452,7 +452,7 @@
             // lb_tpsEcoule
             // 
             this.lb_tpsEcoule.AutoSize = true;
-            this.lb_tpsEcoule.Location = new System.Drawing.Point(309, 123);
+            this.lb_tpsEcoule.Location = new System.Drawing.Point(377, 123);
             this.lb_tpsEcoule.Name = "lb_tpsEcoule";
             this.lb_tpsEcoule.Size = new System.Drawing.Size(80, 13);
             this.lb_tpsEcoule.TabIndex = 7;
@@ -463,10 +463,10 @@
             this.txtB_temps.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtB_temps.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtB_temps.Enabled = false;
-            this.txtB_temps.Location = new System.Drawing.Point(403, 120);
+            this.txtB_temps.Location = new System.Drawing.Point(463, 123);
             this.txtB_temps.Name = "txtB_temps";
             this.txtB_temps.ReadOnly = true;
-            this.txtB_temps.Size = new System.Drawing.Size(161, 13);
+            this.txtB_temps.Size = new System.Drawing.Size(101, 13);
             this.txtB_temps.TabIndex = 8;
             // 
             // ep_jeu
@@ -475,9 +475,9 @@
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(34, 388);
+            this.btn_Start.Location = new System.Drawing.Point(152, 381);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(239, 23);
+            this.btn_Start.Size = new System.Drawing.Size(270, 23);
             this.btn_Start.TabIndex = 9;
             this.btn_Start.Text = "Commencer";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -486,11 +486,12 @@
             // timer1
             // 
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 31);
+            this.label1.Location = new System.Drawing.Point(31, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 10;
@@ -499,7 +500,7 @@
             // txtb_numManche
             // 
             this.txtb_numManche.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtb_numManche.Location = new System.Drawing.Point(139, 27);
+            this.txtb_numManche.Location = new System.Drawing.Point(127, 27);
             this.txtb_numManche.Name = "txtb_numManche";
             this.txtb_numManche.ReadOnly = true;
             this.txtb_numManche.Size = new System.Drawing.Size(68, 13);

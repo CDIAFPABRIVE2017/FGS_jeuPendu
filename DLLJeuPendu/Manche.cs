@@ -321,5 +321,14 @@ namespace DLLJeuPendu
         }
         #endregion
 
+        #region Temps
+        public TimeSpan CalculTemps(DateTime Début, DateTime Fin, TimeSpan temps)
+        {
+            temps = Fin - Début;
+            return temps;
+           
+        }
+        #endregion
+
     }
 }

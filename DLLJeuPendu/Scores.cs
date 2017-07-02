@@ -28,6 +28,7 @@ namespace DLLJeuPendu
     {
         private double _scoreMin;
         private double _scoreMax;
+        object tmp;
 
         List<Score> listJoueurs = new List<Score>();
         public double ScoreMin
@@ -148,7 +149,16 @@ namespace DLLJeuPendu
 
         public void trierListe()
         {
-
+           
+            for (int i= 0; i < this.Count - 1; i++)
+            {
+                if (this[i].ScoreJoueur < this[i].ScoreJoueur)
+                {
+                    tmp = this[i];
+                    this[i] = this[i + 1];
+                    //this[i + 1] = tmp;
+                }
+            }
         }
        
 

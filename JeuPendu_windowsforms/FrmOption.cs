@@ -7,14 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DLLJeuPendu;
 
 namespace JeuPendu_windowsforms
 {
 	public partial class FrmOption : Form
 	{
+        
+        Manche manche = MonApplication.Manche;
 		public FrmOption()
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void btn_validermodifs_Click(object sender, EventArgs e)
+        {
+            if (manche.IsNbManchesValid(txtB_nbmanches.Text))
+            {
+                manche.NbMancheMax = Convert.ToInt32(txtB_nbmanches.Text);
+            }
+            else
+                errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
+            if (rbCouleur.Checked)
+            {
+                FrmJeu.ActiveForm.BackColor = Color.FromArgb(0, 102, 204); //change au blue
+            }
+            else
+                   if (rbCouleur.Checked)
+            {
+                FrmJeu.ActiveForm.BackgroundImage = Properties.Resources.iconeRecherche;
+            }
+
+        }
+    }
+
 }

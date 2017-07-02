@@ -17,23 +17,8 @@ namespace DLLJeuPendu
         /// Rechercher un mot dans la liste par son debut
         /// </summary>
         /// <param name="_mot"></param>
-        public List<int> RechercherMot(string _mot)
-        {
-            List<int> ind = new List<int>();
-            for (int i = 0; i < this.Count - 1; i++)
-            {
-                if (this.ElementAt(i).Length >= _mot.Length)
-                {
-                    string debut = this.ElementAt(i).Substring(0, _mot.Length);
-                    if (string.Equals(debut, _mot.ToUpper()))
-                    {
-                        ind.Add(i);
-
-                    }
-                }
-            }
-            return ind;
-        }
+       
+        
         /// <summary>
         /// Extraire un mot du dictionnaire aléatoirement
         /// </summary>
@@ -51,7 +36,7 @@ namespace DLLJeuPendu
         /// <returns></returns>
         public static bool IsMotCorrect(string chaineOrigine)
         {
-            if (chaineOrigine == null || chaineOrigine.Trim().Length < 5 || chaineOrigine.Trim().Length > 25)
+            if (chaineOrigine == null || chaineOrigine.Trim().Length < Convert.ToInt32(Properties.Resources.nbMinCar) || chaineOrigine.Trim().Length > Convert.ToInt32(Properties.Resources.nbMaxCar))
                 return false;
             return true;
         }

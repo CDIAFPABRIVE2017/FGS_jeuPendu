@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text;
-using System.Threading.Tasks;
-using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters;
 using System.Collections;
@@ -14,9 +11,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Data;
-using System.Runtime.Serialization;
-using System.Xml;
-using System;
 using System.Xml;
 using System.Xml.XPath;
 
@@ -43,11 +37,11 @@ namespace DLLJeuPendu
 
         public Score() { }
 
-        public Score(double score, DateTime date, string nomJoueur)
+        public Score(double score, string nomJoueur)
         {
 
             this.ScoreJoueur = score;
-            this.Date = date;
+           
             this.NomJoueur = nomJoueur;
 
 
@@ -90,9 +84,15 @@ namespace DLLJeuPendu
 
             set
             {
-                date = value;
+
+
+                date = DateTime.Now;
+
+
+
             }
         }
+
 
 
 

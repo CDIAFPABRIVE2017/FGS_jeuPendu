@@ -26,9 +26,10 @@ namespace JeuPendu_windowsforms
 
         #region Manche
 
-        Manche manche = new Manche();
+        Manche manche = MonApplication.Manche;
         Score score = new Score();
-        Pioche pioche = new Pioche();
+        Pioche pioche = MonApplication.Pioche;
+        Scores scores = MonApplication.ScoresJeu;
 
         // a remplacer par l'appel de la méthode d'extraction créée par Fazia.
 
@@ -48,12 +49,45 @@ namespace JeuPendu_windowsforms
                 case EtatManche.DebutManche:
                     manche.NbErreurs = 0;
                     manche.NumManche++;
+                    manche.MotATrouver = pioche.ExtraireMot();
+                    label2.Text = string.Empty;
+                    label2.Text = manche.MotATrouver;
                     txtb_numManche.Text = (manche.NumManche).ToString();
                     manche.InitialiserMotEnCours();
 
                     txtb_MotenCours.Text = Manche.ChartoString(manche.MotEnCours);
                     txtB_nbEssaisRestants.Text = manche.CalculEssaisRestants().ToString();
                     btn_Start.Enabled = true;
+
+                    #region initialisation touches
+                    btn_clavier_A_fr_FR.Enabled = true;
+                    btn_clavier_B_frFR.Enabled = true;
+                    btn_clavier_C_frFR.Enabled = true;
+                    btn_clavier_D_frFR.Enabled = true;
+                    btn_clavier_e_frFR.Enabled = true;
+                    btn_clavier_F_frFR.Enabled = true;
+                    btn_clavier_G_frFR.Enabled = true;
+                    btn_clavier_H_frFR.Enabled = true;
+                    btn_clavier_I_frFR.Enabled = true;
+                    btn_clavier_J_frFR.Enabled = true;
+                    btn_clavier_K_frFR.Enabled = true;
+                    btn_clavier_L_frFR.Enabled = true;
+                    btn_clavier_M_frFR.Enabled = true;
+                    btn_clavier_N_frFR.Enabled = true;
+                    btn_clavier_O_frFR.Enabled = true;
+                    btn_clavier_P_frFR.Enabled = true;
+                    btn_clavier_Q_frFR.Enabled = true;
+                    btn_clavier_r_frFR.Enabled = true;
+                    btn_clavier_S_frFR.Enabled = true;
+                    btn_clavier_T_frFR.Enabled = true;
+                    btn_clavier_U_frFR.Enabled = true;
+                    btn_clavier_V_frFR.Enabled = true;
+                    btn_clavier_W_frFR.Enabled = true;
+                    btn_clavier_X_frFR.Enabled = true;
+                    btn_clavier_Y_frFR.Enabled = true;
+                    btn_clavier_z_frFR.Enabled = true;
+                    #endregion
+
 
                     break;
 
@@ -76,6 +110,7 @@ namespace JeuPendu_windowsforms
         {
             ep_jeu.SetError(txtb_MotenCours, string.Empty);
             btn_Start.Enabled = false;
+            (sender as Button).Enabled = false;
             char lettre = Convert.ToChar((sender as Button).Text);
             if (manche.IsLettreDansMot(lettre))
             {
@@ -84,7 +119,7 @@ namespace JeuPendu_windowsforms
                 {
                     timer1.Stop();
                     manche.CalculScoreManche(manche.Temps, manche.NbErreurs);
-                    MessageBox.Show(string.Format("Félicitations, vous avez remporté cette manche ! \n Score manche n°{0}: {1}points", manche.NumManche, manche.ScoreManche.ToString()), "Resultat", MessageBoxButtons.OK);
+                    MessageBox.Show(string.Format("Félicitations, vous avez remporté cette manche ! \n Score manche n°{0}: {1}points", manche.NumManche, manche.ScoreManche.ToString()), "Resultat", MessageBoxButtons.OKCancel);
                     GestionnaireManche(EtatManche.FinManche);
                 }
                 else if (manche.IsMancheWin() & manche.IsPartieOver())
@@ -122,9 +157,9 @@ namespace JeuPendu_windowsforms
             manche.NbErreursMaxOk = 9;
 
             GestionnairePartie(EtatPartie.Debut);
-            manche.MotATrouver = pioche.ExtraireMot();
             GestionnaireManche(EtatManche.DebutManche);
-          
+
+
 
 
         }
@@ -148,17 +183,10 @@ namespace JeuPendu_windowsforms
 
             GestionnairePartie(EtatPartie.Debut);
             pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
-            ChargerListe();
+
 
         }
-       public void ChargerListe()
-        {
-            foreach (var item in pioche)
-            {
-                listBox1.Items.Add(item);
 
-            }
-        }
 
 
 
@@ -184,7 +212,8 @@ namespace JeuPendu_windowsforms
                 case EtatPartie.Debut:
 
                     manche.NumManche = 0;
-                    manche.NbMancheMax = 2; //a remplacer par le nb défini par une propriété de la classe Option modifiable dans le FrmOption
+
+
 
                     break;
 
@@ -192,11 +221,41 @@ namespace JeuPendu_windowsforms
 
 
                     btn_Start.Enabled = false;
-                    if (score.scoreValide(manche.ScoresCumulés))
+                    if (scores.IsEnregistrable(manche.ScoresCumulés))
                     {
-                        MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
+                        DialogResult resultat = MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points. \n Souhaitez-vous enregistrer votre score ?", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OKCancel);
+                        switch (resultat)
+                        {
+                            case DialogResult.OK:
+                                this.Close();
+                                FrmEnregistrerScore saveScore = new FrmEnregistrerScore();
+                                saveScore.Show();
+                                break;
+                            case DialogResult.Cancel:
+                                Close();
+                                break;
+
+                        }
+
                     }
-                    Close();
+                    else
+                    {
+                        DialogResult result = MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche : {0} \n Score : {1} points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OKCancel);
+                        switch (result)
+                        {
+
+                            case DialogResult.OK:
+                                FrmJeu jeu = new FrmJeu();
+                                jeu.Show();
+                                this.Close();
+                                break;
+                            case DialogResult.Cancel:
+                                Application.Exit();
+                                break;
+
+                        }
+                       
+                    }
                     break;
 
                 case EtatPartie.FinPerdue:
@@ -204,14 +263,16 @@ namespace JeuPendu_windowsforms
                     pn_clavier.Enabled = false;
                     manche.CalculScoreManche(manche.Temps, manche.NbErreurs);
                     manche.CalculScorePartie(manche.ScoresCumulés, manche.NbMancheMax);
-                    MessageBox.Show(string.Format("Désolée, vous avez été pendu. Vous avez perdu la partie.\n Vous avez fait {0} manches sur les {1} de prévus avec un score de {3}", manche.NumManche, manche.NbMancheMax, manche.ScoresCumulés), "Perdu", MessageBoxButtons.OK);
-                    Close();
+                    MessageBox.Show(string.Format("Désolée, vous avez été pendu. \n Le mot à trouver était {0}. Vous avez perdu la partie.\n Vous avez fait {1} manches sur les {2} de prévus avec un score de {3}", manche.MotATrouver, manche.NumManche, manche.NbMancheMax, manche.ScoresCumulés), "Perdu", MessageBoxButtons.OK);
+                    Application.Exit();
                     break;
             }
         }
         #endregion
 
-
+        #region Couleur
+        
+        #endregion
 
     }
 }

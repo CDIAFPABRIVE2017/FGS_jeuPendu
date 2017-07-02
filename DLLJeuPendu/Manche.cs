@@ -10,7 +10,7 @@ namespace DLLJeuPendu
     {
         #region Champs
         int _nbErreursMaxOk;
-        int _nbMancheMax;
+        int _nbMancheMax= Convert.ToInt32(Properties.Resources.NbManchesMinParPartie);
         int _nbErreurs;
         DateTime DateDebut = new DateTime();
         DateTime DateFin = new DateTime();
@@ -22,12 +22,12 @@ namespace DLLJeuPendu
         double _scoreManche;
         double _scoresCumulés;
         double _moyenneScores;
-
+        
         #endregion
 
 
         #region Propriétés
-
+        
         public int NbErreurs
         {
             get
@@ -127,6 +127,7 @@ namespace DLLJeuPendu
         {
             get
             {
+                _nbErreursMaxOk = Convert.ToInt32(Properties.Resources.nbErreurMax);
                 return _nbErreursMaxOk;
             }
 
@@ -179,11 +180,13 @@ namespace DLLJeuPendu
         {
             get
             {
-                return _nbMancheMax;
+                return _nbMancheMax ;
+                
             }
 
             set
             {
+                
                 _nbMancheMax = value;
             }
         }
@@ -271,7 +274,7 @@ namespace DLLJeuPendu
         }
         public bool IsPartieOver()
         {
-            if (NumManche > NbMancheMax || NbErreurs == NbErreursMaxOk)
+            if (NumManche == NbMancheMax || NbErreurs == NbErreursMaxOk)
             {
                 return true;
             }
@@ -291,7 +294,7 @@ namespace DLLJeuPendu
         {
             if (IsMancheWin())
             {
-                ScoreManche = 1 * (Convert.ToDouble(temps.TotalSeconds)) + 7 * nbErreurs;
+                ScoreManche = Convert.ToInt32(Properties.Resources.nbPointsParSeconde) * (Convert.ToDouble(temps.TotalSeconds)) + Convert.ToInt32(Properties.Resources.nbPointsParErreurs) * nbErreurs;
                 ScoresCumulés += ScoreManche;
             }
             else
@@ -319,6 +322,14 @@ namespace DLLJeuPendu
 
         }
         #endregion
+        public bool IsNbManchesValid(string nbManche)
+        {
+            if (Convert.ToInt32(nbManche) > Convert.ToInt32(Properties.Resources.NbManchesMaxParPartie) | Convert.ToInt32(nbManche) < Convert.ToInt32(Properties.Resources.NbManchesMinParPartie))
+            {
+                return false;
+            }
 
+            return true;
+        }
     }
 }

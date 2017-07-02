@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,30 +17,29 @@ namespace JeuPendu_windowsforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MonApplication.ScoresJeu.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
-            MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
-            InterfaceMere fenetreMere = new InterfaceMere();
-            if (MonApplication.Pioche.Count<5)
+            InterfaceMere oMain = new InterfaceMere();
+            MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde,Properties.Settings.Default.PathData);
+            
+            if (MonApplication.Pioche.Count < 5)
             {
-                DialogResult res = MessageBox.Show("Pas suffisamment de mots", "Insufficance de mots", MessageBoxButtons.OKCancel);
+                DialogResult res = MessageBox.Show("Pas assez de mots.Ajoutez des mots", "Mots", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+
                 switch (res)
                 {
                     
                     case DialogResult.OK:
-                        FrmPioche fPioche = new FrmPioche();
-                        fPioche.MdiParent = fenetreMere;
-                        fPioche.Show();
+                        FrmPioche oPioche = new FrmPioche();
+                        oPioche.MdiParent = oMain;
+                        oPioche.Show();
                         break;
                     case DialogResult.Cancel:
                         Application.Exit();
                         break;
-                   
-                    default:
-                        break;
+                    
                 }
             }
-          //  MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
-            Application.Run(fenetreMere);
+          
+            Application.Run(oMain);
         }
     }
 }

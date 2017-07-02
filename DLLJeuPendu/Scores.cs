@@ -21,16 +21,22 @@ using System;
 using System.Xml;
 using System.Xml.XPath;
 using Utilitaires;
+using System.Collections;
+
 
 namespace DLLJeuPendu
 {
-    public class Scores :List<Score>, ICollectionMetier
+
+    [Serializable()]
+    public class Scores :List<Score>
     {
         private double _scoreMin;
         private double _scoreMax;
         object tmp;
 
-        List<Score> listJoueurs = new List<Score>();
+   //     List<Score> listJoueurs = new List<Score>();
+
+       
         public double ScoreMin
         {
             get
@@ -73,159 +79,60 @@ namespace DLLJeuPendu
                 _scoreMax = value;
             }
         }
-
-       
-
-        public void ajouterJoueur(Score joueur)
-        {
-            if (this.Count > 9)
-            {
-                for (int i = 0; i < this.Count; i++)
-                {
-                    if (this[i].ScoreJoueur < joueur.ScoreJoueur)
-                    {
-                        int supp = 0;
-                        do
-                        {
-                            this.Remove(joueur);
-                        } while (supp < 1);
-                    }
-                }
-                this.Add(joueur);
-            }
-                this.Add(joueur);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void enregistrerJoueur(Score test)
-        {
-
-
-            /*if (!File.Exists("scores.xml"))
-            {
-                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
-                {
-                    fsCreate.Close();
-                }
-            }
-            XPathDocument document = new XPathDocument("scores.xml");
-            XPathNavigator navigator = document.CreateNavigator();
-
-            // Save the entire input.xml document to a string.
-            string xml = navigator.OuterXml;
-
-            if ((xml.IndexOf("score") < 20))
-            {
-                listJoueurs.Add(test);
-                XmlSerializer xs = new XmlSerializer(typeof(Score));
-                FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
-
-                xs.Serialize(fs, test);
-                StreamWriter sr = new StreamWriter(fs);
-                xs.Serialize(fs, listJoueurs);
-                sr.WriteLine(xs);
-                fs.Close();
-            }
-            else if (xml.IndexOf("score") >= 20 && (test.ScoreJoueur > this.ScoreMin))
-            {
-                //trouver le premier score inferieur au score du joueur le supprimer de la liste et insserrer 
-                //le nouveau score (le liste sera triee apres)
-                FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-                XmlSerializer serial = new XmlSerializer(typeof(Score));
-                serial.Deserialize(replace);
-
-
-
-
-
-            }*/
-
-
-
-
-        }
+      
+     
 
         public void trierListe()
         {
            
             for (int i= 0; i < this.Count - 1; i++)
             {
-
-                Score tmp = new Score();
-                if (this[i].ScoreJoueur < this[i].ScoreJoueur)
+                for (int j = i - 1; j < this.Count - 1; j++)
                 {
-                    tmp = this[i];
-                    this[i] = this[i + 1];
-                    this[i + 1] = tmp;
-                }
-            }
-        }
-       
-
-        public void ajouter(Score score)
-        {
-            if (!File.Exists("scores.xml"))
-            {
-                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
-                {
-                    fsCreate.Close();
-                }
-            }
-
-            //this.Load("scrores.xml", Score score);
 
 
 
-
-            if (listJoueurs.Count < 9)
-            {
-                listJoueurs.Add(score);
-                XmlSerializer xs = new XmlSerializer(typeof(Score));
-                FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
-
-                xs.Serialize(fs, listJoueurs);
-                StreamWriter sr = new StreamWriter(fs);
-                xs.Serialize(fs, listJoueurs);
-                sr.WriteLine(xs);
-                fs.Close();
-            }
-            else if(listJoueurs.Count >= 9)
-            {
-                for (int i = 0; i < listJoueurs.Count ; i++)
-                {
-                    if (listJoueurs[i].ScoreJoueur <= score.ScoreJoueur)
+                    Score tmp;
+                    if (this[i].ScoreJoueur < this[j+1].ScoreJoueur)
                     {
-                        int count = 0;
+
                         do
                         {
-                            listJoueurs.Remove(listJoueurs[i]);
-                        } while (count < 1);
+
+
+
+                            tmp = this[i];
+                            this[i] = this[j+ 1];
+                            this[j+ 1] = tmp;
+
+                        } while (this[i].ScoreJoueur < this[j + 1].ScoreJoueur);
                     }
                 }
-                    listJoueurs.Add(score);
-                    
             }
         }
-            
-        public void afficherListe()
+
+
+        public void Ajouter(Score score)
         {
-
-            
-           
-
-
+            if (Count >9)
+            {
+                this.Remove(this[this.Count - 1]);
+            }
+            this.Add(score);
+            this.trierListe();
         }
+            
+        
 
-        public  bool verifScore(double score)
+        public  bool IsEnregistrable(double score)
         {
-            if (score >= this.ScoreMin)
+            if (this.Count < 10)
             {
                 return true;
             }
-
-            return false;
+            
+                return (score<this[10].ScoreJoueur);
+          
         }
 
         public void Save(ISauvegarde sauvegarde, string pathRepData)
@@ -235,7 +142,6 @@ namespace DLLJeuPendu
 
         public void Load(ISauvegarde sauvegarde, string pathRepData)
         {
-            bool ouvrirFichier = false;
             Scores scores = sauvegarde.Load(pathRepData, this.GetType()) as Scores;
             if (scores != null)
             { this.AddRange(scores); };

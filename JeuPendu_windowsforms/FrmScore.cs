@@ -46,22 +46,11 @@ namespace JeuPendu_windowsforms
 
         private void FrmScore_Load(object sender, EventArgs e)
         {
-            try
-            {
-                XmlReader  xmlFile;
-                //xmlFile = XmlReader.Create("Product.xml", new XmlReaderSettings());
-                DataSet ds = new DataSet();
-                ds.ReadXml("scores.xml");
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns.Insert(0, new DataGridViewColumn(dataGridView1.Columns[0].CellTemplate));
-                dataGridView1.Rows[1].Cells[1].Value = "azerty";
-                dataGridView1.Visible = true;
+            Scores affiche = new Scores();
 
-
-            }
-            catch (Exception ex)
+            for (int i = 0; i < affiche.Count; i++)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(affiche[i].NomJoueur + affiche[i].ScoreJoueur);
             }
         }
     }

@@ -279,8 +279,8 @@ namespace DLLJeuPendu
         }
         public char[] InitialiserMotEnCours()
         {
-            MotEnCours = new char[_motATrouver.Length];
-            for (int i = 0; i < _motATrouver.Length; i++)
+            MotEnCours = new char[MotATrouver.Length];
+            for (int i = 0; i < MotATrouver.Length; i++)
             {
                 MotEnCours[i] = '_';
             }

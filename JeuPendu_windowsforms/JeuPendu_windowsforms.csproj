@@ -79,6 +79,9 @@
     <Compile Include="MonApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmJeu.resx">
+      <DependentUpon>FrmJeu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>

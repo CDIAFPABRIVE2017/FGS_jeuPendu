@@ -17,7 +17,29 @@ namespace JeuPendu_windowsforms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MonApplication.ScoresJeu.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
-            Application.Run(new FrmPioche());
+            MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
+            InterfaceMere fenetreMere = new InterfaceMere();
+            if (MonApplication.Pioche.Count<5)
+            {
+                DialogResult res = MessageBox.Show("Pas suffisamment de mots", "Insufficance de mots", MessageBoxButtons.OKCancel);
+                switch (res)
+                {
+                    
+                    case DialogResult.OK:
+                        FrmPioche fPioche = new FrmPioche();
+                        fPioche.MdiParent = fenetreMere;
+                        fPioche.Show();
+                        break;
+                    case DialogResult.Cancel:
+                        Application.Exit();
+                        break;
+                   
+                    default:
+                        break;
+                }
+            }
+          //  MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
+            Application.Run(fenetreMere);
         }
     }
 }

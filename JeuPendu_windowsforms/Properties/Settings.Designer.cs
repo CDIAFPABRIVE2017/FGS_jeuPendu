@@ -25,10 +25,22 @@ namespace JeuPendu_windowsforms.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDI\\Documents\\Visual Studio 2015\\FGS_jeuPendu\\DLLJeuPendu\\bin\\Debug")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDI\\Documents\\Visual Studio 2015\\FGS_jeuPendu")]
         public string PathData {
             get {
                 return ((string)(this["PathData"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDI\\Documents\\Visual Studio 2015\\FGS_jeuPendu\\dictionnaire.txt")]
+        public string CheminDico {
+            get {
+                return ((string)(this["CheminDico"]));
+            }
+            set {
+                this["CheminDico"] = value;
             }
         }
     }

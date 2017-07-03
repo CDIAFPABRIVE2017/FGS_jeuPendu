@@ -62,7 +62,7 @@ namespace DLLJeuPendu
         /// <param name="chaineOrigine"></param>
         /// <returns></returns>
 
-        public string TraiterMot(string chaineOrigine)
+        public static string TraiterMot(string chaineOrigine)
         {
             chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
             StringBuilder motCanonique = new StringBuilder();
@@ -76,6 +76,8 @@ namespace DLLJeuPendu
             return motCanonique.ToString().ToUpper();
 
         }
+
+       
         /// <summary>
         /// Ajout de mots dans la liste (dictionnaire)
         /// </summary>
@@ -105,6 +107,7 @@ namespace DLLJeuPendu
             sauvegarde.Save(pathRepData, this);
         }
 
+       
         /// <summary>
         /// chargement du fichier passé en paramétre (pathRepData)
         /// </summary>
@@ -112,44 +115,11 @@ namespace DLLJeuPendu
         /// <param name="pathRepData"></param>
         public void Load(ISauvegarde sauvegarde, string pathRepData)
         {
-            Pioche pioche = new Pioche();
-            List<string> ls = sauvegarde.Load(pathRepData, this.GetType()) as List<string>;
-            string tampon = string.Empty;
-            ls = ls.OrderBy(x => x).ToList();
-            foreach (string line in ls)
+           Pioche ls = sauvegarde.Load( (pathRepData), this.GetType()) as Pioche;
+            
+           if (ls != null)
             {
-                if (!string.IsNullOrEmpty(line))
-                {
-                    for (int i = 0; i < line.Length; i++)
-                    {
-                        if (char.IsLetter(line[i]))
-                        {
-                            tampon += line[i].ToString();
-                        }
-                        else
-                        {
-                            if (Pioche.IsMotCorrect(tampon))
-                            {
-                                pioche.AjouterMot(tampon);
-                            }
-                            tampon = string.Empty;
-                        }
-                    }
-                    if (tampon.Length > 0)
-                    {
-                        if (Pioche.IsMotCorrect(tampon))
-                        {
-                            pioche.AjouterMot(tampon);
-                        }
-                        tampon = string.Empty;
-
-                    }
-                }
-            }
-
-            if (pioche != null)
-            {
-                this.SymmetricExceptWith(pioche);
+                this.SymmetricExceptWith(ls);
             }
 
         }
@@ -169,5 +139,7 @@ namespace DLLJeuPendu
             return doublon;
         }
 
+      
+           
     }
 }

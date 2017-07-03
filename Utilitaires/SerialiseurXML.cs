@@ -17,7 +17,7 @@ namespace Utilitaires
 
     public class SauvegardeXML : ISauvegarde
     {
-
+       
 
         /// <summary>
         /// Sauvegarder par sérialisation Xml 
@@ -70,24 +70,30 @@ namespace Utilitaires
         /// <returns></returns>
         public IEnumerable Load(string pathRepData, Type typeACharger)
         {
+            
             Object objet = new object();
             // lire fichier text
             string extention = pathRepData.Substring(pathRepData.Length - 4, 4).ToString().Trim();
             if (string.Equals(extention, ".txt"))
             {
                 List<string> lst = new List<string>();
-                using (var fileStream = File.OpenRead(pathRepData))
-                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true))
-                {
-                    String line;
-                    while ((line = streamReader.ReadLine()) != null)
+                                
+                    using (var fileStream = File.OpenRead(pathRepData))
+
+
+                    using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true))
                     {
-                        lst.Add(line);
+                        String line;
+                        while ((line = streamReader.ReadLine()) != null)
+                        {
+                            lst.Add(line);
+                        }
+                        fileStream.Close();
+                        streamReader.Close();
+                        return lst as IEnumerable;
                     }
-                    fileStream.Close();
-                    streamReader.Close();
-                    return lst as IEnumerable;
-                }
+               
+               
             }
             else
             {

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DLLJeuPendu;
+using Utilitaires;
+
 
 
 namespace JeuPendu_windowsforms
@@ -26,6 +28,7 @@ namespace JeuPendu_windowsforms
 
         Manche manche = new Manche();
         Score score = new Score();
+        Pioche pioche = new Pioche();
 
         // a remplacer par l'appel de la méthode d'extraction créée par Fazia.
 
@@ -102,6 +105,11 @@ namespace JeuPendu_windowsforms
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Start_Click(object sender, EventArgs e)
         {
             pn_clavier.Visible = true;
@@ -113,10 +121,10 @@ namespace JeuPendu_windowsforms
             // Initialisation du nombre d'erreur Max. A voir si on met ailleurs.
             manche.NbErreursMaxOk = 9;
 
-            manche.MotATrouver = "ANACONDA";
             GestionnairePartie(EtatPartie.Debut);
+            manche.MotATrouver = pioche.ExtraireMot();
             GestionnaireManche(EtatManche.DebutManche);
-
+          
 
 
         }
@@ -137,9 +145,21 @@ namespace JeuPendu_windowsforms
 
         private void FrmJeu_Load(object sender, EventArgs e)
         {
+
             GestionnairePartie(EtatPartie.Debut);
+            pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
+            ChargerListe();
 
         }
+       public void ChargerListe()
+        {
+            foreach (var item in pioche)
+            {
+                listBox1.Items.Add(item);
+
+            }
+        }
+
 
 
         #endregion

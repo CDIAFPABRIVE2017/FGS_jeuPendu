@@ -43,6 +43,7 @@
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btn_Recherche = new System.Windows.Forms.Button();
+            this.btnAlimenterPioche = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // btnExclure
             // 
-            this.btnExclure.Location = new System.Drawing.Point(209, 303);
+            this.btnExclure.Location = new System.Drawing.Point(224, 236);
             this.btnExclure.Name = "btnExclure";
             this.btnExclure.Size = new System.Drawing.Size(81, 29);
             this.btnExclure.TabIndex = 16;
@@ -108,6 +109,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowMerge = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ouvrirFichierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -130,28 +132,28 @@
             // chargerDictionnaireToolStripMenuItem
             // 
             this.chargerDictionnaireToolStripMenuItem.Name = "chargerDictionnaireToolStripMenuItem";
-            this.chargerDictionnaireToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.chargerDictionnaireToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.chargerDictionnaireToolStripMenuItem.Text = "Charger";
             this.chargerDictionnaireToolStripMenuItem.Click += new System.EventHandler(this.chargerDictionnaireToolStripMenuItem_Click);
             // 
             // rechercherToolStripMenuItem
             // 
             this.rechercherToolStripMenuItem.Name = "rechercherToolStripMenuItem";
-            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.rechercherToolStripMenuItem.Text = "Rechercher";
             this.rechercherToolStripMenuItem.Click += new System.EventHandler(this.rechercherToolStripMenuItem_Click);
             // 
             // ajoutToolStripMenuItem
             // 
             this.ajoutToolStripMenuItem.Name = "ajoutToolStripMenuItem";
-            this.ajoutToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.ajoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ajoutToolStripMenuItem.Text = "Ajouter";
             this.ajoutToolStripMenuItem.Click += new System.EventHandler(this.ajoutToolStripMenuItem_Click);
             // 
             // fermerToolStripMenuItem
             // 
             this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
-            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fermerToolStripMenuItem.Text = "Fermer";
             this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
             // 
@@ -175,11 +177,22 @@
             this.btn_Recherche.UseVisualStyleBackColor = true;
             this.btn_Recherche.Click += new System.EventHandler(this.btRecherche_Click);
             // 
+            // btnAlimenterPioche
+            // 
+            this.btnAlimenterPioche.Location = new System.Drawing.Point(212, 355);
+            this.btnAlimenterPioche.Name = "btnAlimenterPioche";
+            this.btnAlimenterPioche.Size = new System.Drawing.Size(157, 23);
+            this.btnAlimenterPioche.TabIndex = 25;
+            this.btnAlimenterPioche.Text = "Alimenter Pioche";
+            this.btnAlimenterPioche.UseVisualStyleBackColor = true;
+            this.btnAlimenterPioche.Click += new System.EventHandler(this.btnAlimenterPioche_Click);
+            // 
             // FrmPioche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 400);
+            this.Controls.Add(this.btnAlimenterPioche);
             this.Controls.Add(this.btn_Recherche);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.lblMotsImpropres);
@@ -218,5 +231,6 @@
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rechercherToolStripMenuItem;
         private System.Windows.Forms.Button btn_Recherche;
+        private System.Windows.Forms.Button btnAlimenterPioche;
     }
 }

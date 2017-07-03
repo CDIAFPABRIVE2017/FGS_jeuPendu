@@ -12,26 +12,80 @@ namespace JeuPendu_windowsforms
     public partial class FrmPioche : Form
     {
         #region champs
-        private Pioche _pioche;
+        private Pioche _pioche =MonApplication.Pioche ;
         private string oChemin;
-       
-            
+
+
         #endregion
 
         public FrmPioche()
         {
             InitializeComponent();
-           
+
         }
-        
+
         #region Evénements 
-             
+
         private void FrmPioche_Load(object sender, EventArgs e)
         {
-
+            //  oChemin = Properties.Settings.Default.PathData;
+            //   Chargement();
+            ctl_lstInitiale.Sorted = true;
             CacherControles();
-            
+
         }
+        private void ChargerFichier(string path)
+        {
+            using (var fileStream = File.OpenRead(path))
+            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true))
+            {
+                String line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    ChargerMots(line);
+                }
+                fileStream.Close();
+                streamReader.Close();
+            }
+        }
+
+        private void ChargerMots(string line)
+        {
+            string tampon = string.Empty;
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (char.IsLetter(line[i]))
+                {
+                    tampon += line[i].ToString();
+                }
+                else
+                {
+                    if (Pioche.IsMotCorrect(tampon))
+                    {
+                        string motRetraite = Pioche.TraiterMot(tampon);
+                        if(!estDoublon(motRetraite))
+                        {
+                            ctl_lstInitiale.Items.Add(motRetraite); }
+                        
+                    }
+                    tampon = string.Empty;
+                }
+            }
+            if (tampon.Length > 0)
+            {
+                if (Pioche.IsMotCorrect(tampon))
+                {
+                    string motRetraite = Pioche.TraiterMot(tampon);
+                    if (!estDoublon(motRetraite))
+                    {
+                        ctl_lstInitiale.Items.Add(motRetraite);
+                    }
+
+                }
+                tampon = string.Empty;
+            }
+        }
+
 
         private void btnQuiter_Click_1(object sender, EventArgs e)
         {
@@ -47,9 +101,9 @@ namespace JeuPendu_windowsforms
             {
 
                 Corbeille.Items.Add(_motselectionner);
-                if (_pioche.SupprimerMot(_motselectionner))
-                    _pioche.Save(MonApplication.DispositifSauvegarde, oChemin);
-                chargerListBox();
+                ctl_lstInitiale.Items.Remove(ctl_lstInitiale.SelectedItem);
+
+
             }
 
 
@@ -70,10 +124,12 @@ namespace JeuPendu_windowsforms
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                oChemin = openFileDialog1.FileName;
-                Chargement();
+
+                ChargerFichier(openFileDialog1.FileName);
+                AfficherControles();
+
             }
-        }
+}
 
         /// <summary>
         /// Ajout de mots au dictionnaire
@@ -83,23 +139,28 @@ namespace JeuPendu_windowsforms
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             string _mot = txtSaisie.Text.Trim();
-            if (!string.IsNullOrEmpty(_mot) && !_pioche.Contains(_mot.ToUpper()))
-            {
-                _pioche.AjouterMot(_mot);
 
-                _pioche.Save(MonApplication.DispositifSauvegarde, oChemin);
-                chargerListBox();
+            if (!string.IsNullOrEmpty(_mot) && Pioche.IsMotCorrect(_mot))
+            {
+                if (!estDoublon(_mot))
+                { 
+                ctl_lstInitiale.Items.Add(Pioche.TraiterMot(_mot));
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("{0} est déjà dans la liste!\n{1}", _mot, "Veuillez en saisir un autre mot"), "Tentative de doublon");
+                }
                 txtSaisie.Clear();
             }
             else
             {
-                MessageBox.Show(string.Format("{0} est déjà dans la liste!\n{1}", _mot, "Veuillez en saisir un autre mot"), "Tentative de doublon");
+                MessageBox.Show(string.Format("{0} n'est pas correct!\n{1}", _mot, "Veuillez en saisir un autre mot"), "Tentative de doublon");
             }
         }
 
         private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _pioche.Clear();
+           
             ctl_lstInitiale.Items.Clear();
             CacherControles();
         }
@@ -121,20 +182,29 @@ namespace JeuPendu_windowsforms
 
 
         }
+        private bool estDoublon(string _mot)
+        {
+            foreach (var item in ctl_lstInitiale.Items)
+            {
+                if (item.ToString() == _mot)
+                { return true;
+                }
+               
+                    
+            }
+            return false;
+        }
 
         private void rechercherToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AfficherControles();
 
         }
-        private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _pioche.Save(MonApplication.DispositifSauvegarde, oChemin);
-        }
+
 
         private void ajoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_pioche.Count > 0)
+            if (ctl_lstInitiale.Items.Count > 0)
             {
                 txtSaisie.Visible = true;
                 btnAjouter.Visible = true;
@@ -162,13 +232,13 @@ namespace JeuPendu_windowsforms
             foreach (Control ctrl in this.Controls)
                 ctrl.Visible = true;
 
-            
+
         }
         //Chargement de la liste à partir du dictionnaire(fichier txt)
         private void Chargement()
         {
             _pioche = new Pioche();
-           
+
             _pioche.Load(MonApplication.DispositifSauvegarde, oChemin);
             chargerListBox();
         }
@@ -190,6 +260,15 @@ namespace JeuPendu_windowsforms
         private void lblMotsImpropres_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAlimenterPioche_Click(object sender, EventArgs e)
+        {
+            foreach (var item in ctl_lstInitiale.Items)
+            {
+                _pioche.AjouterMot(item.ToString());
+            }
+            _pioche.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
         }
         #endregion
 

@@ -103,13 +103,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projects\TEXTES\Utilitaires\Utilitaires.csproj">
-      <Project>{596ad11b-f3bf-43c3-83a0-fc50ca1ab49b}</Project>
-      <Name>Utilitaires</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DLLJeuPendu\DLLJeuPendu.csproj">
       <Project>{2bad0887-7aa3-41af-b8de-391367dad6d8}</Project>
       <Name>DLLJeuPendu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitaires\Utilitaires.csproj">
+      <Project>{596ad11b-f3bf-43c3-83a0-fc50ca1ab49b}</Project>
+      <Name>Utilitaires</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

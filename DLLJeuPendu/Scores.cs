@@ -28,6 +28,7 @@ namespace DLLJeuPendu
     {
         private double _scoreMin;
         private double _scoreMax;
+        object tmp;
 
         List<Score> listJoueurs = new List<Score>();
         public double ScoreMin
@@ -79,7 +80,18 @@ namespace DLLJeuPendu
         {
             if (this.Count > 9)
             {
-                Console.WriteLine("Vous ne faites pas partie des 10 meilleurs scores");
+                for (int i = 0; i < this.Count; i++)
+                {
+                    if (this[i].ScoreJoueur < joueur.ScoreJoueur)
+                    {
+                        int supp = 0;
+                        do
+                        {
+                            this.Remove(joueur);
+                        } while (supp < 1);
+                    }
+                }
+                this.Add(joueur);
             }
                 this.Add(joueur);
         }
@@ -91,7 +103,7 @@ namespace DLLJeuPendu
         {
 
 
-            if (!File.Exists("scores.xml"))
+            /*if (!File.Exists("scores.xml"))
             {
                 using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
                 {
@@ -128,16 +140,27 @@ namespace DLLJeuPendu
 
 
 
-            }
+            }*/
 
 
 
 
-            /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
-            serial.Deserialize(replace);*/
-            //selectionner le premier score inferieur a int score et le supprimer
         }
+
+        public void trierListe()
+        {
+           
+            for (int i= 0; i < this.Count - 1; i++)
+            {
+                if (this[i].ScoreJoueur < this[i].ScoreJoueur)
+                {
+                    tmp = this[i];
+                    this[i] = this[i + 1];
+                    //this[i + 1] = tmp;
+                }
+            }
+        }
+       
 
         public void ajouter(Score score)
         {
@@ -212,7 +235,9 @@ namespace DLLJeuPendu
 
         public void Load(ISauvegarde sauvegarde, string pathRepData)
         {
-            this.AddRange((Scores)sauvegarde.Load(pathRepData, this.GetType()));
+            Scores scores = sauvegarde.Load(pathRepData, this.GetType()) as Scores;
+            if (scores != null)
+            { this.AddRange(scores); };
         }
     }
   }

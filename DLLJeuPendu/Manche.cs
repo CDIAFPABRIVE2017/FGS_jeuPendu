@@ -10,13 +10,18 @@ namespace DLLJeuPendu
     {
         #region Champs
         int _nbErreursMaxOk;
+        int _nbManche;
         int _nbErreurs;
-        TimeSpan _temps=new TimeSpan();
+        DateTime DateDebut = new DateTime();
+        DateTime DateFin = new DateTime();
+        TimeSpan _temps = new TimeSpan();
         string _motATrouver;
         int _nbEssaisRestants;
         char[] motEnCours;
-        char[] motTampon;
-        int _nbManche;
+        int _numManche;
+        double _scoreManche;
+        double _scoresCumulés;
+        double _moyenneScores;
 
         #endregion
 
@@ -45,7 +50,8 @@ namespace DLLJeuPendu
 
             set
             {
-                _temps = value;
+
+                _temps = DateFin1 - DateDebut1;
             }
         }
 
@@ -53,23 +59,140 @@ namespace DLLJeuPendu
         {
             get
             {
-                
-                motEnCours = new char[_motATrouver.Length];
-                for (int i = 0; i < _motATrouver.Length; i++)
-                {
-                    motEnCours[i] = '_';
-                }
-                motTampon = new char[_motATrouver.Length];
+
                 return _motATrouver;
             }
 
             set
             {
+                value = "ANNACONDA";
                 _motATrouver = value;
+                MotEnCours = new char[_motATrouver.Length];
+                for (int i = 0; i < _motATrouver.Length; i++)
+                {
+                    MotEnCours[i] = '_';
+                }
+            }
+        }
+
+        public int NumManche
+        {
+            get
+            {
+                return _numManche;
+            }
+
+            set
+            {
+                _numManche = value;
             }
         }
 
         public int NbManche
+        {
+            get
+            {
+                return NbManche1;
+            }
+
+            set
+            {
+                NbManche1 = value;
+            }
+        }
+
+        public DateTime DateDebut1
+        {
+            get
+            {
+                return DateDebut;
+            }
+
+            set
+            {
+                DateDebut = value;
+            }
+        }
+
+        public DateTime DateFin1
+        {
+            get
+            {
+                return DateFin;
+            }
+
+            set
+            {
+                DateFin = value;
+            }
+        }
+
+        public char[] MotEnCours
+        {
+            get
+            {
+                return motEnCours;
+            }
+
+            set
+            {
+                motEnCours = value;
+            }
+        }
+
+        public int NbErreursMaxOk
+        {
+            get
+            {
+                return _nbErreursMaxOk;
+            }
+
+            set
+            {
+                _nbErreursMaxOk = value;
+            }
+        }
+
+        public double ScoreManche
+        {
+            get
+            {
+                return _scoreManche;
+            }
+
+            set
+            {
+                _scoreManche = value;
+            }
+        }
+
+        public double ScoresCumulés
+        {
+            get
+            {
+                return _scoresCumulés;
+            }
+
+            set
+            {
+                _scoresCumulés = value;
+            }
+        }
+
+        public double MoyenneScores
+        {
+            get
+            {
+                return _moyenneScores;
+            }
+
+            set
+            {
+                _moyenneScores = value;
+            }
+        }
+
+        public int NbManche1
         {
             get
             {
@@ -89,14 +212,14 @@ namespace DLLJeuPendu
         /// Calcule le nombre d'essais restants au joueur. Renvoie 0, si le nb d'erreur max est atteint.
         /// </summary>
         /// <returns></returns>
-        private int? CalculEssaisRestants()
+        public int CalculEssaisRestants()
         {
-            if (NbErreurs < _nbErreursMaxOk)
+            if (NbErreurs < NbErreursMaxOk)
             {
-                _nbEssaisRestants = _nbErreursMaxOk - _nbErreurs;
+                _nbEssaisRestants = NbErreursMaxOk - _nbErreurs;
                 return _nbEssaisRestants;
             }
-            return null;
+            return 0;
         }
 
         /// <summary>
@@ -116,48 +239,96 @@ namespace DLLJeuPendu
             }
             return false;
         }
-       /// <summary>
-       /// Remplace le '_' par la lettre si celle-ci est présente dans le mot.
-       /// </summary>
-       /// <param name="lettre"></param>
-       /// <returns></returns>
-      public string DecouverteLettre(char lettre)
+        /// <summary>
+        /// Remplace le '_' par la lettre si celle-ci est présente dans le mot.
+        /// </summary>
+        /// <param name="lettre"></param>
+        /// <returns></returns>
+        public string DecouverteLettre(char lettre)
         {
-            
-            motTampon = motEnCours;
-            int NbOccurenceLettre=0;
+
+
+            int NbOccurenceLettre = 0;
 
             for (int i = 0; i < MotATrouver.Length; i++)
             {
-                
-                //recopie les lettres trouvées précédemment
-                if (motEnCours[i] != '_')
-                {
-                    motTampon[i] = motEnCours[i];
-                }
                 //affiche la lettre si celle-ci est présente dans le mot
                 if (_motATrouver[i] == lettre)
                 {
-                    motTampon[i] = lettre;
+                    MotEnCours[i] = lettre;
                     NbOccurenceLettre++;
                 }
-                else
-                    motTampon[i] = '_';               
+
             }
-            return motTampon.ToString();
+            return new string(MotEnCours);
 
             #endregion
         }
-       public bool IsMancheWin()
+
+        public static string ChartoString(char [] mot)
         {
-            if (motEnCours.ToString() == MotATrouver)
+            string retour = string.Empty;
+            foreach (char item in mot)
             {
-                NbManche++;
+                retour += item;
+            }
+            return retour;
+        
+        }
+
+
+        public bool IsMancheWin()
+        {
+            if (MotEnCours.ToString() == MotATrouver)
+            {
+                NumManche++;
                 return true;
             }
             else
                 return false;
         }
-        
+        public bool IsPartieOver()
+        {
+            if (NumManche == NbManche || NbErreurs == NbErreursMaxOk)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #region Méthodes de calculs du score
+        public double CalculScoreManche(TimeSpan temps, int nbErreurs)
+        {
+            if (IsMancheWin())
+            {
+                ScoreManche = 1 * (Convert.ToDouble(temps)) + 7 * nbErreurs;
+                ScoresCumulés += ScoreManche;
+            }
+            else
+                ScoreManche = 0;
+                return ScoreManche;
+            
+        }
+        public double CalculScorePartie(double scoresCumul, int numManches)
+        {
+            if (IsPartieOver())
+            {
+                _moyenneScores = scoresCumul / numManches;
+            }
+            else
+                MoyenneScores = 0;
+            return _moyenneScores;
+        }
+        #endregion
+
+        #region Temps
+        public TimeSpan CalculTemps(DateTime Début, DateTime Fin, TimeSpan temps)
+        {
+            temps = Fin - Début;
+            return temps;
+           
+        }
+        #endregion
+
     }
 }

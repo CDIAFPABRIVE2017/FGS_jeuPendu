@@ -33,42 +33,11 @@ namespace JeuPendu_windowsforms
             _pioche = new Pioche();
             // appel de la méthode load 
             // en utilisant 
-           // _pioche.Load(Serialiseur, Properties.Settings.Default.PathData);
+            _pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
         }
         #region Proprietes 
-        public int AjouterMot
-        {
-            get;
-            set;
-        }
-        public bool isMotValide(string _mt)
-        {
-            // valeur null ou min ou max
-            if (_mt == null || _mt.Trim().Length < 5 || _mt.Length > 25)
-            {
-                return false;
-            }
-
-            // verification des caracteres
-            foreach (char c in _mt)
-            {
-                if (!char.IsLetter(c) & !char.IsWhiteSpace(c) & c != '-')
-                    return false;
-            }
-
-            return true;
-
-        }
-        public int RetraiterMot
-        {
-            get;
-            set;
-        }
-        public int ExtraireMot
-        {
-            get;
-            set;
-        }
+      
+      
         /// <summary>
         /// Ouverture de la boite de dialogue ouvrir un fichier 
         /// ouverture du fichier selectionné après click sur ok
@@ -77,17 +46,10 @@ namespace JeuPendu_windowsforms
         /// <param name="e"></param>
         private void btnOuvrir_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                StreamReader sr = new
-                StreamReader(openFileDialog1.FileName);
-                MessageBox.Show(sr.ReadToEnd());
-                sr.Close();
-
-            }
+           
             foreach (var item in _listeInitiale)
             {
-                listeInitiale.Items.Add(item);
+                _pioche.AjouterMot(item);
             }
 
         }
@@ -150,13 +112,19 @@ namespace JeuPendu_windowsforms
                         }
                         else
                         {
-                        //    Pioche.TraiterMot(tampon);
+                            if (Pioche.IsMotCorrect(tampon))
+                            {
+                               _listeInitiale.Add(tampon);
+                            }
                             tampon = string.Empty;
                         }
                     }
                     if (tampon.Length > 0)
                     {
-                     //   Pioche.TraiterMot(tampon);
+                        if (Pioche.IsMotCorrect(tampon))
+                        {
+                            _listeInitiale.Add(tampon);
+                        }
                         tampon = string.Empty;
 
                     }
@@ -206,6 +174,15 @@ namespace JeuPendu_windowsforms
             btnEnregistrer.Visible = true;
             btnQuiter.Visible = true;
             lblMotsImpropres.Visible = true;
+        }
+
+        private void Enregister_Click(object sender, EventArgs e)
+        {
+            foreach (var item in _listeInitiale)
+            {
+                _pioche.AjouterMot(item);
+            }
+            _pioche.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
         }
     }
 }

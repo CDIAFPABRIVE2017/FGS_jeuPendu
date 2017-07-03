@@ -46,17 +46,28 @@ namespace Utilitaires
         /// <returns></returns>
         public IEnumerable Load(string pathRepData, Type typeACharger)
         {
-            Object objet = null;
-
+            Object objet = new object();
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
+
+            if (!File.Exists(pathXmlDocument))
+            {
+                File.Create(pathXmlDocument);
+       
+                
+            }
+
+           
             using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
+                if ((fileStream.Length > 0))
+                {
+                    XmlTextReader xmlTR = new XmlTextReader(fileStream);
+                    XmlSerializer xmlS = new XmlSerializer(typeACharger);
+
+                    objet = xmlS.Deserialize(xmlTR);
+                    xmlTR.Close();
+                }
                 
-                XmlTextReader xmlTR = new XmlTextReader(fileStream);
-                XmlSerializer xmlS = new XmlSerializer(typeACharger);
-                
-                objet = xmlS.Deserialize(xmlTR);
-                xmlTR.Close();
                 fileStream.Close();
             }
        

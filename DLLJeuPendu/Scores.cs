@@ -152,11 +152,13 @@ namespace DLLJeuPendu
            
             for (int i= 0; i < this.Count - 1; i++)
             {
+
+                Score tmp = new Score();
                 if (this[i].ScoreJoueur < this[i].ScoreJoueur)
                 {
                     tmp = this[i];
                     this[i] = this[i + 1];
-                    //this[i + 1] = tmp;
+                    this[i + 1] = tmp;
                 }
             }
         }
@@ -210,10 +212,8 @@ namespace DLLJeuPendu
         public void afficherListe()
         {
 
-            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
-            serial.Deserialize(replace);
-
+            
+           
 
 
         }

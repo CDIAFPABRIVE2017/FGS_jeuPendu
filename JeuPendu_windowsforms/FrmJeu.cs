@@ -172,11 +172,11 @@ namespace JeuPendu_windowsforms
 
 
                     btn_Start.Enabled = false;
-                    //if (score.scoreValide(manche.ScoresCumulés))
-                    //{
-                    //    MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
-                    //}
-                    //Close();
+                    if (score.scoreValide(manche.ScoresCumulés))
+                    {
+                        MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
+                    }
+                    Close();
                     break;
 
                 case EtatPartie.FinPerdue:

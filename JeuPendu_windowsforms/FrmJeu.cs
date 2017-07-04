@@ -28,7 +28,7 @@ namespace JeuPendu_windowsforms
 
         Manche manche = new Manche();
         Score score = new Score();
-        Pioche pioche = new Pioche();
+        Pioche pioche = MonApplication.Pioche;
 
         // a remplacer par l'appel de la méthode d'extraction créée par Fazia.
 
@@ -76,6 +76,7 @@ namespace JeuPendu_windowsforms
         {
             ep_jeu.SetError(txtb_MotenCours, string.Empty);
             btn_Start.Enabled = false;
+            (sender as Button).Enabled = false;
             char lettre = Convert.ToChar((sender as Button).Text);
             if (manche.IsLettreDansMot(lettre))
             {

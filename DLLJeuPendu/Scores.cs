@@ -214,7 +214,7 @@ namespace DLLJeuPendu
 
 
 
-
+            int m;
             if (listJoueurs.Count < 9)
             {
                 listJoueurs.Add(score);

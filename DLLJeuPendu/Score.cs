@@ -28,7 +28,7 @@ namespace DLLJeuPendu
     {
         //
         private double _scoreJoueur;
-        //private DateTime date;
+        private DateTime date;
         private string _nomJoueur;
 
         private int limit = 10;
@@ -37,11 +37,11 @@ namespace DLLJeuPendu
 
         public Score() { }
 
-        public Score(double score, /*DateTime date,*/ string nomJoueur)
+        public Score(double score, string nomJoueur)
         {
 
             this.ScoreJoueur = score;
-            //this.Date = date;
+           
             this.NomJoueur = nomJoueur;
 
 
@@ -75,7 +75,7 @@ namespace DLLJeuPendu
             }
         }
 
-        /*public DateTime Date
+        public DateTime Date
         {
             get
             {
@@ -84,9 +84,15 @@ namespace DLLJeuPendu
 
             set
             {
-                date = value;
+
+
+                date = DateTime.Now;
+
+
+
             }
-        }*/
+        }
+
 
 
 

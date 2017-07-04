@@ -13,15 +13,14 @@ namespace JeuPendu_windowsforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MonApplication.ScoresJeu.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
             MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
             InterfaceMere fenetreMere = new InterfaceMere();
-            if (MonApplication.Pioche.Count<5)
+            if (MonApplication.Pioche.Count < 5)
             {
                 DialogResult res = MessageBox.Show("Pas suffisamment de mots", "Insufficance de mots", MessageBoxButtons.OKCancel);
                 switch (res)
                 {
-                    
+
                     case DialogResult.OK:
                         FrmPioche fPioche = new FrmPioche();
                         fPioche.MdiParent = fenetreMere;
@@ -30,12 +29,31 @@ namespace JeuPendu_windowsforms
                     case DialogResult.Cancel:
                         Application.Exit();
                         break;
-                   
+
                     default:
                         break;
                 }
             }
-          //  MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
+            MonApplication.ScoresJeu.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.PathData);
+            if (MonApplication.ScoresJeu.Count == 0)
+            {
+                DialogResult resu = MessageBox.Show("Il n'y a pas de joueur dans la liste", "Liste vide", MessageBoxButtons.OKCancel);
+                switch (resu)
+                {
+
+                    case DialogResult.OK:
+                        FrmJeu fJeu = new FrmJeu();
+                        fJeu.MdiParent = fenetreMere;
+                        fJeu.Show();
+                        break;
+                    case DialogResult.Cancel:
+                        Application.Exit();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             Application.Run(fenetreMere);
         }
     }

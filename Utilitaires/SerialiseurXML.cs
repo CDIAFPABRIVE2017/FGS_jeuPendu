@@ -54,10 +54,11 @@ namespace Utilitaires
                 
                 XmlTextReader xmlTR = new XmlTextReader(fileStream);
                 XmlSerializer xmlS = new XmlSerializer(typeACharger);
-                
+               
                 objet = xmlS.Deserialize(xmlTR);
                 xmlTR.Close();
                 fileStream.Close();
+                
             }
        
             return objet as IEnumerable;

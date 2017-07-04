@@ -28,7 +28,8 @@ namespace JeuPendu_windowsforms
         }
 
         Score scr = new Score();
-       
+        Scores affiche = new Scores();
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -36,7 +37,7 @@ namespace JeuPendu_windowsforms
 
         private void dataGridView1_ColumnDataPropertyNameChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -46,13 +47,12 @@ namespace JeuPendu_windowsforms
 
         private void FrmScore_Load(object sender, EventArgs e)
         {
-            Scores affiche = new Scores();
-      
+
             for (int i = 0; i < affiche.Count; i++)
             {
                 MessageBox.Show(affiche[i].NomJoueur + affiche[i].ScoreJoueur);
             }
         }
     }
-    
+
 }

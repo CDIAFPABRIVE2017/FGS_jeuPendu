@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DLLJeuPendu.Manche">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQqCgAAAIigQADAUCQEAAgAEAAAEkCAEkCAABIAAAgQ=</HashCode>
+      <FileName>Manche.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DLLJeuPendu.Pioche" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIBAAQAAAAAQIAgAAAAAQAAAAAAAQAAAAAAAAAE=</HashCode>
+      <FileName>Pioche.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DLLJeuPendu.Score">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAQCAEAAAABAAABAQBAAAA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DLLJeuPendu.Scores" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAOAgIAAAACAAAAAABRAAAAAAAAAAAIAAABABgBAAAA=</HashCode>
+      <FileName>Scores.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DLLJeuPendu.ICollectionMetier" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IcollectionMetier.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

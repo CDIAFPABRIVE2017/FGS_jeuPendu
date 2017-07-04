@@ -56,13 +56,13 @@
             this.jeuDuPenduToolStripMenuItem.Text = "Jeu du Pendu";
             this.jeuDuPenduToolStripMenuItem.Click += new System.EventHandler(this.jeuDuPenduToolStripMenuItem_Click);
             // 
-            // scoreToolStripMenuItem
-            // 
-            this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
-            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.scoreToolStripMenuItem.Text = "Score";
-            this.scoreToolStripMenuItem.Click += new System.EventHandler(this.scoreToolStripMenuItem_Click);
-            // 
+            //// scoreToolStripMenuItem
+            //// 
+            //this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
+            //this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            //this.scoreToolStripMenuItem.Text = "Score";
+            //this.scoreToolStripMenuItem.Click += new System.EventHandler(this.scoreToolStripMenuItem_Click);
+            //// 
             // piocheToolStripMenuItem
             // 
             this.piocheToolStripMenuItem.Name = "piocheToolStripMenuItem";

@@ -25,13 +25,13 @@ namespace JeuPendu_windowsforms
             this.LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmScore score = new FrmScore();
-            score.MdiParent = this;
-            score.Show();
-            this.LayoutMdi(MdiLayout.TileHorizontal);
-        }
+        //private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    FrmScore score = new FrmScore();
+        //    score.MdiParent = this;
+        //    score.Show();
+        //    this.LayoutMdi(MdiLayout.TileHorizontal);
+        //}
 
         private void piocheToolStripMenuItem_Click(object sender, EventArgs e)
         {

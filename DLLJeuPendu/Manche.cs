@@ -320,6 +320,13 @@ namespace DLLJeuPendu
 
         }
         #endregion
-
+        public bool IsNbManchesValid(string nbManche)
+        {
+            if (Convert.ToInt32(nbManche) > Convert.ToInt32(Properties.Resources.NbManchesMaxParPartie) | Convert.ToInt32(nbManche) < Convert.ToInt32(Properties.Resources.NbManchesMinParPartie))
+            {
+                return false;
+            }
+            else return true;
+        }
     }
 }

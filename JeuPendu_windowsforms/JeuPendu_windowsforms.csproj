@@ -76,6 +76,9 @@
     <EmbeddedResource Include="FrmJeu.resx">
       <DependentUpon>FrmJeu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOption.resx">
+      <DependentUpon>FrmOption.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>

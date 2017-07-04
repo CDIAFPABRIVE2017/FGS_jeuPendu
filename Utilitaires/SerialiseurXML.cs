@@ -49,6 +49,9 @@ namespace Utilitaires
             Object objet = null;
 
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
+            if (File.Exists(pathXmlDocument))
+            {
+      
             using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 
@@ -61,6 +64,8 @@ namespace Utilitaires
             }
        
             return objet as IEnumerable;
+            }
+            return null;
         }
     }
     sealed class BinderType : SerializationBinder

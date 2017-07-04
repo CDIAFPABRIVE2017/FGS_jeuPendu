@@ -34,7 +34,7 @@ namespace DLLJeuPendu
         private double _scoreMax;
         object tmp;
 
-        List<Score> listJoueurs = new List<Score>();
+   //     List<Score> listJoueurs = new List<Score>();
 
        
         public double ScoreMin
@@ -87,13 +87,26 @@ namespace DLLJeuPendu
            
             for (int i= 0; i < this.Count - 1; i++)
             {
-
-                Score tmp = new Score();
-                if (this[i].ScoreJoueur < this[i].ScoreJoueur)
+                for (int j = i - 1; j < this.Count - 1; j++)
                 {
-                    tmp = this[i];
-                    this[i] = this[i + 1];
-                    this[i + 1] = tmp;
+
+
+
+                    Score tmp;
+                    if (this[i].ScoreJoueur < this[j+1].ScoreJoueur)
+                    {
+
+                        do
+                        {
+
+
+
+                            tmp = this[i];
+                            this[i] = this[i + 1];
+                            this[i + 1] = tmp;
+
+                        } while (this[i].ScoreJoueur < this[j + 1].ScoreJoueur);
+                    }
                 }
             }
         }
@@ -107,11 +120,19 @@ namespace DLLJeuPendu
             
             if (Count < 9)
             {
-                this.Add(score);
+
+              
                
+                this.Add(score);
+
+
+
+                trierListe();
             }
-            else if (this.Count >= 9)
+            else
             {
+
+                int pos = 0 ;
                 for (int i = 0; i < this.Count; i++)
                 {
                     if (this[i].ScoreJoueur <= score.ScoreJoueur)
@@ -119,11 +140,13 @@ namespace DLLJeuPendu
                         int count = 0;
                         do
                         {
-                            this.Remove(listJoueurs[i]);
+                            pos = i;
                         } while (count < 1);
                     }
                 }
+                this.RemoveAt(pos);
                 this.Add(score);
+                this.trierListe();
 
             }
            

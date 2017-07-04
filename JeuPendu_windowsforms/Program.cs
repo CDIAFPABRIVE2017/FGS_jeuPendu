@@ -36,10 +36,8 @@ namespace JeuPendu_windowsforms
                 }
             }
             //  MonApplication.Pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
-            //Application.Run(fenetreMere);
-            FrmScore a = new FrmScore();
-            Application.Run(a);
-
+            Application.Run(fenetreMere);
+           
         }
     }
 }

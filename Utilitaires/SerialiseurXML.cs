@@ -14,11 +14,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Utilitaires
 {
-   
+
     public class SauvegardeXML : ISauvegarde
     {
 
-    
+
         /// <summary>
         /// Sauvegarder par sérialisation Xml 
         /// </summary>
@@ -49,18 +49,24 @@ namespace Utilitaires
             Object objet = null;
 
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
-            using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
+            if (File.Exists(pathXmlDocument))
             {
-                
-                XmlTextReader xmlTR = new XmlTextReader(fileStream);
-                XmlSerializer xmlS = new XmlSerializer(typeACharger);
-                
-                objet = xmlS.Deserialize(xmlTR);
-                xmlTR.Close();
-                fileStream.Close();
+
+
+                using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+
+                    XmlTextReader xmlTR = new XmlTextReader(fileStream);
+                    XmlSerializer xmlS = new XmlSerializer(typeACharger);
+
+                    objet = xmlS.Deserialize(xmlTR);
+                    xmlTR.Close();
+                    fileStream.Close();
+                }
+
+                return objet as IEnumerable;
             }
-       
-            return objet as IEnumerable;
+            return null;
         }
     }
     sealed class BinderType : SerializationBinder

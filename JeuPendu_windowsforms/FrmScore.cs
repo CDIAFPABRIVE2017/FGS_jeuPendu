@@ -47,7 +47,7 @@ namespace JeuPendu_windowsforms
         private void FrmScore_Load(object sender, EventArgs e)
         {
             Scores affiche = new Scores();
-
+      
             for (int i = 0; i < affiche.Count; i++)
             {
                 MessageBox.Show(affiche[i].NomJoueur + affiche[i].ScoreJoueur);

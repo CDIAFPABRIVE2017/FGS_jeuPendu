@@ -85,6 +85,9 @@
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmScore.resx">
+      <DependentUpon>FrmScore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
     </EmbeddedResource>

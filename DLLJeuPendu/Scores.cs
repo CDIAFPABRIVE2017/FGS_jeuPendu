@@ -102,8 +102,8 @@ namespace DLLJeuPendu
 
 
                             tmp = this[i];
-                            this[i] = this[i + 1];
-                            this[i + 1] = tmp;
+                            this[i] = this[j+ 1];
+                            this[j+ 1] = tmp;
 
                         } while (this[i].ScoreJoueur < this[j + 1].ScoreJoueur);
                     }
@@ -114,61 +114,25 @@ namespace DLLJeuPendu
 
         public void Ajouter(Score score)
         {
-            
-          
-
-            
-            if (Count < 9)
+            if (Count >9)
             {
-
-              
-               
-                this.Add(score);
-
-
-
-                trierListe();
+                this.Remove(this[this.Count - 1]);
             }
-            else
-            {
-
-                int pos = 0 ;
-                for (int i = 0; i < this.Count; i++)
-                {
-                    if (this[i].ScoreJoueur <= score.ScoreJoueur)
-                    {
-                        int count = 0;
-                        do
-                        {
-                            pos = i;
-                        } while (count < 1);
-                    }
-                }
-                this.RemoveAt(pos);
-                this.Add(score);
-                this.trierListe();
-
-            }
-           
+            this.Add(score);
+            this.trierListe();
         }
             
-        public void afficherListe()
+        
+
+        public  bool IsEnregistrable(double score)
         {
-
-            
-           
-
-
-        }
-
-        public  bool verifScore(double score)
-        {
-            if (score >= this.ScoreMin)
+            if (this.Count < 10)
             {
                 return true;
             }
-
-            return false;
+            
+                return (score<this[10].ScoreJoueur);
+          
         }
 
         public void Save(ISauvegarde sauvegarde, string pathRepData)

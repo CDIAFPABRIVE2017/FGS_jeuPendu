@@ -64,6 +64,12 @@
     <Compile Include="FrmPioche.Designer.cs">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmScores.Designer.cs">
+      <DependentUpon>FrmScores.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceMere.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,11 @@
     <Compile Include="MonApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmJeu.resx">
       <DependentUpon>FrmJeu.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmScores.resx">
+      <DependentUpon>FrmScores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
@@ -105,6 +119,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

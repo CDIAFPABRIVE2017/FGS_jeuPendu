@@ -14,13 +14,13 @@ namespace TestGermain
         {
             SauvegardeXML sauvegarde = new SauvegardeXML();
             Scores scores = new Scores();
+            Score azerty2 = new Score(777,"aaaaaaaaaaa");
             scores.Load(sauvegarde, Properties.Settings.Default.PathScores);
-          
-            scores.Ajouter(new Score() { NomJoueur = "Germain", ScoreJoueur = 1 });
-            //scores.Ajouter(new Score() { NomJoueur = "Germain", ScoreJoueur = 2 });
-            //scores.Ajouter(new Score() { NomJoueur = "Germain", ScoreJoueur = 3 });
-            scores.trierListe();
 
+            scores.Ajouter(azerty2);
+
+
+           
 
             scores.Save(sauvegarde, Properties.Settings.Default.PathScores);
 

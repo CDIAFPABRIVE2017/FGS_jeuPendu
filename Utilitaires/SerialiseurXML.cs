@@ -28,8 +28,8 @@ namespace Utilitaires
         {
             Type type = objetASauvegarder.GetType();
 
-            string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, type.FullName);
-            using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Create, FileAccess.Write, FileShare.Read))
+            //string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, type.FullName);
+            using (FileStream fileStream = new FileStream("scores.xml", FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 XmlTextWriter xmlTW = new XmlTextWriter(fileStream, Encoding.UTF8);
                 XmlSerializer xmlS = new XmlSerializer(type);
@@ -47,18 +47,21 @@ namespace Utilitaires
         public IEnumerable Load(string pathRepData, Type typeACharger)
         {
             Object objet = new object();
-            string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
+            //string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
 
-            if (!File.Exists(pathXmlDocument))
+            if (!File.Exists("scores.xml"))
             {
-                File.Create(pathXmlDocument);
+                File.Create("scores.xml");
        
                 
             }
 
            
-            using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream fileStream = new FileStream("scores.xml", FileMode.Open, FileAccess.Read, FileShare.Read))
             {
+
+
+
                 if ((fileStream.Length > 0))
                 {
                     XmlTextReader xmlTR = new XmlTextReader(fileStream);

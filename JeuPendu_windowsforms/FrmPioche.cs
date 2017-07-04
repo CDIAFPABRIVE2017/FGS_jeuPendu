@@ -55,7 +55,7 @@ namespace JeuPendu_windowsforms
         }
         #endregion
 
-      
+
         ///// <summary>
         ///// Traiter les caractères accentués
         ///// traiter la casse et la longueur des mots
@@ -63,8 +63,8 @@ namespace JeuPendu_windowsforms
         ///// <param name="chaineOrigine"></param>
         ///// <returns></returns>
 
-        
-        
+
+
         private void FrmPioche_Load(object sender, EventArgs e)
         {
             btnExclure.Visible = false;
@@ -76,11 +76,20 @@ namespace JeuPendu_windowsforms
             listeInitiale.Visible = false;
             Corbeille.Visible = false;
             txtSaisie.Visible = false;
+
+           Score a = new Score(100, "nomJoueur");
+           Scores b = new Scores();
+           b.ajouterJoueur(a);
+
+
+
+
+
         }
 
-       
-        
-        
+
+
+
         private void ouvrirFichierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnPiocher.Visible = true;

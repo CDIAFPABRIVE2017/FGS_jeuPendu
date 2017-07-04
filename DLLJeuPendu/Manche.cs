@@ -127,6 +127,7 @@ namespace DLLJeuPendu
         {
             get
             {
+                _nbErreursMaxOk = Convert.ToInt32(Properties.Resources.nbErreurMax);
                 return _nbErreursMaxOk;
             }
 

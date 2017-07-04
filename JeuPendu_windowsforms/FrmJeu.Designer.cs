@@ -32,23 +32,23 @@
             this.txtb_MotenCours = new System.Windows.Forms.TextBox();
             this.lb_motADeviner = new System.Windows.Forms.Label();
             this.pn_clavier = new System.Windows.Forms.Panel();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
+            this.btn_clavier_N_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_M_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_B_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_L_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_V_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_C_frFR = new System.Windows.Forms.Button();
             this.lb_consignesClavier = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
+            this.btn_clavier_K_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_X_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_J_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_W_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_H_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_G_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_F_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_D_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_S_frFR = new System.Windows.Forms.Button();
+            this.btn_clavier_Q_frFR = new System.Windows.Forms.Button();
             this.btn_clavier_P_frFR = new System.Windows.Forms.Button();
             this.btn_clavier_O_frFR = new System.Windows.Forms.Button();
             this.btn_clavier_I_frFR = new System.Windows.Forms.Button();
@@ -92,23 +92,23 @@
             // 
             // pn_clavier
             // 
-            this.pn_clavier.Controls.Add(this.button20);
-            this.pn_clavier.Controls.Add(this.button10);
-            this.pn_clavier.Controls.Add(this.button21);
-            this.pn_clavier.Controls.Add(this.button11);
-            this.pn_clavier.Controls.Add(this.button22);
-            this.pn_clavier.Controls.Add(this.button23);
+            this.pn_clavier.Controls.Add(this.btn_clavier_N_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_M_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_B_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_L_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_V_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_C_frFR);
             this.pn_clavier.Controls.Add(this.lb_consignesClavier);
-            this.pn_clavier.Controls.Add(this.button12);
-            this.pn_clavier.Controls.Add(this.button24);
-            this.pn_clavier.Controls.Add(this.button13);
-            this.pn_clavier.Controls.Add(this.button25);
-            this.pn_clavier.Controls.Add(this.button14);
-            this.pn_clavier.Controls.Add(this.button15);
-            this.pn_clavier.Controls.Add(this.button16);
-            this.pn_clavier.Controls.Add(this.button17);
-            this.pn_clavier.Controls.Add(this.button18);
-            this.pn_clavier.Controls.Add(this.button19);
+            this.pn_clavier.Controls.Add(this.btn_clavier_K_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_X_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_J_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_W_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_H_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_G_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_F_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_D_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_S_frFR);
+            this.pn_clavier.Controls.Add(this.btn_clavier_Q_frFR);
             this.pn_clavier.Controls.Add(this.btn_clavier_P_frFR);
             this.pn_clavier.Controls.Add(this.btn_clavier_O_frFR);
             this.pn_clavier.Controls.Add(this.btn_clavier_I_frFR);
@@ -125,71 +125,71 @@
             this.pn_clavier.TabIndex = 2;
             this.pn_clavier.Visible = false;
             // 
-            // button20
+            // btn_clavier_N_frFR
             // 
-            this.button20.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button20.Location = new System.Drawing.Point(348, 133);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(40, 40);
-            this.button20.TabIndex = 21;
-            this.button20.Text = "N";
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_N_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_N_frFR.Location = new System.Drawing.Point(348, 133);
+            this.btn_clavier_N_frFR.Name = "btn_clavier_N_frFR";
+            this.btn_clavier_N_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_N_frFR.TabIndex = 21;
+            this.btn_clavier_N_frFR.Text = "N";
+            this.btn_clavier_N_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_N_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button10
+            // btn_clavier_M_frFR
             // 
-            this.button10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button10.Location = new System.Drawing.Point(440, 87);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(40, 40);
-            this.button10.TabIndex = 19;
-            this.button10.Text = "M";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_M_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_M_frFR.Location = new System.Drawing.Point(440, 87);
+            this.btn_clavier_M_frFR.Name = "btn_clavier_M_frFR";
+            this.btn_clavier_M_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_M_frFR.TabIndex = 19;
+            this.btn_clavier_M_frFR.Text = "M";
+            this.btn_clavier_M_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_M_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button21
+            // btn_clavier_B_frFR
             // 
-            this.button21.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button21.Location = new System.Drawing.Point(302, 133);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(40, 40);
-            this.button21.TabIndex = 20;
-            this.button21.Text = "B";
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_B_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_B_frFR.Location = new System.Drawing.Point(302, 133);
+            this.btn_clavier_B_frFR.Name = "btn_clavier_B_frFR";
+            this.btn_clavier_B_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_B_frFR.TabIndex = 20;
+            this.btn_clavier_B_frFR.Text = "B";
+            this.btn_clavier_B_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_B_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button11
+            // btn_clavier_L_frFR
             // 
-            this.button11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button11.Location = new System.Drawing.Point(394, 87);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(40, 40);
-            this.button11.TabIndex = 18;
-            this.button11.Text = "L";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_L_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_L_frFR.Location = new System.Drawing.Point(394, 87);
+            this.btn_clavier_L_frFR.Name = "btn_clavier_L_frFR";
+            this.btn_clavier_L_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_L_frFR.TabIndex = 18;
+            this.btn_clavier_L_frFR.Text = "L";
+            this.btn_clavier_L_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_L_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button22
+            // btn_clavier_V_frFR
             // 
-            this.button22.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button22.Location = new System.Drawing.Point(256, 133);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(40, 40);
-            this.button22.TabIndex = 19;
-            this.button22.Text = "V";
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_V_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_V_frFR.Location = new System.Drawing.Point(256, 133);
+            this.btn_clavier_V_frFR.Name = "btn_clavier_V_frFR";
+            this.btn_clavier_V_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_V_frFR.TabIndex = 19;
+            this.btn_clavier_V_frFR.Text = "V";
+            this.btn_clavier_V_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_V_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button23
+            // btn_clavier_C_frFR
             // 
-            this.button23.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button23.Location = new System.Drawing.Point(210, 133);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(40, 40);
-            this.button23.TabIndex = 18;
-            this.button23.Text = "C";
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_C_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_C_frFR.Location = new System.Drawing.Point(210, 133);
+            this.btn_clavier_C_frFR.Name = "btn_clavier_C_frFR";
+            this.btn_clavier_C_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_C_frFR.TabIndex = 18;
+            this.btn_clavier_C_frFR.Text = "C";
+            this.btn_clavier_C_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_C_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
             // lb_consignesClavier
             // 
@@ -200,115 +200,115 @@
             this.lb_consignesClavier.TabIndex = 3;
             this.lb_consignesClavier.Text = "Cliquez sur une touche pour tester si la lettre est présente dans le mot :";
             // 
-            // button12
+            // btn_clavier_K_frFR
             // 
-            this.button12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button12.Location = new System.Drawing.Point(348, 87);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(40, 40);
-            this.button12.TabIndex = 17;
-            this.button12.Text = "K";
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_K_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_K_frFR.Location = new System.Drawing.Point(348, 87);
+            this.btn_clavier_K_frFR.Name = "btn_clavier_K_frFR";
+            this.btn_clavier_K_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_K_frFR.TabIndex = 17;
+            this.btn_clavier_K_frFR.Text = "K";
+            this.btn_clavier_K_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_K_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button24
+            // btn_clavier_X_frFR
             // 
-            this.button24.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button24.Location = new System.Drawing.Point(164, 133);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(40, 40);
-            this.button24.TabIndex = 17;
-            this.button24.Text = "X";
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_X_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_X_frFR.Location = new System.Drawing.Point(164, 133);
+            this.btn_clavier_X_frFR.Name = "btn_clavier_X_frFR";
+            this.btn_clavier_X_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_X_frFR.TabIndex = 17;
+            this.btn_clavier_X_frFR.Text = "X";
+            this.btn_clavier_X_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_X_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button13
+            // btn_clavier_J_frFR
             // 
-            this.button13.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button13.Location = new System.Drawing.Point(302, 87);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(40, 40);
-            this.button13.TabIndex = 16;
-            this.button13.Text = "J";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_J_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_J_frFR.Location = new System.Drawing.Point(302, 87);
+            this.btn_clavier_J_frFR.Name = "btn_clavier_J_frFR";
+            this.btn_clavier_J_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_J_frFR.TabIndex = 16;
+            this.btn_clavier_J_frFR.Text = "J";
+            this.btn_clavier_J_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_J_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button25
+            // btn_clavier_W_frFR
             // 
-            this.button25.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button25.Location = new System.Drawing.Point(118, 133);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(40, 40);
-            this.button25.TabIndex = 16;
-            this.button25.Text = "W";
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_W_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_W_frFR.Location = new System.Drawing.Point(118, 133);
+            this.btn_clavier_W_frFR.Name = "btn_clavier_W_frFR";
+            this.btn_clavier_W_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_W_frFR.TabIndex = 16;
+            this.btn_clavier_W_frFR.Text = "W";
+            this.btn_clavier_W_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_W_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button14
+            // btn_clavier_H_frFR
             // 
-            this.button14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button14.Location = new System.Drawing.Point(256, 87);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(40, 40);
-            this.button14.TabIndex = 15;
-            this.button14.Text = "I";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_H_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_H_frFR.Location = new System.Drawing.Point(256, 87);
+            this.btn_clavier_H_frFR.Name = "btn_clavier_H_frFR";
+            this.btn_clavier_H_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_H_frFR.TabIndex = 15;
+            this.btn_clavier_H_frFR.Text = "H";
+            this.btn_clavier_H_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_H_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button15
+            // btn_clavier_G_frFR
             // 
-            this.button15.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button15.Location = new System.Drawing.Point(210, 87);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(40, 40);
-            this.button15.TabIndex = 14;
-            this.button15.Text = "G";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_G_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_G_frFR.Location = new System.Drawing.Point(210, 87);
+            this.btn_clavier_G_frFR.Name = "btn_clavier_G_frFR";
+            this.btn_clavier_G_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_G_frFR.TabIndex = 14;
+            this.btn_clavier_G_frFR.Text = "G";
+            this.btn_clavier_G_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_G_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button16
+            // btn_clavier_F_frFR
             // 
-            this.button16.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button16.Location = new System.Drawing.Point(164, 87);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(40, 40);
-            this.button16.TabIndex = 13;
-            this.button16.Text = "F";
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_F_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_F_frFR.Location = new System.Drawing.Point(164, 87);
+            this.btn_clavier_F_frFR.Name = "btn_clavier_F_frFR";
+            this.btn_clavier_F_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_F_frFR.TabIndex = 13;
+            this.btn_clavier_F_frFR.Text = "F";
+            this.btn_clavier_F_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_F_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button17
+            // btn_clavier_D_frFR
             // 
-            this.button17.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button17.Location = new System.Drawing.Point(118, 87);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(40, 40);
-            this.button17.TabIndex = 12;
-            this.button17.Text = "D";
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_D_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_D_frFR.Location = new System.Drawing.Point(118, 87);
+            this.btn_clavier_D_frFR.Name = "btn_clavier_D_frFR";
+            this.btn_clavier_D_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_D_frFR.TabIndex = 12;
+            this.btn_clavier_D_frFR.Text = "D";
+            this.btn_clavier_D_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_D_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button18
+            // btn_clavier_S_frFR
             // 
-            this.button18.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button18.Location = new System.Drawing.Point(72, 87);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(40, 40);
-            this.button18.TabIndex = 11;
-            this.button18.Text = "S";
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_S_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_S_frFR.Location = new System.Drawing.Point(72, 87);
+            this.btn_clavier_S_frFR.Name = "btn_clavier_S_frFR";
+            this.btn_clavier_S_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_S_frFR.TabIndex = 11;
+            this.btn_clavier_S_frFR.Text = "S";
+            this.btn_clavier_S_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_S_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button19
+            // btn_clavier_Q_frFR
             // 
-            this.button19.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button19.Location = new System.Drawing.Point(26, 87);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(40, 40);
-            this.button19.TabIndex = 10;
-            this.button19.Text = "Q";
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button20_Click);
+            this.btn_clavier_Q_frFR.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clavier_Q_frFR.Location = new System.Drawing.Point(26, 87);
+            this.btn_clavier_Q_frFR.Name = "btn_clavier_Q_frFR";
+            this.btn_clavier_Q_frFR.Size = new System.Drawing.Size(40, 40);
+            this.btn_clavier_Q_frFR.TabIndex = 10;
+            this.btn_clavier_Q_frFR.Text = "Q";
+            this.btn_clavier_Q_frFR.UseVisualStyleBackColor = false;
+            this.btn_clavier_Q_frFR.Click += new System.EventHandler(this.button20_Click);
             // 
             // btn_clavier_P_frFR
             // 
@@ -539,22 +539,22 @@
 		private System.Windows.Forms.Label lb_motADeviner;
 		private System.Windows.Forms.Panel pn_clavier;
 		private System.Windows.Forms.Button btn_clavier_A_fr_FR;
-		private System.Windows.Forms.Button button20;
-		private System.Windows.Forms.Button button10;
-		private System.Windows.Forms.Button button21;
-		private System.Windows.Forms.Button button11;
-		private System.Windows.Forms.Button button22;
-		private System.Windows.Forms.Button button23;
-		private System.Windows.Forms.Button button12;
-		private System.Windows.Forms.Button button24;
-		private System.Windows.Forms.Button button13;
-		private System.Windows.Forms.Button button25;
-		private System.Windows.Forms.Button button14;
-		private System.Windows.Forms.Button button15;
-		private System.Windows.Forms.Button button16;
-		private System.Windows.Forms.Button button17;
-		private System.Windows.Forms.Button button18;
-		private System.Windows.Forms.Button button19;
+		private System.Windows.Forms.Button btn_clavier_N_frFR;
+		private System.Windows.Forms.Button btn_clavier_M_frFR;
+		private System.Windows.Forms.Button btn_clavier_B_frFR;
+		private System.Windows.Forms.Button btn_clavier_L_frFR;
+		private System.Windows.Forms.Button btn_clavier_V_frFR;
+		private System.Windows.Forms.Button btn_clavier_C_frFR;
+		private System.Windows.Forms.Button btn_clavier_K_frFR;
+		private System.Windows.Forms.Button btn_clavier_X_frFR;
+		private System.Windows.Forms.Button btn_clavier_J_frFR;
+		private System.Windows.Forms.Button btn_clavier_W_frFR;
+		private System.Windows.Forms.Button btn_clavier_H_frFR;
+		private System.Windows.Forms.Button btn_clavier_G_frFR;
+		private System.Windows.Forms.Button btn_clavier_F_frFR;
+		private System.Windows.Forms.Button btn_clavier_D_frFR;
+		private System.Windows.Forms.Button btn_clavier_S_frFR;
+		private System.Windows.Forms.Button btn_clavier_Q_frFR;
 		private System.Windows.Forms.Button btn_clavier_P_frFR;
 		private System.Windows.Forms.Button btn_clavier_O_frFR;
 		private System.Windows.Forms.Button btn_clavier_I_frFR;

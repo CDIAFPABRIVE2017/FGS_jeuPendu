@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="PathData" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\CDI\Source\Repos\FGS_jeuPendu\DLLJeuPendu\bin\Debug</Value>
+      <Value Profile="(Default)">C:\Users\CDI\Documents\Visual Studio 2015\FGS_jeuPendu</Value>
+    </Setting>
+    <Setting Name="CheminDico" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\CDI\Documents\Visual Studio 2015\FGS_jeuPendu\dictionnaire.txt</Value>
     </Setting>
   </Settings>
 </SettingsFile>

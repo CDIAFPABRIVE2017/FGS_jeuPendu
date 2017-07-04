@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmJeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmJeu.Designer.cs">
+      <DependentUpon>FrmJeu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,8 +79,14 @@
     <Compile Include="MonApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmJeu.resx">
+      <DependentUpon>FrmJeu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmScore.resx">
+      <DependentUpon>FrmScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>
@@ -115,9 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconeRecherche.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\iconeRecherche1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

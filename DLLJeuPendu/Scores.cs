@@ -21,15 +21,22 @@ using System;
 using System.Xml;
 using System.Xml.XPath;
 using Utilitaires;
+using System.Collections;
+
 
 namespace DLLJeuPendu
 {
+
+    [Serializable()]
     public class Scores :List<Score>, ICollectionMetier
     {
         private double _scoreMin;
         private double _scoreMax;
+        object tmp;
 
         List<Score> listJoueurs = new List<Score>();
+
+       
         public double ScoreMin
         {
             get
@@ -72,16 +79,57 @@ namespace DLLJeuPendu
                 _scoreMax = value;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="joueur"></param>
+        ///  <param name="pathRepData"></param>
 
-       
 
         public void ajouterJoueur(Score joueur)
         {
-            if (this.Count > 9)
+
+            if (!File.Exists("scores.xml"))
             {
-                Console.WriteLine("Vous ne faites pas partie des 10 meilleurs scores");
+                using (FileStream fsCreate = new FileStream("scores.xml", FileMode.Create))
+                {
+                    fsCreate.Close();
+                }
             }
-                this.Add(joueur);
+
+            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
+            XmlSerializer serial = new XmlSerializer(typeof(Score));
+            if (replace.Length < 0)
+            {
+                serial.Deserialize(replace);
+            }
+            replace.Close();
+            if (listJoueurs.Count > 9)
+            {
+                for (int i = 0; i < listJoueurs.Count; i++)
+                {
+                    if (listJoueurs[i].ScoreJoueur < joueur.ScoreJoueur)
+                    {
+                        int supp = 0;
+                        do
+                        {
+                          listJoueurs.Remove(joueur);
+                        } while (supp < 1);
+                    }
+                }
+                listJoueurs.Add(joueur);
+               
+            }
+            listJoueurs.Add(joueur);
+
+            XmlSerializer xs = new XmlSerializer(typeof(Score));
+            FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
+
+            xs.Serialize(fs, listJoueurs);
+            StreamWriter sr = new StreamWriter(fs);
+            xs.Serialize(fs, listJoueurs);
+            sr.WriteLine(xs);
+            fs.Close();
         }
 
         /// <summary>
@@ -91,7 +139,7 @@ namespace DLLJeuPendu
         {
 
 
-            if (!File.Exists("scores.xml"))
+            /*if (!File.Exists("scores.xml"))
             {
                 using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
                 {
@@ -128,22 +176,35 @@ namespace DLLJeuPendu
 
 
 
-            }
+            }*/
 
 
 
 
-            /*FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
-            serial.Deserialize(replace);*/
-            //selectionner le premier score inferieur a int score et le supprimer
         }
+
+        public void trierListe()
+        {
+           
+            for (int i= 0; i < this.Count - 1; i++)
+            {
+
+                Score tmp = new Score();
+                if (this[i].ScoreJoueur < this[i].ScoreJoueur)
+                {
+                    tmp = this[i];
+                    this[i] = this[i + 1];
+                    this[i + 1] = tmp;
+                }
+            }
+        }
+       
 
         public void ajouter(Score score)
         {
             if (!File.Exists("scores.xml"))
             {
-                using (FileStream fsCreate = new FileStream("scrores.xml", FileMode.Create))
+                using (FileStream fsCreate = new FileStream("scores.xml", FileMode.Create))
                 {
                     fsCreate.Close();
                 }
@@ -182,15 +243,16 @@ namespace DLLJeuPendu
                     listJoueurs.Add(score);
                     
             }
-        }
+
+            listJoueurs.Save(ISauvegarde ,  pathRepData);
+            {
+            }
             
         public void afficherListe()
         {
 
-            FileStream replace = new FileStream("scores.xml", FileMode.Open, FileAccess.Read);
-            XmlSerializer serial = new XmlSerializer(typeof(Score));
-            serial.Deserialize(replace);
-
+            
+           
 
 
         }

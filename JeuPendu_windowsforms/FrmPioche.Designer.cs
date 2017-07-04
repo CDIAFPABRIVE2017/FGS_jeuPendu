@@ -1,33 +1,33 @@
 ﻿namespace JeuPendu_windowsforms
 {
-	partial class FrmPioche
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class FrmPioche
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnQuiter = new System.Windows.Forms.Button();
             this.lblMotsImpropres = new System.Windows.Forms.Label();
@@ -37,12 +37,13 @@
             this.Corbeille = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ouvrirFichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerDictionnaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rechercherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAjouter = new System.Windows.Forms.Button();
-            this.btRecherche = new System.Windows.Forms.Button();
+            this.btn_Recherche = new System.Windows.Forms.Button();
+            this.btnAlimenterPioche = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // btnExclure
             // 
-            this.btnExclure.Location = new System.Drawing.Point(209, 303);
+            this.btnExclure.Location = new System.Drawing.Point(224, 236);
             this.btnExclure.Name = "btnExclure";
             this.btnExclure.Size = new System.Drawing.Size(81, 29);
             this.btnExclure.TabIndex = 16;
@@ -108,6 +109,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowMerge = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ouvrirFichierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -127,20 +129,6 @@
             this.ouvrirFichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.ouvrirFichierToolStripMenuItem.Text = "&Fichier";
             // 
-            // ajoutToolStripMenuItem
-            // 
-            this.ajoutToolStripMenuItem.Name = "ajoutToolStripMenuItem";
-            this.ajoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ajoutToolStripMenuItem.Text = "Ajouter";
-            this.ajoutToolStripMenuItem.Click += new System.EventHandler(this.ajoutToolStripMenuItem_Click);
-            // 
-            // fermerToolStripMenuItem
-            // 
-            this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
-            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.fermerToolStripMenuItem.Text = "Fermer";
-            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
-            // 
             // chargerDictionnaireToolStripMenuItem
             // 
             this.chargerDictionnaireToolStripMenuItem.Name = "chargerDictionnaireToolStripMenuItem";
@@ -155,6 +143,20 @@
             this.rechercherToolStripMenuItem.Text = "Rechercher";
             this.rechercherToolStripMenuItem.Click += new System.EventHandler(this.rechercherToolStripMenuItem_Click);
             // 
+            // ajoutToolStripMenuItem
+            // 
+            this.ajoutToolStripMenuItem.Name = "ajoutToolStripMenuItem";
+            this.ajoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ajoutToolStripMenuItem.Text = "Ajouter";
+            this.ajoutToolStripMenuItem.Click += new System.EventHandler(this.ajoutToolStripMenuItem_Click);
+            // 
+            // fermerToolStripMenuItem
+            // 
+            this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
+            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fermerToolStripMenuItem.Text = "Fermer";
+            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
+            // 
             // btnAjouter
             // 
             this.btnAjouter.Location = new System.Drawing.Point(224, 37);
@@ -165,26 +167,33 @@
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // btRecherche
+            // btn_Recherche
             // 
-            this.btRecherche.AutoSize = true;
-            this.btRecherche.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btRecherche.BackColor = System.Drawing.Color.Transparent;
-            this.btRecherche.BackgroundImage = global::JeuPendu_windowsforms.Properties.Resources.iconeRecherche1;
-            this.btRecherche.Image = global::JeuPendu_windowsforms.Properties.Resources.iconeRecherche1;
-            this.btRecherche.Location = new System.Drawing.Point(180, 34);
-            this.btRecherche.Name = "btRecherche";
-            this.btRecherche.Size = new System.Drawing.Size(32, 32);
-            this.btRecherche.TabIndex = 23;
-            this.btRecherche.UseVisualStyleBackColor = false;
-            this.btRecherche.Click += new System.EventHandler(this.btRecherche_Click);
+            this.btn_Recherche.Image = global::JeuPendu_windowsforms.Properties.Resources.iconeRecherche;
+            this.btn_Recherche.Location = new System.Drawing.Point(180, 40);
+            this.btn_Recherche.Name = "btn_Recherche";
+            this.btn_Recherche.Size = new System.Drawing.Size(31, 23);
+            this.btn_Recherche.TabIndex = 24;
+            this.btn_Recherche.UseVisualStyleBackColor = true;
+            this.btn_Recherche.Click += new System.EventHandler(this.btRecherche_Click);
+            // 
+            // btnAlimenterPioche
+            // 
+            this.btnAlimenterPioche.Location = new System.Drawing.Point(212, 355);
+            this.btnAlimenterPioche.Name = "btnAlimenterPioche";
+            this.btnAlimenterPioche.Size = new System.Drawing.Size(157, 23);
+            this.btnAlimenterPioche.TabIndex = 25;
+            this.btnAlimenterPioche.Text = "Alimenter Pioche";
+            this.btnAlimenterPioche.UseVisualStyleBackColor = true;
+            this.btnAlimenterPioche.Click += new System.EventHandler(this.btnAlimenterPioche_Click);
             // 
             // FrmPioche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 400);
-            this.Controls.Add(this.btRecherche);
+            this.Controls.Add(this.btnAlimenterPioche);
+            this.Controls.Add(this.btn_Recherche);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.lblMotsImpropres);
             this.Controls.Add(this.btnExclure);
@@ -203,7 +212,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
         #endregion
 
@@ -221,6 +230,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rechercherToolStripMenuItem;
-        private System.Windows.Forms.Button btRecherche;
+        private System.Windows.Forms.Button btn_Recherche;
+        private System.Windows.Forms.Button btnAlimenterPioche;
     }
 }

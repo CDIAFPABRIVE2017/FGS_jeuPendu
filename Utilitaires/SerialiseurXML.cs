@@ -26,30 +26,7 @@ namespace Utilitaires
         /// <param name="objetASauvegarder"></param>
         public void Save(string pathRepData, IEnumerable objetASauvegarder)
         {
-
-            // Enregistrer le fichier text
-            string extention = string.Empty;
-            if (pathRepData.Length >= 4)
-            {
-                extention = pathRepData.Substring(pathRepData.Length - 4, 4).ToString().Trim();
-            }
-
-            if (string.Equals(extention, ".txt"))
-            {
-                using (StreamWriter sw = new StreamWriter(pathRepData))
-                {
-                    foreach(string item in objetASauvegarder)
-                    sw.WriteLine(item);
-
-            sw.Close();
-                }
-  
-
-            }
-            else
-            {
-                // Enregistrer le fichier xml
-                Type type = objetASauvegarder.GetType();
+            Type type = objetASauvegarder.GetType();
 
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, type.FullName);
             using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Create, FileAccess.Write, FileShare.Read))
@@ -60,7 +37,6 @@ namespace Utilitaires
                 xmlTW.Close();
                 fileStream.Close();
             }
-            }
         }
         /// <summary>
         /// Extraire les données par désérialisation XML
@@ -70,51 +46,20 @@ namespace Utilitaires
         /// <returns></returns>
         public IEnumerable Load(string pathRepData, Type typeACharger)
         {
-            Object objet = new object();
-            // lire fichier text
-            string extention = pathRepData.Substring(pathRepData.Length - 4, 4).ToString().Trim();
-           if (string.Equals(extention, ".txt") )
-            {
-                List<string> lst = new List<string>();
-                using (var fileStream = File.OpenRead(pathRepData))
-                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true))
-                {
-                    String line;
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        lst.Add(line);
-                    }
-                    fileStream.Close();
-                    streamReader.Close();
-                    return lst as IEnumerable;
-                }
-            }
-           else
-            {
-            //lecture fichier xml
-            string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
-            if (!File.Exists(pathXmlDocument))
-            {
-                File.Create(pathXmlDocument);
-                      
-            }
+            Object objet = null;
 
-           
+            string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
             using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                if ((fileStream.Length > 0))
-                {
-                    XmlTextReader xmlTR = new XmlTextReader(fileStream);
-                    XmlSerializer xmlS = new XmlSerializer(typeACharger);
-
-                    objet = xmlS.Deserialize(xmlTR);
-                    xmlTR.Close();
-                }
                 
+                XmlTextReader xmlTR = new XmlTextReader(fileStream);
+                XmlSerializer xmlS = new XmlSerializer(typeACharger);
+                
+                objet = xmlS.Deserialize(xmlTR);
+                xmlTR.Close();
                 fileStream.Close();
-                }
             }
-
+       
             return objet as IEnumerable;
         }
     }

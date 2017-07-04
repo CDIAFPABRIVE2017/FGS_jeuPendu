@@ -12,6 +12,8 @@ namespace JeuPendu_windowsforms
     {
         static ISauvegarde _dispositifSauvegarde = new SauvegardeXML();
         static Scores _scoresJeu = new Scores();
+        static Pioche _pioche = new Pioche();
+       
         
         public static ISauvegarde DispositifSauvegarde
         {
@@ -27,5 +29,13 @@ namespace JeuPendu_windowsforms
 
           
         }
+        public static Pioche Pioche
+        {
+            get
+            {
+                return _pioche;
+            }
+        }
+        
     }
 }

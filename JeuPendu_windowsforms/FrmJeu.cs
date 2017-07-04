@@ -26,7 +26,7 @@ namespace JeuPendu_windowsforms
 
         #region Manche
 
-        Manche manche = new Manche();
+        Manche manche = MonApplication.Manche;
         Score score = new Score();
         Pioche pioche = MonApplication.Pioche;
 
@@ -48,12 +48,43 @@ namespace JeuPendu_windowsforms
                 case EtatManche.DebutManche:
                     manche.NbErreurs = 0;
                     manche.NumManche++;
+                    manche.MotATrouver = pioche.ExtraireMot();
                     txtb_numManche.Text = (manche.NumManche).ToString();
                     manche.InitialiserMotEnCours();
 
                     txtb_MotenCours.Text = Manche.ChartoString(manche.MotEnCours);
                     txtB_nbEssaisRestants.Text = manche.CalculEssaisRestants().ToString();
                     btn_Start.Enabled = true;
+
+                    #region initialisation touches
+                    btn_clavier_A_fr_FR.Enabled = true;
+                    btn_clavier_B_frFR.Enabled = true;
+                    btn_clavier_C_frFR.Enabled = true;
+                    btn_clavier_D_frFR.Enabled = true;
+                    btn_clavier_e_frFR.Enabled = true;
+                    btn_clavier_F_frFR.Enabled = true;
+                    btn_clavier_G_frFR.Enabled = true;
+                    btn_clavier_H_frFR.Enabled = true;
+                    btn_clavier_I_frFR.Enabled = true;
+                    btn_clavier_J_frFR.Enabled = true;
+                    btn_clavier_K_frFR.Enabled = true;
+                    btn_clavier_L_frFR.Enabled = true;
+                    btn_clavier_M_frFR.Enabled = true;
+                    btn_clavier_N_frFR.Enabled = true;
+                    btn_clavier_O_frFR.Enabled = true;
+                    btn_clavier_P_frFR.Enabled = true;
+                    btn_clavier_Q_frFR.Enabled = true;
+                    btn_clavier_r_frFR.Enabled = true;
+                    btn_clavier_S_frFR.Enabled = true;
+                    btn_clavier_T_frFR.Enabled = true;
+                    btn_clavier_U_frFR.Enabled = true;
+                    btn_clavier_V_frFR.Enabled = true;
+                    btn_clavier_W_frFR.Enabled = true;
+                    btn_clavier_X_frFR.Enabled = true;
+                    btn_clavier_Y_frFR.Enabled = true;
+                    btn_clavier_z_frFR.Enabled = true;
+                    #endregion
+
 
                     break;
 
@@ -123,9 +154,8 @@ namespace JeuPendu_windowsforms
             manche.NbErreursMaxOk = 9;
 
             GestionnairePartie(EtatPartie.Debut);
-            manche.MotATrouver = pioche.ExtraireMot();
             GestionnaireManche(EtatManche.DebutManche);
-          
+
 
 
         }
@@ -149,10 +179,10 @@ namespace JeuPendu_windowsforms
 
             GestionnairePartie(EtatPartie.Debut);
             pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
-           
+
 
         }
-     
+
 
 
 
@@ -178,7 +208,8 @@ namespace JeuPendu_windowsforms
                 case EtatPartie.Debut:
 
                     manche.NumManche = 0;
-                    manche.NbMancheMax = 2; //a remplacer par le nb défini par une propriété de la classe Option modifiable dans le FrmOption
+                    
+                    
 
                     break;
 
@@ -198,7 +229,7 @@ namespace JeuPendu_windowsforms
                     pn_clavier.Enabled = false;
                     manche.CalculScoreManche(manche.Temps, manche.NbErreurs);
                     manche.CalculScorePartie(manche.ScoresCumulés, manche.NbMancheMax);
-                    MessageBox.Show(string.Format("Désolée, vous avez été pendu. Vous avez perdu la partie.\n Vous avez fait {0} manches sur les {1} de prévus avec un score de {3}", manche.NumManche, manche.NbMancheMax, manche.ScoresCumulés), "Perdu", MessageBoxButtons.OK);
+                    MessageBox.Show(string.Format("Désolée, vous avez été pendu. \n Le mot à trouver était {0}. Vous avez perdu la partie.\n Vous avez fait {1} manches sur les {2} de prévus avec un score de {3}", manche.MotATrouver, manche.NumManche, manche.NbMancheMax, manche.ScoresCumulés), "Perdu", MessageBoxButtons.OK);
                     Close();
                     break;
             }

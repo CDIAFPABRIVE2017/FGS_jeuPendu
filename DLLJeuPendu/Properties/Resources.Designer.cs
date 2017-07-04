@@ -88,7 +88,7 @@ namespace DLLJeuPendu.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à 5.
+        ///   Recherche une chaîne localisée semblable à 25.
         /// </summary>
         internal static string nbMaxCar {
             get {
@@ -97,7 +97,7 @@ namespace DLLJeuPendu.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à 25.
+        ///   Recherche une chaîne localisée semblable à 5.
         /// </summary>
         internal static string nbMinCar {
             get {

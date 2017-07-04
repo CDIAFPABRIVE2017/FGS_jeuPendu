@@ -122,14 +122,15 @@ namespace DLLJeuPendu
             }
             listJoueurs.Add(joueur);
 
-            XmlSerializer xs = new XmlSerializer(typeof(Score));
+            /*XmlSerializer xs = new XmlSerializer(typeof(Score));
             FileStream fs = new FileStream("scores.xml", FileMode.Open, FileAccess.ReadWrite);
 
             xs.Serialize(fs, listJoueurs);
             StreamWriter sr = new StreamWriter(fs);
             xs.Serialize(fs, listJoueurs);
             sr.WriteLine(xs);
-            fs.Close();
+            fs.Close();*/
+           
         }
 
         /// <summary>
@@ -244,8 +245,8 @@ namespace DLLJeuPendu
                     
             }
 
-            listJoueurs.Save(ISauvegarde ,  pathRepData);
-            {
+          
+            
             }
             
         public void afficherListe()

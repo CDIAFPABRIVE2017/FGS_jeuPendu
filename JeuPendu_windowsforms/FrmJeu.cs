@@ -116,7 +116,7 @@ namespace JeuPendu_windowsforms
                 {
                     timer1.Stop();
                     manche.CalculScoreManche(manche.Temps, manche.NbErreurs);
-                    MessageBox.Show(string.Format("Félicitations, vous avez remporté cette manche ! \n Score manche n°{0}: {1}points", manche.NumManche, manche.ScoreManche.ToString()), "Resultat", MessageBoxButtons.OK);
+                    MessageBox.Show(string.Format("Félicitations, vous avez remporté cette manche ! \n Score manche n°{0}: {1}points", manche.NumManche, manche.ScoreManche.ToString()), "Resultat", MessageBoxButtons.OKCancel);
                     GestionnaireManche(EtatManche.FinManche);
                 }
                 else if (manche.IsMancheWin() & manche.IsPartieOver())
@@ -208,8 +208,8 @@ namespace JeuPendu_windowsforms
                 case EtatPartie.Debut:
 
                     manche.NumManche = 0;
-                    
-                    
+
+
 
                     break;
 
@@ -219,9 +219,23 @@ namespace JeuPendu_windowsforms
                     btn_Start.Enabled = false;
                     if (score.scoreValide(manche.ScoresCumulés))
                     {
-                        MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
+                        DialogResult resultat = MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points. \n Souhaitez-vous enregistrer votre score ?", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OKCancel);
+                        switch (resultat)
+                        {
+                            case DialogResult.OK:
+                                FrmEnregistrerScore saveScore = new FrmEnregistrerScore();
+                                saveScore.Show();
+                                break;
+                            case DialogResult.Cancel:
+                                Application.Exit();
+                                break;
+
+                        }
+
                     }
-                    Close();
+                    else
+                        MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche : {0} \n Score : {1} points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
+                        Application.Exit();
                     break;
 
                 case EtatPartie.FinPerdue:
@@ -230,7 +244,7 @@ namespace JeuPendu_windowsforms
                     manche.CalculScoreManche(manche.Temps, manche.NbErreurs);
                     manche.CalculScorePartie(manche.ScoresCumulés, manche.NbMancheMax);
                     MessageBox.Show(string.Format("Désolée, vous avez été pendu. \n Le mot à trouver était {0}. Vous avez perdu la partie.\n Vous avez fait {1} manches sur les {2} de prévus avec un score de {3}", manche.MotATrouver, manche.NumManche, manche.NbMancheMax, manche.ScoresCumulés), "Perdu", MessageBoxButtons.OK);
-                    Close();
+                    Application.Exit();
                     break;
             }
         }

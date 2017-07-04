@@ -292,7 +292,7 @@ namespace DLLJeuPendu
         {
             if (IsMancheWin())
             {
-                ScoreManche = 1 * (Convert.ToDouble(temps.TotalSeconds)) + 7 * nbErreurs;
+                ScoreManche = Convert.ToInt32(Properties.Resources.nbPointsParSeconde) * (Convert.ToDouble(temps.TotalSeconds)) + Convert.ToInt32(Properties.Resources.nbPointsParErreurs) * nbErreurs;
                 ScoresCumulés += ScoreManche;
             }
             else

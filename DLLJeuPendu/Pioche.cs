@@ -36,7 +36,7 @@ namespace DLLJeuPendu
         /// <returns></returns>
         public static bool IsMotCorrect(string chaineOrigine)
         {
-            if (chaineOrigine == null || chaineOrigine.Trim().Length < 5 || chaineOrigine.Trim().Length > 25)
+            if (chaineOrigine == null || chaineOrigine.Trim().Length < Convert.ToInt32(Properties.Resources.nbMinCar) || chaineOrigine.Trim().Length > Convert.ToInt32(Properties.Resources.nbMaxCar))
                 return false;
             return true;
         }

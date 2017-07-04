@@ -58,15 +58,11 @@
     <Compile Include="FrmOption.Designer.cs">
       <DependentUpon>FrmOption.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPioche.cs" />
-    <Compile Include="FrmPioche.Designer.cs">
-      <DependentUpon>FrmPioche.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmScore.cs">
+    <Compile Include="FrmPioche.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmScore.Designer.cs">
-      <DependentUpon>FrmScore.cs</DependentUpon>
+    <Compile Include="FrmPioche.Designer.cs">
+      <DependentUpon>FrmPioche.cs</DependentUpon>
     </Compile>
     <Compile Include="InterfaceMere.cs">
       <SubType>Form</SubType>
@@ -82,9 +78,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmScore.resx">
-      <DependentUpon>FrmScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>

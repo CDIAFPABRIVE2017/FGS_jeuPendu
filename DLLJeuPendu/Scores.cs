@@ -245,8 +245,8 @@ namespace DLLJeuPendu
             }
 
             listJoueurs.Save(ISauvegarde ,  pathRepData);
-        {
-        }
+            {
+            }
             
         public void afficherListe()
         {

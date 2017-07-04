@@ -167,7 +167,8 @@ namespace JeuPendu_windowsforms
         //Recherche d'un mot dans le dictionnaire
         private void btRecherche_Click(object sender, EventArgs e)
         {
-            List<int> ind = _pioche.RechercherMot(txtSaisie.Text.Trim());
+            
+            List<int> ind = RechercherMot(txtSaisie.Text.Trim().ToUpper());
             ctl_lstInitiale.SelectedIndex = -1;
             if (ind.Count == 0)
             { MessageBox.Show("Le mot recherché n'existe pas dans la liste!"); }
@@ -182,6 +183,23 @@ namespace JeuPendu_windowsforms
 
 
         }
+        private List<int> RechercherMot(string _mot)
+        {
+            List<int> ind = new List<int>();
+            for (int i = 0; i < ctl_lstInitiale.Items.Count - 1; i++)
+            {
+                if ((ctl_lstInitiale.Items[i].ToString()).Length >= _mot.Length)
+                {
+                    string debut = (ctl_lstInitiale.Items[i].ToString()).Substring(0, _mot.Length);
+                    if (string.Equals(debut, _mot.ToUpper()))
+                    {
+                        ind.Add(i);
+
+                    }
+                }
+            }
+            return ind;
+            }
         private bool estDoublon(string _mot)
         {
             foreach (var item in ctl_lstInitiale.Items)

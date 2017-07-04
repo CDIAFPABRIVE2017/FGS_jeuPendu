@@ -69,7 +69,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.txtb_numManche = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.pn_clavier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep_jeu)).BeginInit();
             this.SuspendLayout();
@@ -507,20 +506,11 @@
             this.txtb_numManche.Size = new System.Drawing.Size(68, 13);
             this.txtb_numManche.TabIndex = 11;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(209, 110);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 12;
-            // 
             // FrmJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 508);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.txtb_numManche);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Start);
@@ -585,7 +575,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox txtb_numManche;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

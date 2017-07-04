@@ -13,36 +13,57 @@ namespace DLLJeuPendu
 {
     public class Pioche : HashSet<string>, ICollectionMetier
     {
+        /// <summary>
+        /// Rechercher un mot dans la liste par son debut
+        /// </summary>
+        /// <param name="_mot"></param>
+        public List<int> RechercherMot(string _mot)
+        {
+            List<int> ind = new List<int>();
+            for (int i = 0; i < this.Count - 1; i++)
+            {
+                if (this.ElementAt(i).Length >= _mot.Length)
+                {
+                    string debut = this.ElementAt(i).Substring(0, _mot.Length);
+                    if (string.Equals(debut, _mot.ToUpper()))
+                    {
+                        ind.Add(i);
 
-
-
+                    }
+                }
+            }
+            return ind;
+        }
+        /// <summary>
+        /// Extraire un mot du dictionnaire aléatoirement
+        /// </summary>
+        /// <returns></returns>
         public string ExtraireMot()
         {
-            int x = 5;// A remplacer par définition d'un nombre aléatoire random
+            Random rd = new Random();
+            int x = rd.Next(1, this.Count - 1);// Définition d'un nombre aléatoire random
             return this.ElementAt(x);
         }
+        /// <summary>
+        /// Vérifier la longueur des mots 
+        /// </summary>
+        /// <param name="chaineOrigine"></param>
+        /// <returns></returns>
         public static bool IsMotCorrect(string chaineOrigine)
         {
             if (chaineOrigine == null || chaineOrigine.Trim().Length < 5 || chaineOrigine.Trim().Length > 25)
                 return false;
             return true;
         }
-
-        public bool AjouterMot(string mot)
-        {
-
-            return this.Add(TraiterMot(mot));
-        }
         /// <summary>
         /// Traiter les caractères accentués
-        /// traiter la casse et la longueur des mots
+        /// traiter la casse 
         /// </summary>
         /// <param name="chaineOrigine"></param>
         /// <returns></returns>
 
         public string TraiterMot(string chaineOrigine)
         {
-
             chaineOrigine = chaineOrigine.Normalize(NormalizationForm.FormD);
             StringBuilder motCanonique = new StringBuilder();
             foreach (char caractere in chaineOrigine)
@@ -55,83 +76,98 @@ namespace DLLJeuPendu
             return motCanonique.ToString().ToUpper();
 
         }
-
+        /// <summary>
+        /// Ajout de mots dans la liste (dictionnaire)
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <returns></returns>
+        public bool AjouterMot(string mot)
+        {
+            return this.Add(TraiterMot(mot));
+        }
+        /// <summary>
+        /// Suppression de mots du dictionnaire
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <returns></returns>
+        public bool SupprimerMot(string mot)
+        {
+            return this.Remove(mot);
+        }
+        
+        /// <summary>
+        /// Sauvegarde des modifications(ajout/suppression)
+        /// </summary>
+        /// <param name="sauvegarde"></param>
+        /// <param name="pathRepData"></param>
         public void Save(ISauvegarde sauvegarde, string pathRepData)
         {
             sauvegarde.Save(pathRepData, this);
         }
 
+        /// <summary>
+        /// chargement du fichier passé en paramétre (pathRepData)
+        /// </summary>
+        /// <param name="sauvegarde"></param>
+        /// <param name="pathRepData"></param>
         public void Load(ISauvegarde sauvegarde, string pathRepData)
         {
-            Pioche pioche = sauvegarde.Load(pathRepData, this.GetType()) as Pioche;
+            Pioche pioche = new Pioche();
+            List<string> ls = sauvegarde.Load(pathRepData, this.GetType()) as List<string>;
+            string tampon = string.Empty;
+            ls = ls.OrderBy(x => x).ToList();
+            foreach (string line in ls)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        if (char.IsLetter(line[i]))
+                        {
+                            tampon += line[i].ToString();
+                        }
+                        else
+                        {
+                            if (Pioche.IsMotCorrect(tampon))
+                            {
+                                pioche.AjouterMot(tampon);
+                            }
+                            tampon = string.Empty;
+                        }
+                    }
+                    if (tampon.Length > 0)
+                    {
+                        if (Pioche.IsMotCorrect(tampon))
+                        {
+                            pioche.AjouterMot(tampon);
+                        }
+                        tampon = string.Empty;
+
+                    }
+                }
+            }
+
             if (pioche != null)
             {
                 this.SymmetricExceptWith(pioche);
             }
+
         }
-            /// <summary>
-
-
-            /// <summary>
-            /// Rechercher un mot dans le dictionnaire par son debut
-            /// </summary>
-            /// <param name="Dbt"></param>
-            //private void RechercherMot(string rMot) /////////////////////////////////////////////////////////////////////TODO
-            //{
-            //    // Ensure we have a proper string to search for.
-            //    if (rMot != string.Empty)
-            //    {
-            //        // Recherche d'un mot dans la liste et sauvegarde de son index
-            //        int index = this.FindString(rMot);
-            //        // Determine si l'index est valide et selectionne l'element correspodant
-            //        if (index != -1)
-            //            _listeInitiale.SetSelected(index, true);
-            //        else
-            //            return;
-            //        //Exception ex:
-            //        //MessageBox.Show("le mot n'existe pas dans la liste");
-            //    }
-            //}
-
-            //public void Save(ISauvegarde sauvegarde, string pathRepData)
-            //{
-
-            //}
-
-            //public void Load(ISauvegarde sauvegarde, string pathRepData)
-            //{
-
-            //}
-
-
-            //private void ChargerMots(string _mots) ///////////////////////////////////////////////////////////////////////////////////////////TODO
-            //{
-            //    // _mots = new Mots();
-            //    ISauvegarde serialiseur = Pioche.DispositifSauvegarde;
-            //    Pioche.Load(serialiseur, Properties.Settings.Default.AppData);
-            //    foreach (Pioche item in _)
-            //    {
-            //        _listeInitiale.Items.Add(_mots);
-            //    }
-            //}
-            //        private void ChargerMots(string _mots) ///////////////////////////////////////////////////////////////////////////////////////////TODO
-            //        {
-
-            //            If(_listeInitiale.ListCount)
-            //                {
-            //                _listeInitiale.Value = _mots;
-            //    If Err Then
-            //        Err.Clear
-            //        ListBox1.AddItem(ComboBox1)
-            //        ListBox1.Value = ListBox1.ListCount - 1
-            //    Else
-            //        MsgBox "Ce nom a déjà été ajouté à la liste!", vbExclamation, "Tentative de doublon"
-            //    End If
-            //Else
-            //    ListBox1.AddItem(ComboBox1)
-            //    ListBox1.Value = ListBox1.ListCount - 1
-            //End If
-            //cordialement
-        }
-    }
     
+        
+       
+
+        private bool TesterDoublon(string _mot)
+        {
+            bool doublon = false;
+            if (this.Contains(_mot))
+            {
+                doublon = true;
+               
+            }
+
+            return doublon;
+        }
+        
+    }
+}

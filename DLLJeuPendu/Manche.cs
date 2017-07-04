@@ -10,7 +10,7 @@ namespace DLLJeuPendu
     {
         #region Champs
         int _nbErreursMaxOk;
-        int _nbMancheMax;
+        int _nbMancheMax= Convert.ToInt32(Properties.Resources.NbManchesMinParPartie);
         int _nbErreurs;
         DateTime DateDebut = new DateTime();
         DateTime DateFin = new DateTime();
@@ -180,11 +180,13 @@ namespace DLLJeuPendu
         {
             get
             {
-                return _nbMancheMax;
+                return _nbMancheMax ;
+                
             }
 
             set
             {
+                
                 _nbMancheMax = value;
             }
         }
@@ -272,7 +274,7 @@ namespace DLLJeuPendu
         }
         public bool IsPartieOver()
         {
-            if (NumManche > NbMancheMax || NbErreurs == NbErreursMaxOk)
+            if (NumManche == NbMancheMax || NbErreurs == NbErreursMaxOk)
             {
                 return true;
             }
@@ -326,7 +328,8 @@ namespace DLLJeuPendu
             {
                 return false;
             }
-            else return true;
+
+            return true;
         }
     }
 }

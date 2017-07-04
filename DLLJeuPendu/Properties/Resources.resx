@@ -125,13 +125,14 @@
   </data>
   <data name="NbManchesMinParPartie" xml:space="preserve">
     <value>2</value>
+    <comment>Valeur de NbManchesMax Par défaut</comment>
   </data>
   <data name="nbMaxCar" xml:space="preserve">
-    <value>5</value>
+    <value>25</value>
     <comment>Pour Mot Valide</comment>
   </data>
   <data name="nbMinCar" xml:space="preserve">
-    <value>25</value>
+    <value>5</value>
     <comment>Pour Mot Valide</comment>
   </data>
   <data name="nbPointsParErreurs" xml:space="preserve">

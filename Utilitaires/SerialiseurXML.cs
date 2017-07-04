@@ -51,7 +51,7 @@ namespace Utilitaires
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
             using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                
+                 
                 XmlTextReader xmlTR = new XmlTextReader(fileStream);
                 XmlSerializer xmlS = new XmlSerializer(typeACharger);
                 

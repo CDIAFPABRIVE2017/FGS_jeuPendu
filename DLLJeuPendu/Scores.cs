@@ -198,7 +198,7 @@ namespace DLLJeuPendu
                 }
             }
         }
-       
+
 
         public void ajouter(Score score)
         {
@@ -227,9 +227,9 @@ namespace DLLJeuPendu
                 sr.WriteLine(xs);
                 fs.Close();
             }
-            else if(listJoueurs.Count >= 9)
+            else if (listJoueurs.Count >= 9)
             {
-                for (int i = 0; i < listJoueurs.Count ; i++)
+                for (int i = 0; i < listJoueurs.Count; i++)
                 {
                     if (listJoueurs[i].ScoreJoueur <= score.ScoreJoueur)
                     {
@@ -240,13 +240,14 @@ namespace DLLJeuPendu
                         } while (count < 1);
                     }
                 }
-                    listJoueurs.Add(score);
-                    
+                listJoueurs.Add(score);
+
             }
 
-            listJoueurs.Save(ISauvegarde ,  pathRepData);
-            {
-            }
+            //listJoueurs.Save(ISauvegarde, pathRepData);
+            //{
+            //}
+        }
             
         public void afficherListe()
         {

@@ -28,6 +28,7 @@ namespace JeuPendu_windowsforms
             else
                 errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
 
+
         }
     }
 

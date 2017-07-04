@@ -22,12 +22,12 @@ namespace DLLJeuPendu
         double _scoreManche;
         double _scoresCumulés;
         double _moyenneScores;
-
+        
         #endregion
 
 
         #region Propriétés
-
+        
         public int NbErreurs
         {
             get

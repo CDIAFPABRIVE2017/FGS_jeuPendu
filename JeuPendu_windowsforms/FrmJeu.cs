@@ -29,6 +29,7 @@ namespace JeuPendu_windowsforms
         Manche manche = MonApplication.Manche;
         Score score = new Score();
         Pioche pioche = MonApplication.Pioche;
+        Scores scores = MonApplication.ScoresJeu;
 
         // a remplacer par l'appel de la méthode d'extraction créée par Fazia.
 
@@ -49,6 +50,8 @@ namespace JeuPendu_windowsforms
                     manche.NbErreurs = 0;
                     manche.NumManche++;
                     manche.MotATrouver = pioche.ExtraireMot();
+                    label2.Text = string.Empty;
+                    label2.Text = manche.MotATrouver;
                     txtb_numManche.Text = (manche.NumManche).ToString();
                     manche.InitialiserMotEnCours();
 
@@ -158,6 +161,7 @@ namespace JeuPendu_windowsforms
 
 
 
+
         }
 
 
@@ -217,25 +221,41 @@ namespace JeuPendu_windowsforms
 
 
                     btn_Start.Enabled = false;
-                    if (score.scoreValide(manche.ScoresCumulés))
+                    if (scores.IsEnregistrable(manche.ScoresCumulés))
                     {
                         DialogResult resultat = MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche :{0} \n Score : {1}points. \n Souhaitez-vous enregistrer votre score ?", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OKCancel);
                         switch (resultat)
                         {
                             case DialogResult.OK:
+                                this.Close();
                                 FrmEnregistrerScore saveScore = new FrmEnregistrerScore();
                                 saveScore.Show();
                                 break;
                             case DialogResult.Cancel:
-                                Application.Exit();
+                                Close();
                                 break;
 
                         }
 
                     }
                     else
-                        MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche : {0} \n Score : {1} points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OK);
-                        Application.Exit();
+                    {
+                        DialogResult result = MessageBox.Show(string.Format("Félicitations, vous avez remporté la partie ! \n Nombre de manche : {0} \n Score : {1} points", manche.NumManche, manche.MoyenneScores.ToString()), "Resultat", MessageBoxButtons.OKCancel);
+                        switch (result)
+                        {
+
+                            case DialogResult.OK:
+                                FrmJeu jeu = new FrmJeu();
+                                jeu.Show();
+                                this.Close();
+                                break;
+                            case DialogResult.Cancel:
+                                Application.Exit();
+                                break;
+
+                        }
+                       
+                    }
                     break;
 
                 case EtatPartie.FinPerdue:

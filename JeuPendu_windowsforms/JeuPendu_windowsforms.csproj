@@ -70,6 +70,12 @@
     <Compile Include="FrmPioche.Designer.cs">
       <DependentUpon>FrmPioche.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmScores.Designer.cs">
+      <DependentUpon>FrmScores.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceMere.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPioche.resx">
       <DependentUpon>FrmPioche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmScores.resx">
+      <DependentUpon>FrmScores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceMere.resx">
       <DependentUpon>InterfaceMere.cs</DependentUpon>

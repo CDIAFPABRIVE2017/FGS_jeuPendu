@@ -28,7 +28,7 @@ namespace DLLJeuPendu
 {
 
     [Serializable()]
-    public class Scores :List<Score>, ICollectionMetier
+    public class Scores :List<Score>
     {
         private double _scoreMin;
         private double _scoreMax;

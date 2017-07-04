@@ -148,17 +148,10 @@ namespace JeuPendu_windowsforms
 
             GestionnairePartie(EtatPartie.Debut);
             pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
-            ChargerListe();
+           
 
         }
-       public void ChargerListe()
-        {
-            foreach (var item in pioche)
-            {
-                listBox1.Items.Add(item);
-
-            }
-        }
+     
 
 
 

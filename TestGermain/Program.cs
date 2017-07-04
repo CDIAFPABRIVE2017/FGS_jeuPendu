@@ -14,7 +14,7 @@ namespace TestGermain
         {
             SauvegardeXML sauvegarde = new SauvegardeXML();
             Scores scores = new Scores();
-            Score azerty2 = new Score(777,"aaaaaaaaaaa");
+            Score azerty2 = new Score(777,"a");
             scores.Load(sauvegarde, Properties.Settings.Default.PathScores);
 
             scores.Ajouter(azerty2);

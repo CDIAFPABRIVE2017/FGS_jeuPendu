@@ -26,6 +26,7 @@ namespace JeuPendu_windowsforms
             scores.Load(sauvegarde, Properties.Settings.Default.PathData);
 
             listbx_scores.Sorted = true;
+            chargerListBox();
 
 
         }
@@ -33,16 +34,25 @@ namespace JeuPendu_windowsforms
         private void chargerListBox()
         {   // chargement de la liste box 
             listbx_scores.Items.Clear();
+            listbx_pseudos.Items.Clear();
 
-            foreach (var item in scores)
+            foreach (var Item in scores)
             {
-                listbx_scores.Items.Add(item);
-
+                listbx_scores.Items.Add(Item.ScoreJoueur);
+                listbx_pseudos.Items.Add(Item.NomJoueur);
+                listBox_date.Items.Add(Item.Date);
             }
             listbx_scores.Visible = listbx_scores.Items.Count > 0;
-            this.Text = listbx_scores.Items.Count + " mots";
-            //lblDictionnaire.Visible = true;
+            listbx_pseudos.Visible = listbx_pseudos.Items.Count > 0;
+            listbx_pseudos.Visible = listBox_date.Items.Count > 0;
+
         }
 
+        private void listbx_scores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

@@ -117,13 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ep_jeu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
-  </metadata>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>104, 17</value>
-  </metadata>
+  <data name="nbErreurMax" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="NbManchesMaxParPartie" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="NbManchesMinParPartie" xml:space="preserve">
+    <value>2</value>
+    <comment>Valeur de NbManchesMax Par défaut</comment>
+  </data>
+  <data name="nbMaxCar" xml:space="preserve">
+    <value>25</value>
+    <comment>Pour Mot Valide</comment>
+  </data>
+  <data name="nbMinCar" xml:space="preserve">
+    <value>5</value>
+    <comment>Pour Mot Valide</comment>
+  </data>
+  <data name="nbPointsParErreurs" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="nbPointsParSeconde" xml:space="preserve">
+    <value>1</value>
+  </data>
 </root>

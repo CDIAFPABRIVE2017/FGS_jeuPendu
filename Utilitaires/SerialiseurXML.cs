@@ -14,17 +14,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Utilitaires
 {
-   
+
     public class SauvegardeXML : ISauvegarde
     {
 
-    
-        /// <summary>
-        /// Sauvegarder par sérialisation Xml 
-        /// </summary>
-        /// <param name="pathRepData"></param>
-        /// <param name="objetASauvegarder"></param>
-        public void Save(string pathRepData, IEnumerable objetASauvegarder)
+      
+             
+              public void Save(string pathRepData, IEnumerable objetASauvegarder)
         {
             Type type = objetASauvegarder.GetType();
 
@@ -38,32 +34,27 @@ namespace Utilitaires
                 fileStream.Close();
             }
         }
-        /// <summary>
-        /// Extraire les données par désérialisation XML
-        /// </summary>
-        /// <param name="pathRepData"></param>
-        /// <param name="typeACharger"></param>
-        /// <returns></returns>
-        public IEnumerable Load(string pathRepData, Type typeACharger)
+             
+              public IEnumerable Load(string pathRepData, Type typeACharger)
         {
             Object objet = null;
 
             string pathXmlDocument = string.Format("{0}\\{1}.Xml", pathRepData, typeACharger.FullName);
             if (File.Exists(pathXmlDocument))
             {
-      
-            using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
-            {
-                
-                XmlTextReader xmlTR = new XmlTextReader(fileStream);
-                XmlSerializer xmlS = new XmlSerializer(typeACharger);
-                
-                objet = xmlS.Deserialize(xmlTR);
-                xmlTR.Close();
-                fileStream.Close();
-            }
-       
-            return objet as IEnumerable;
+
+                using (FileStream fileStream = new FileStream(pathXmlDocument, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+
+                    XmlTextReader xmlTR = new XmlTextReader(fileStream);
+                    XmlSerializer xmlS = new XmlSerializer(typeACharger);
+
+                    objet = xmlS.Deserialize(xmlTR);
+                    xmlTR.Close();
+                    fileStream.Close();
+                }
+
+                return objet as IEnumerable;
             }
             return null;
         }

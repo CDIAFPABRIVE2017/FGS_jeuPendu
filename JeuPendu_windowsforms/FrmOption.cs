@@ -28,15 +28,15 @@ namespace JeuPendu_windowsforms
             }
             else
                 errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
-            //if(rbCouleur.Checked)
-            //{
-            //    FrmJeu.DefaultBackColor = Color.FromArgb(0, 102, 204); //change au blue
-            //}
-            //else
-            //    if(rbCouleur.Checked)
-            //{
-            //    FrmJeu.backGroundImage = (@"C:\Users\CDI\Source\Repos\FGS_jeuPendu\iconeRecherche.jpg"); //insere une image fond d'ecran
-            //}
+            if (rbCouleur.Checked)
+            {
+                FrmJeu.ActiveForm.BackColor = Color.FromArgb(0, 102, 204); //change au blue
+            }
+            else
+                   if (rbCouleur.Checked)
+            {
+                FrmJeu.ActiveForm.BackgroundImage = Properties.Resources.iconeRecherche;
+            }
 
         }
     }

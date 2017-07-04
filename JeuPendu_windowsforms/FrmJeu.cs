@@ -270,7 +270,9 @@ namespace JeuPendu_windowsforms
         }
         #endregion
 
-
+        #region Couleur
+        
+        #endregion
 
     }
 }

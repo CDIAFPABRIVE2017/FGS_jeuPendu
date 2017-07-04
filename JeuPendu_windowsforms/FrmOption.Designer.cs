@@ -28,9 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             this.lb_nbmanchequestion = new System.Windows.Forms.Label();
             this.txtB_nbmanches = new System.Windows.Forms.TextBox();
             this.btn_validermodifs = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_nbmanchequestion
@@ -59,6 +62,10 @@
             this.btn_validermodifs.UseVisualStyleBackColor = true;
             this.btn_validermodifs.Click += new System.EventHandler(this.btn_validermodifs_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -69,6 +76,7 @@
             this.Controls.Add(this.lb_nbmanchequestion);
             this.Name = "FrmOption";
             this.Text = "FrmOption";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,5 +87,6 @@
         private System.Windows.Forms.Label lb_nbmanchequestion;
         private System.Windows.Forms.TextBox txtB_nbmanches;
         private System.Windows.Forms.Button btn_validermodifs;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

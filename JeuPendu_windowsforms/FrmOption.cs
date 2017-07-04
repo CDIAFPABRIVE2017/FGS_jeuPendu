@@ -21,7 +21,13 @@ namespace JeuPendu_windowsforms
 
         private void btn_validermodifs_Click(object sender, EventArgs e)
         {
-           // manche.IsNbManchesValid()
+            if (manche.IsNbManchesValid(txtB_nbmanches.Text))
+            {
+                manche.NbMancheMax = Convert.ToInt32(txtB_nbmanches.Text);
+            }
+            else
+                errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
+
         }
     }
 

@@ -34,13 +34,36 @@ namespace JeuPendu_windowsforms.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDI\\Documents\\Visual Studio 2015\\FGS_jeuPendu\\dictionnaire.txt")]
-        public string CheminDico {
+        [global::System.Configuration.DefaultSettingValueAttribute("Thistle")]
+        public global::System.Drawing.Color CouleurFond {
             get {
-                return ((string)(this["CheminDico"]));
+                return ((global::System.Drawing.Color)(this["CouleurFond"]));
             }
             set {
-                this["CheminDico"] = value;
+                this["CouleurFond"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Algerian, 20.25pt")]
+        public global::System.Drawing.Font Police {
+            get {
+                return ((global::System.Drawing.Font)(this["Police"]));
+            }
+            set {
+                this["Police"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color CouleurPolice {
+            get {
+                return ((global::System.Drawing.Color)(this["CouleurPolice"]));
+            }
+            set {
+                this["CouleurPolice"] = value;
             }
         }
     }

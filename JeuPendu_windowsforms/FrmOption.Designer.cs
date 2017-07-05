@@ -33,12 +33,14 @@
             this.txtB_nbmanches = new System.Windows.Forms.TextBox();
             this.btn_validermodifs = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rbCouleur = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rdImage = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.chb_style1 = new System.Windows.Forms.CheckBox();
+            this.chb_style2 = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_nbmanchequestion
@@ -71,36 +73,14 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // rbCouleur
-            // 
-            this.rbCouleur.AutoSize = true;
-            this.rbCouleur.Location = new System.Drawing.Point(3, 3);
-            this.rbCouleur.Name = "rbCouleur";
-            this.rbCouleur.Size = new System.Drawing.Size(61, 17);
-            this.rbCouleur.TabIndex = 3;
-            this.rbCouleur.TabStop = true;
-            this.rbCouleur.Text = "Couleur";
-            this.rbCouleur.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.rdImage);
-            this.panel1.Controls.Add(this.rbCouleur);
-            this.panel1.Location = new System.Drawing.Point(145, 75);
+            this.panel1.Controls.Add(this.chb_style2);
+            this.panel1.Controls.Add(this.chb_style1);
+            this.panel1.Location = new System.Drawing.Point(145, 81);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(117, 47);
+            this.panel1.Size = new System.Drawing.Size(217, 57);
             this.panel1.TabIndex = 4;
-            // 
-            // rdImage
-            // 
-            this.rdImage.AutoSize = true;
-            this.rdImage.Location = new System.Drawing.Point(2, 23);
-            this.rdImage.Name = "rdImage";
-            this.rdImage.Size = new System.Drawing.Size(93, 17);
-            this.rdImage.TabIndex = 4;
-            this.rdImage.TabStop = true;
-            this.rdImage.Text = "Image de fond";
-            this.rdImage.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -111,11 +91,40 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Fond de la form :";
             // 
+            // chb_style1
+            // 
+            this.chb_style1.AutoSize = true;
+            this.chb_style1.Location = new System.Drawing.Point(9, 8);
+            this.chb_style1.Name = "chb_style1";
+            this.chb_style1.Size = new System.Drawing.Size(58, 17);
+            this.chb_style1.TabIndex = 6;
+            this.chb_style1.Text = "Style 1";
+            this.chb_style1.UseVisualStyleBackColor = true;
+            // 
+            // chb_style2
+            // 
+            this.chb_style2.AutoSize = true;
+            this.chb_style2.Location = new System.Drawing.Point(8, 31);
+            this.chb_style2.Name = "chb_style2";
+            this.chb_style2.Size = new System.Drawing.Size(85, 17);
+            this.chb_style2.TabIndex = 7;
+            this.chb_style2.Text = "Licorne style";
+            this.chb_style2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(262, 149);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 211);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_validermodifs);
@@ -126,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,7 +149,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton rdImage;
-        private System.Windows.Forms.RadioButton rbCouleur;
+        private System.Windows.Forms.CheckBox chb_style2;
+        private System.Windows.Forms.CheckBox chb_style1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

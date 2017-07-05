@@ -5,8 +5,14 @@
     <Setting Name="PathData" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Users\CDI\Documents\Visual Studio 2015\FGS_jeuPendu</Value>
     </Setting>
-    <Setting Name="CheminDico" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\CDI\Documents\Visual Studio 2015\FGS_jeuPendu\dictionnaire.txt</Value>
+    <Setting Name="CouleurFond" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Thistle</Value>
+    </Setting>
+    <Setting Name="Police" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Algerian, 20.25pt</Value>
+    </Setting>
+    <Setting Name="CouleurPolice" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

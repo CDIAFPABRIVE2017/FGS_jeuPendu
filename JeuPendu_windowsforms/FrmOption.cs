@@ -11,31 +11,40 @@ using DLLJeuPendu;
 
 namespace JeuPendu_windowsforms
 {
-	public partial class FrmOption : Form
-	{
-        
+    public partial class FrmOption : Form
+    {
+
         Manche manche = MonApplication.Manche;
-		public FrmOption()
-		{
-			InitializeComponent();
-		}
+        public FrmOption()
+        {
+            InitializeComponent();
+        }
 
         private void btn_validermodifs_Click(object sender, EventArgs e)
         {
-            if (manche.IsNbManchesValid(txtB_nbmanches.Text))
+            if (txtB_nbmanches.Text != string.Empty)
             {
-                manche.NbMancheMax = Convert.ToInt32(txtB_nbmanches.Text);
+                if (manche.IsNbManchesValid(txtB_nbmanches.Text))
+                {
+                    manche.NbMancheMax = Convert.ToInt32(txtB_nbmanches.Text);
+                }
+                else
+                    errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
             }
-            else
-                errorProvider1.SetError(btn_validermodifs, string.Format("{0} n'est pas une valeur correcte", txtB_nbmanches));
-            if (rbCouleur.Checked)
+
+            if (chb_style1.Checked)
             {
-                FrmJeu.ActiveForm.BackColor = Color.FromArgb(0, 102, 204); //change au blue
+                Properties.Settings.Default.CouleurFond = Color.PeachPuff;
+                Properties.Settings.Default.CouleurPolice = Color.SaddleBrown;
+                Properties.Settings.Default.Police = new Font("Broadway", 20, System.Drawing.FontStyle.Bold);
             }
-            else
-                   if (rbCouleur.Checked)
+
+            if (chb_style2.Checked)
             {
-                FrmJeu.ActiveForm.BackgroundImage = Properties.Resources.iconeRecherche;
+                FrmJeu.ActiveForm.BackgroundImage = Properties.Resources.VatefaireEncornerparunelicorne;
+                Properties.Settings.Default.CouleurFond = Color.MistyRose;
+                Properties.Settings.Default.CouleurPolice = Color.DeepPink;
+                Properties.Settings.Default.Police = new Font("Gigi", 20, System.Drawing.FontStyle.Bold);
             }
 
         }

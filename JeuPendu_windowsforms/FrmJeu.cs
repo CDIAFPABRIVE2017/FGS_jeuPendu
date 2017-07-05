@@ -182,7 +182,7 @@ namespace JeuPendu_windowsforms
         {
 
             GestionnairePartie(EtatPartie.Debut);
-            pioche.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.CheminDico);
+
 
 
         }
@@ -212,7 +212,14 @@ namespace JeuPendu_windowsforms
                 case EtatPartie.Debut:
 
                     manche.NumManche = 0;
-
+                    txtb_MotenCours.Font = Properties.Settings.Default.Police;
+                    this.BackColor = Properties.Settings.Default.CouleurFond;
+                    txtb_MotenCours.BackColor= Properties.Settings.Default.CouleurFond;
+                    txtB_nbEssaisRestants.BackColor= Properties.Settings.Default.CouleurFond;
+                    txtb_numManche.BackColor= Properties.Settings.Default.CouleurFond;
+                    txtB_temps.BackColor= Properties.Settings.Default.CouleurFond;
+                    txtb_MotenCours.ForeColor = Properties.Settings.Default.CouleurPolice;
+                   
 
 
                     break;

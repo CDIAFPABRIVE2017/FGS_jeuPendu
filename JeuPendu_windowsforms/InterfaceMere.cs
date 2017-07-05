@@ -41,12 +41,12 @@ namespace JeuPendu_windowsforms
 			this.LayoutMdi(MdiLayout.TileHorizontal);
 		}
 
-        private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmScores score = new FrmScores();
-            score.MdiParent = this;
-            score.Show();
-            this.LayoutMdi(MdiLayout.TileHorizontal);
-        }
+        //private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    FrmScores score = new FrmScores();
+        //    score.MdiParent = this;
+        //    score.Show();
+        //    this.LayoutMdi(MdiLayout.TileHorizontal);
+        //}
     }
 }

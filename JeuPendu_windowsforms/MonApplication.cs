@@ -14,6 +14,7 @@ namespace JeuPendu_windowsforms
         static Scores _scoresJeu = new Scores();
         static Pioche _pioche = new Pioche();
         static Manche _manche = new Manche();
+        static Score _score = new Score();
        
         
         public static ISauvegarde DispositifSauvegarde
@@ -47,6 +48,19 @@ namespace JeuPendu_windowsforms
             }
 
             
+        }
+
+        public static Score Score
+        {
+            get
+            {
+                return _score;
+            }
+
+            set
+            {
+                _score = value;
+            }
         }
     }
 }
